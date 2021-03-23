@@ -8,7 +8,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [1](https://github.com/Miguetto/orientat/issues/1) |
 
 | **R2**     | **Código fuente**         |
 | --------------: | :------------------- |
@@ -17,7 +17,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [2](https://github.com/Miguetto/orientat/issues/2) |
 
 | **R3**     | **Estilo del código**         |
 | --------------: | :------------------- |
@@ -26,7 +26,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [3](https://github.com/Miguetto/orientat/issues/3) |
 
 | **R4**     | **Tres lanzamientos**         |
 | --------------: | :------------------- |
@@ -35,7 +35,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [4](https://github.com/Miguetto/orientat/issues/4) |
 
 | **R5**     | **README.md**         |
 | --------------: | :------------------- |
@@ -44,7 +44,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [5](https://github.com/Miguetto/orientat/issues/5) |
 
 | **R6**     | **Documentación**         |
 | --------------: | :------------------- |
@@ -53,7 +53,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [6](https://github.com/Miguetto/orientat/issues/6) |
 
 | **R7**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -62,7 +62,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [7](https://github.com/Miguetto/orientat/issues/7) |
 
 | **R8**     | **Etiquetas e hitos**         |
 | --------------: | :------------------- |
@@ -71,7 +71,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [8](https://github.com/Miguetto/orientat/issues/8) |
 
 | **R9**     | **Rama master**         |
 | --------------: | :------------------- |
@@ -80,7 +80,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [9](https://github.com/Miguetto/orientat/issues/9) |
 
 | **R10**     | **Gestión del proyecto**         |
 | --------------: | :------------------- |
@@ -89,7 +89,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [10](https://github.com/Miguetto/orientat/issues/10) |
 
 | **R11**     | **Final de cada iteración**         |
 | --------------: | :------------------- |
@@ -98,7 +98,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [11](https://github.com/Miguetto/orientat/issues/11) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -107,7 +107,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [12](https://github.com/Miguetto/orientat/issues/12) |
 
 | **R13**     | **Gestión de ventanas**         |
 | --------------: | :------------------- |
@@ -116,7 +116,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [13](https://github.com/Miguetto/orientat/issues/13) |
 
 | **R14**     | **Manejo de eventos**         |
 | --------------: | :------------------- |
@@ -125,7 +125,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [14](https://github.com/Miguetto/orientat/issues/14) |
 
 | **R15**     | **DOM**         |
 | --------------: | :------------------- |
@@ -134,7 +134,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [15](https://github.com/Miguetto/orientat/issues/15) |
 
 | **R16**     | **Almacenamiento en el lado del cliente**         |
 | --------------: | :------------------- |
@@ -143,7 +143,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [16](https://github.com/Miguetto/orientat/issues/16) |
 
 | **R17**     | **jQuery, jQuery UI**         |
 | --------------: | :------------------- |
@@ -152,7 +152,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [17](https://github.com/Miguetto/orientat/issues/17) |
 
 | **R18**     | **Plugin no trabajado en clase**         |
 | --------------: | :------------------- |
@@ -161,7 +161,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [18](https://github.com/Miguetto/orientat/issues/18) |
 
 | **R19**     | **Utilización de AJAX**         |
 | --------------: | :------------------- |
@@ -170,7 +170,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [19](https://github.com/Miguetto/orientat/issues/19) |
 
 | **R20**     | **ECMAScript2015 (ES6)**         |
 | --------------: | :------------------- |
@@ -179,7 +179,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [20](https://github.com/Miguetto/orientat/issues/20) |
 
 | **R21**     | **PHP**         |
 | --------------: | :------------------- |
@@ -188,7 +188,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [21](https://github.com/Miguetto/orientat/issues/21) |
 
 | **R22**     | **Yii2 Framework**         |
 | --------------: | :------------------- |
@@ -197,7 +197,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [22](https://github.com/Miguetto/orientat/issues/22) |
 
 | **R23**     | **PostgreSQL**         |
 | --------------: | :------------------- |
@@ -206,7 +206,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [23](https://github.com/Miguetto/orientat/issues/23) |
 
 | **R24**     | **Heroku**         |
 | --------------: | :------------------- |
@@ -215,7 +215,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [24](https://github.com/Miguetto/orientat/issues/24) |
 
 | **R25**     | **Codeception**         |
 | --------------: | :------------------- |
@@ -224,7 +224,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [25](https://github.com/Miguetto/orientat/issues/25) |
 
 | **R26**     | **Code Climate**         |
 | --------------: | :------------------- |
@@ -233,7 +233,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [26](https://github.com/Miguetto/orientat/issues/26) |
 
 | **R27**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -242,7 +242,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [27](https://github.com/Miguetto/orientat/issues/27) |
 
 | **R28**     | **Tecnología AJAX**         |
 | --------------: | :------------------- |
@@ -251,7 +251,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [28](https://github.com/Miguetto/orientat/issues/28) |
 
 | **R29**     | **Etiquetas semánticas de HTML5**         |
 | --------------: | :------------------- |
@@ -260,7 +260,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [29](https://github.com/Miguetto/orientat/issues/29) |
 
 | **R30**     | **Presentación mediante CSS**         |
 | --------------: | :------------------- |
@@ -269,7 +269,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [30](https://github.com/Miguetto/orientat/issues/30) |
 
 | **R31**     | **Diseño flexible**         |
 | --------------: | :------------------- |
@@ -278,7 +278,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [31](https://github.com/Miguetto/orientat/issues/31) |
 
 | **R32**     | **Transiciones, transformaciones, animaciones y contenido multimedia**         |
 | --------------: | :------------------- |
@@ -287,7 +287,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [32](https://github.com/Miguetto/orientat/issues/32) |
 
 | **R33**     | **Uso de microdatos**         |
 | --------------: | :------------------- |
@@ -296,7 +296,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [33](https://github.com/Miguetto/orientat/issues/33) |
 
 | **R34**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -305,7 +305,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [34](https://github.com/Miguetto/orientat/issues/34) |
 
 | **R35**     | **Diseño para varias resoluciones**         |
 | --------------: | :------------------- |
@@ -314,7 +314,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [35](https://github.com/Miguetto/orientat/issues/35) |
 
 | **R36**     | **Varios navegadores**         |
 | --------------: | :------------------- |
@@ -323,7 +323,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [36](https://github.com/Miguetto/orientat/issues/36) |
 
 | **R37**     | **Despliegue en un Host**         |
 | --------------: | :------------------- |
@@ -332,7 +332,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [37](https://github.com/Miguetto/orientat/issues/37) |
 
 | **R38**     | **Despliegue en un servidor local**         |
 | --------------: | :------------------- |
@@ -341,48 +341,478 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [38](https://github.com/Miguetto/orientat/issues/38) |
 
+| **R39**     | **Creación base de datos**         |
+| --------------: | :------------------- |
+| **Descripción** | Crear la base de datos para guardar la información de usuarios, recursos, comentarios.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [39](https://github.com/Miguetto/orientat/issues/39) |
+
+| **R40**     | **Crear usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un usuario a la base de datos.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [40](https://github.com/Miguetto/orientat/issues/40) |
+
+| **R41**     | **Modificar usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá modificar algunos datos del usuario.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [41](https://github.com/Miguetto/orientat/issues/41) |
+
+| **R42**     | **Eliminar usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador podrá eliminar a un usuario.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [42](https://github.com/Miguetto/orientat/issues/42) |
+
+| **R43**     | **Registro de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario se podrá registrar en la web.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [43](https://github.com/Miguetto/orientat/issues/43) |
+
+| **R44**     | **Iniciar sesión**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario registrado podrá iniciar sesión en la aplicación.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [44](https://github.com/Miguetto/orientat/issues/44) |
+
+| **R45**     | **Cerrar sesión**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario logueado en ese momento podrá cerrar sesión.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [45](https://github.com/Miguetto/orientat/issues/45) |
+
+| **R46**     | **Darse de baja**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario podrá darse de baja de la web.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [46](https://github.com/Miguetto/orientat/issues/46) |
+
+| **R47**     | **Correo de registro**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario al registrarse recibirá un correo de información de registro.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [47](https://github.com/Miguetto/orientat/issues/47) |
+
+| **R48**     | **Correo de confirmación **         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario al darse de baja recibirá un correo para confirmar la baja.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [48](https://github.com/Miguetto/orientat/issues/48) |
+
+| **R49**     | **Control de visitante**         |
+| --------------: | :------------------- |
+| **Descripción** | El visitante que no está registrado ni logueado, sólo verá la página de inicio con un enlace al apartado de registro.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [49](https://github.com/Miguetto/orientat/issues/49) |
+
+| **R50**     | **Cambiar rol a un usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador podrá cambiar el rol asignado a un usuario.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [50](https://github.com/Miguetto/orientat/issues/50) |
+
+| **R51**     | **Añadir un recurso de un tipo en concreto**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un recurso de tipo blog.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [51](https://github.com/Miguetto/orientat/issues/51) |
+
+| **R52**     | **Añadir un recurso de un tipo en concreto**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un recurso de tipo enlace.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [52](https://github.com/Miguetto/orientat/issues/52) |
+
+| **R53**     | **Añadir un recurso de un tipo en concreto**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un recurso de tipo pdf.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [53](https://github.com/Miguetto/orientat/issues/53) |
+
+| **R54**     | **Añadir un recurso de un tipo en concreto**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un recurso de tipo imagen.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [54](https://github.com/Miguetto/orientat/issues/54) |
+
+| **R55**     | **Añadir un recurso completo**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un recurso completo que contenga cualquier tipo.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [55](https://github.com/Miguetto/orientat/issues/55) |
+
+| **R56**     | **Aceptar o denegar un nuevo recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | Los revisores podrán aceptar o denegar una propuesta, en el caso de aceptarla, se añadirá la propuesta y en el caso contrarío se avisará al usuario y no se añadirá la propuesta.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [56](https://github.com/Miguetto/orientat/issues/56) |
+
+| **R57**     | **Descargar un recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | Habilitar el poder descargarse un recurso de tipo pdf o imagen.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [57](https://github.com/Miguetto/orientat/issues/57) |
+
+| **R58**     | **Eliminar un recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador y los revisores podrán eliminar un recurso creado.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [58](https://github.com/Miguetto/orientat/issues/58) |
+
+| **R59**     | **Modificar un recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador y los revisor podrán modificar un recurso creado.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [59](https://github.com/Miguetto/orientat/issues/59) |
+
+| **R60**     | **Añadir propuesta**         |
+| --------------: | :------------------- |
+| **Descripción** | Los revisores podrán crear nuevas propuestas de recursos.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [60](https://github.com/Miguetto/orientat/issues/60) |
+
+| **R61**     | **Marcar propuesta**         |
+| --------------: | :------------------- |
+| **Descripción** | Los revisores podrán marcar sus propuestas como finalizadas una vez terminada la votación.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [61](https://github.com/Miguetto/orientat/issues/61) |
+
+| **R62**     | **Modificar propuesta**         |
+| --------------: | :------------------- |
+| **Descripción** | Los revisores podrán modificar sus propuestas creadas.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [62](https://github.com/Miguetto/orientat/issues/62) |
+
+| **R63**     | **Añadir comentario**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir un comentario a un recurso disponible.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [63](https://github.com/Miguetto/orientat/issues/63) |
+
+| **R64**     | **Borrar comentario**         |
+| --------------: | :------------------- |
+| **Descripción** | Borrar un comentario propio.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [64](https://github.com/Miguetto/orientat/issues/64) |
+
+| **R65**     | **Responder comentario**         |
+| --------------: | :------------------- |
+| **Descripción** | Responder comentario.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [65](https://github.com/Miguetto/orientat/issues/65) |
+
+| **R66**     | **Panel Admin**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador de la web tendrá un panel de uso con herramientas para el control de usuarios y recursos.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [66](https://github.com/Miguetto/orientat/issues/66) |
+
+| **R67**     | **Dar like a un recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | Dar like a un recurso.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [67](https://github.com/Miguetto/orientat/issues/67) |
+
+| **R68**     | **Ver perfil de usuario**         |
+| --------------: | :------------------- |
+| **Descripción** | El usuario al loguearse aparecerá en su página principal, dónde aparecerán sus recursos creados.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [68](https://github.com/Miguetto/orientat/issues/68) |
+
+| **R69**     | **Ver listado de recursos**         |
+| --------------: | :------------------- |
+| **Descripción** | Se visualizarán los recursos disponibles.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [69](https://github.com/Miguetto/orientat/issues/69) |
+
+| **R70**     | **Ver listado de recursos filtrados**         |
+| --------------: | :------------------- |
+| **Descripción** | Se visualizarán los recursos disponibles filtrados por tipo y categoría.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [70](https://github.com/Miguetto/orientat/issues/70) |
+
+| **R71**     | **Notificación de nuevo recurso**         |
+| --------------: | :------------------- |
+| **Descripción** | Al añadir un usuario un nuevo recurso, se envía una notificación a los revisores para validar dicho recurso.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [71](https://github.com/Miguetto/orientat/issues/71) |
+
+| **R72**     | **Menú notificaciones**         |
+| --------------: | :------------------- |
+| **Descripción** | Implementar un menú que aparece en el perfil del revisor con las notificaciones de nuevos recursos a validar.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [72](https://github.com/Miguetto/orientat/issues/72) |
+
+| **R73**     | **Enviar incidencia**         |
+| --------------: | :------------------- |
+| **Descripción** | Los revisores podrán enviar incidencias en la web al administrador             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [73](https://github.com/Miguetto/orientat/issues/73) |
+
+| **R74**     | **Recibir indicencias**         |
+| --------------: | :------------------- |
+| **Descripción** | El administrador recibirá las incidencias como notificaciones.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [74](https://github.com/Miguetto/orientat/issues/74) |
+
+| **R75**     | **Implementación pwa**         |
+| --------------: | :------------------- |
+| **Descripción** | Añadir los elementos necesarios para el correcto funcionamiento como web progresiva.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [75](https://github.com/Miguetto/orientat/issues/75) |
+
+| **R76**     | **Extensión votaciones yii2**         |
+| --------------: | :------------------- |
+| **Descripción** | Implementar las votaciones de las propuestas.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [76](https://github.com/Miguetto/orientat/issues/76) |
+
+| **R77**     | **Notificaciones**         |
+| --------------: | :------------------- |
+| **Descripción** | Mensajes cuando se visita la web desde un smpartphone o tablet.             |
+| **Prioridad**   | Opcional           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [77](https://github.com/Miguetto/orientat/issues/77) |
+
+| **R78**     | **Añadir voto positivo**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá votar de forma positiva una propuesta.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [78](https://github.com/Miguetto/orientat/issues/78) |
+
+| **R79**     | **Añadir voto negativo**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá votar de forma negativa una propuesta.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [79](https://github.com/Miguetto/orientat/issues/79) |
+
+| **R80**     | **Poder instalar la aplicación en el móvil**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá instalar la aplicación en el móvil.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [80](https://github.com/Miguetto/orientat/issues/80) |
+
+| **R81**     | **Poder visitar la aplicación offline**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá visitar la web de forma offline.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [81](https://github.com/Miguetto/orientat/issues/81) |
 
 
 ## Cuadro resumen
 
-| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** |
-| :------------ | :-----------: | :------: | :-------------: | :---------: |
-| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | 
-| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | 
-| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | 
-| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | 
-| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | 
-| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | 
-| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | 
-| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | 
-| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | 
-| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | 
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | 
-| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | 
-| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | 
-| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | 
-| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | 
-| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | 
-| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 | 
-| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | 
-| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | 
-| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | 
-| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | 
-| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | 
-| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | 
-| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | 
-| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | 
-| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | 
-| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | 
-| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | 
-| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | 
-| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | 
-| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | 
-| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | 
-| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | 
-| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | 
-| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | 
-| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | 
+| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** | **Incidencia** |
+| :------------ | :-----------: | :------: | :-------------: | :---------: | :------------: |
+| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [1](https://github.com/Miguetto/orientat/issues/1) |
+| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [2](https://github.com/Miguetto/orientat/issues/2) |
+| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/Miguetto/orientat/issues/3) |
+| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [4](https://github.com/Miguetto/orientat/issues/4) |
+| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/Miguetto/orientat/issues/5) |
+| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/Miguetto/orientat/issues/6) |
+| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/Miguetto/orientat/issues/7) |
+| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [8](https://github.com/Miguetto/orientat/issues/8) |
+| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [9](https://github.com/Miguetto/orientat/issues/9) |
+| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [10](https://github.com/Miguetto/orientat/issues/10) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [11](https://github.com/Miguetto/orientat/issues/11) |
+| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [12](https://github.com/Miguetto/orientat/issues/12) |
+| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [13](https://github.com/Miguetto/orientat/issues/13) |
+| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [14](https://github.com/Miguetto/orientat/issues/14) |
+| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [15](https://github.com/Miguetto/orientat/issues/15) |
+| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [16](https://github.com/Miguetto/orientat/issues/16) |
+| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [17](https://github.com/Miguetto/orientat/issues/17) |
+| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [18](https://github.com/Miguetto/orientat/issues/18) |
+| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [19](https://github.com/Miguetto/orientat/issues/19) |
+| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [20](https://github.com/Miguetto/orientat/issues/20) |
+| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [21](https://github.com/Miguetto/orientat/issues/21) |
+| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [22](https://github.com/Miguetto/orientat/issues/22) |
+| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [23](https://github.com/Miguetto/orientat/issues/23) |
+| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [24](https://github.com/Miguetto/orientat/issues/24) |
+| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [25](https://github.com/Miguetto/orientat/issues/25) |
+| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [26](https://github.com/Miguetto/orientat/issues/26) |
+| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [27](https://github.com/Miguetto/orientat/issues/27) |
+| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [28](https://github.com/Miguetto/orientat/issues/28) |
+| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [29](https://github.com/Miguetto/orientat/issues/29) |
+| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [30](https://github.com/Miguetto/orientat/issues/30) |
+| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [31](https://github.com/Miguetto/orientat/issues/31) |
+| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [32](https://github.com/Miguetto/orientat/issues/32) |
+| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [33](https://github.com/Miguetto/orientat/issues/33) |
+| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [34](https://github.com/Miguetto/orientat/issues/34) |
+| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [35](https://github.com/Miguetto/orientat/issues/35) |
+| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [36](https://github.com/Miguetto/orientat/issues/36) |
+| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [37](https://github.com/Miguetto/orientat/issues/37) |
+| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [38](https://github.com/Miguetto/orientat/issues/38) |
+| (**R39**) Creación base de datos | Importante | Información | Fácil | v1 | | **Incidencia**  | [39](https://github.com/Miguetto/orientat/issues/39) |
+| (**R40**) Crear usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [40](https://github.com/Miguetto/orientat/issues/40) |
+| (**R41**) Modificar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/Miguetto/orientat/issues/41) |
+| (**R42**) Eliminar usuario | Importante | Funcional | Media | v2 | | **Incidencia**  | [42](https://github.com/Miguetto/orientat/issues/42) |
+| (**R43**) Registro de usuario | Importante | Funcional | Media | v1 | | **Incidencia**  | [43](https://github.com/Miguetto/orientat/issues/43) |
+| (**R44**) Iniciar sesión | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [44](https://github.com/Miguetto/orientat/issues/44) |
+| (**R45**) Cerrar sesión | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [45](https://github.com/Miguetto/orientat/issues/45) |
+| (**R46**) Darse de baja | Importante | Funcional | Media | v2 | | **Incidencia**  | [46](https://github.com/Miguetto/orientat/issues/46) |
+| (**R47**) Correo de registro | Importante | Funcional | Media | v1 | | **Incidencia**  | [47](https://github.com/Miguetto/orientat/issues/47) |
+| (**R48**) Correo de confirmación  | Importante | Funcional | Media | v2 | | **Incidencia**  | [48](https://github.com/Miguetto/orientat/issues/48) |
+| (**R49**) Control de visitante | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [49](https://github.com/Miguetto/orientat/issues/49) |
+| (**R50**) Cambiar rol a un usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [50](https://github.com/Miguetto/orientat/issues/50) |
+| (**R51**) Añadir un recurso de un tipo en concreto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [51](https://github.com/Miguetto/orientat/issues/51) |
+| (**R52**) Añadir un recurso de un tipo en concreto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [52](https://github.com/Miguetto/orientat/issues/52) |
+| (**R53**) Añadir un recurso de un tipo en concreto | Importante | Funcional | Media | v1 | | **Incidencia**  | [53](https://github.com/Miguetto/orientat/issues/53) |
+| (**R54**) Añadir un recurso de un tipo en concreto | Importante | Funcional | Media | v2 | | **Incidencia**  | [54](https://github.com/Miguetto/orientat/issues/54) |
+| (**R55**) Añadir un recurso completo | Importante | Funcional | Media | v2 | | **Incidencia**  | [55](https://github.com/Miguetto/orientat/issues/55) |
+| (**R56**) Aceptar o denegar un nuevo recurso | Importante | Funcional | Media | v3 | | **Incidencia**  | [56](https://github.com/Miguetto/orientat/issues/56) |
+| (**R57**) Descargar un recurso | Importante | Funcional | Media | v2 | | **Incidencia**  | [57](https://github.com/Miguetto/orientat/issues/57) |
+| (**R58**) Eliminar un recurso | Importante | Funcional | Media | v1 | | **Incidencia**  | [58](https://github.com/Miguetto/orientat/issues/58) |
+| (**R59**) Modificar un recurso | Importante | Funcional | Media | v1 | | **Incidencia**  | [59](https://github.com/Miguetto/orientat/issues/59) |
+| (**R60**) Añadir propuesta | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [60](https://github.com/Miguetto/orientat/issues/60) |
+| (**R61**) Marcar propuesta | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [61](https://github.com/Miguetto/orientat/issues/61) |
+| (**R62**) Modificar propuesta | Importante | Funcional | Media | v2 | | **Incidencia**  | [62](https://github.com/Miguetto/orientat/issues/62) |
+| (**R63**) Añadir comentario | Importante | Funcional | Media | v3 | | **Incidencia**  | [63](https://github.com/Miguetto/orientat/issues/63) |
+| (**R64**) Borrar comentario | Importante | Funcional | Media | v3 | | **Incidencia**  | [64](https://github.com/Miguetto/orientat/issues/64) |
+| (**R65**) Responder comentario | Importante | Funcional | Media | v3 | | **Incidencia**  | [65](https://github.com/Miguetto/orientat/issues/65) |
+| (**R66**) Panel Admin | Importante | Funcional | Media | v2 | | **Incidencia**  | [66](https://github.com/Miguetto/orientat/issues/66) |
+| (**R67**) Dar like a un recurso | Importante | Funcional | Media | v2 | | **Incidencia**  | [67](https://github.com/Miguetto/orientat/issues/67) |
+| (**R68**) Ver perfil de usuario | Importante | Funcional | Media | v1 | | **Incidencia**  | [68](https://github.com/Miguetto/orientat/issues/68) |
+| (**R69**) Ver listado de recursos | Importante | Funcional | Media | v1 | | **Incidencia**  | [69](https://github.com/Miguetto/orientat/issues/69) |
+| (**R70**) Ver listado de recursos filtrados | Importante | Funcional | Media | v2 | | **Incidencia**  | [70](https://github.com/Miguetto/orientat/issues/70) |
+| (**R71**) Notificación de nuevo recurso | Importante | Funcional | Difícil | v2 | | **Incidencia**  | [71](https://github.com/Miguetto/orientat/issues/71) |
+| (**R72**) Menú notificaciones | Importante | Funcional | Difícil | v2 | | **Incidencia**  | [72](https://github.com/Miguetto/orientat/issues/72) |
+| (**R73**) Enviar incidencia | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [73](https://github.com/Miguetto/orientat/issues/73) |
+| (**R74**) Recibir indicencias | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [74](https://github.com/Miguetto/orientat/issues/74) |
+| (**R75**) Implementación pwa | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [75](https://github.com/Miguetto/orientat/issues/75) |
+| (**R76**) Extensión votaciones yii2 | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [76](https://github.com/Miguetto/orientat/issues/76) |
+| (**R77**) Notificaciones | Opcional | Funcional | Difícil | v3 | | **Incidencia**  | [77](https://github.com/Miguetto/orientat/issues/77) |
+| (**R78**) Añadir voto positivo | Importante | Funcional | Media | v3 | | **Incidencia**  | [78](https://github.com/Miguetto/orientat/issues/78) |
+| (**R79**) Añadir voto negativo | Importante | Funcional | Media | v3 | | **Incidencia**  | [79](https://github.com/Miguetto/orientat/issues/79) |
+| (**R80**) Poder instalar la aplicación en el móvil | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [80](https://github.com/Miguetto/orientat/issues/80) |
+| (**R81**) Poder visitar la aplicación offline | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [81](https://github.com/Miguetto/orientat/issues/81) |
