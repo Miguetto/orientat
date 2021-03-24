@@ -2,8 +2,8 @@
     <!--<a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>-->
-    <h2 align="center">orientaT</h2>
-    <h1 align="center">Recursos educativos accesibles, facilitadores y gratuitos.</h1>
+    <h1 align="center">orientaT</h1>
+    <h3 align="center">Recursos educativos accesibles, facilitadores y gratuitos.</h3>
     <br>
 </p>
 
@@ -26,5 +26,5 @@ El administrador llevará a cabo el correcto funcionamiento de la aplicación we
 Dependiendo del tipo de usuario tendrá un menú con unas opciones u otras.
 
 ## Enlaces de interés
-<a href="https://orienta-t.herokuapp.com/">orientaT</a>
+<a href="https://orienta-t.herokuapp.com/">orientaT</a></br>
 <a href="https://miguetto.github.io/orientat">Documentación</a>
