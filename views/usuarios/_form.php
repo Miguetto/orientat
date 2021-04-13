@@ -22,10 +22,15 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rol_id')->textInput() ?>
+    <?php
+        // Solo el admin puede cambiar el rol.
+        if(Yii::$app->user->identity->esAdmin == true){ ?>
+            <?= $form->field($model, 'rol_id')->textInput() ?>
+        <?php }
+    ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

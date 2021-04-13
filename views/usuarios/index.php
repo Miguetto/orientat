@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'password',
             'rol.rol',
-
-            //['class' => 'yii\grid\ActionColumn'],
+            
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
