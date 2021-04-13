@@ -9,8 +9,16 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Usuarios;
+use yii\helpers\Url;
 
 AppAsset::register($this);
+//Yii::$app->user->identity->rol_id = 3;
+//var_dump(Yii::$app->user->identity->esAdmin); die();
+//$admin = false;
+$usuario_id = Yii::$app->user->id;
+$url = Url::to(['usuarios/view', 'id' => $usuario_id]);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -44,7 +52,12 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
+            !Yii::$app->user->isGuest ? 
+            (Yii::$app->user->identity->esAdmin === true ? 
+            (['label' => 'Usuarios', 'url' => ['/usuarios/index']]) : ('')) : (''),
+            $usuario_id !== null ? (
+                ['label' => 'Mi perfil', 'url' => $url]
+            ) : (''),
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
