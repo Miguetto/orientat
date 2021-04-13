@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'password',
             'rol.rol',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
