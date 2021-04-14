@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,30 @@ class UsuariosController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['index', 'create', 'update', 'delete', 'view'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->esAdmin;
+                        },
+                    ],
+                    [
+                        'actions' => ['update', 'delete', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
                 ],
             ],
         ];
@@ -67,7 +92,13 @@ class UsuariosController extends Controller
         $model = new Usuarios(['scenario' => Usuarios::SCENARIO_CREATE]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if(Yii::$app->user->isGuest){
+                Yii::$app->session->setFlash('success', 'Se creó correctamente, ahora logueate!!.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else if(Yii::$app->user->identity->esAdmin){
+                Yii::$app->session->setFlash('success', 'Se creó correctamente.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            }            
         }
 
         return $this->render('create', [
@@ -88,13 +119,21 @@ class UsuariosController extends Controller
         $model->scenario = Usuarios::SCENARIO_UPDATE;
         $model->password = '';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if(Yii::$app->user->identity->esAdmin || $model->id == Yii::$app->user->id){
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }else{
+            Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');
+            return $this->redirect(['site/index']);
         }
         
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        
+        
         
     }
 
@@ -107,9 +146,17 @@ class UsuariosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
 
-        return $this->redirect(['index']);
+        if (Yii::$app->user->identity->esAdmin || $model->id == Yii::$app->user->id) {
+            $model->delete();
+            Yii::$app->session->setFlash('success', 'Se eliminó correctamente.');
+            return $this->redirect(['index']);
+        }else{
+            Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');
+            return $this->redirect(['site/index']);
+        }
+
     }
 
     /**

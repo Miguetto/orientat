@@ -13,9 +13,6 @@ use app\models\Usuarios;
 use yii\helpers\Url;
 
 AppAsset::register($this);
-//Yii::$app->user->identity->rol_id = 3;
-//var_dump(Yii::$app->user->identity->esAdmin); die();
-//$admin = false;
 $usuario_id = Yii::$app->user->id;
 $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 
@@ -49,9 +46,11 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            //Yii::$app->user->isGuest ? 
+            //['label' => 'Registrarse', 'url' => ['/usuarios/create']]
+            //:
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            //['label' => 'Contacto', 'url' => ['/site/contact']],
             !Yii::$app->user->isGuest ? 
             (Yii::$app->user->identity->esAdmin === true ? 
             (['label' => 'Usuarios', 'url' => ['/usuarios/index']]) : ('')) : (''),
