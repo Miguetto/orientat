@@ -18,7 +18,8 @@ class UsuariosSearch extends Usuarios
     {
         return [
             [['id', 'rol_id'], 'integer'],
-            [['nombre', 'username', 'email', 'password', 'auth_key'], 'safe'],
+            [['rol.rol'], 'string'],
+            [['nombre', 'username', 'email', 'password', 'rol.rol'], 'safe'],
         ];
     }
 
@@ -31,6 +32,13 @@ class UsuariosSearch extends Usuarios
         return Model::scenarios();
     }
 
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['rol.rol']);
+    }
+
+
     /**
      * Creates data provider instance with search query applied
      *
@@ -40,13 +48,21 @@ class UsuariosSearch extends Usuarios
      */
     public function search($params)
     {
-        $query = Usuarios::find();
+        $query = Usuarios::find()->joinWith('rol');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 5,
+            ]
         ]);
+
+        $dataProvider->sort->attributes['rol.rol'] = [
+            'asc' => ['roles.rol' => SORT_ASC],
+            'desc' => ['roles.rol' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -59,14 +75,13 @@ class UsuariosSearch extends Usuarios
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'rol_id' => $this->rol_id,
         ]);
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andFilterWhere(['ilike', 'username', $this->username])
             ->andFilterWhere(['ilike', 'email', $this->email])
             ->andFilterWhere(['ilike', 'password', $this->password])
-            ->andFilterWhere(['ilike', 'auth_key', $this->auth_key]);
+            ->andFilterWhere(['ilike', 'roles.rol', $this->getAttribute('rol.rol')]);
 
         return $dataProvider;
     }
