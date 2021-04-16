@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
@@ -129,6 +130,7 @@ class UsuariosController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'roles' => Roles::lista(),
         ]);
     }
 
@@ -174,6 +176,8 @@ class UsuariosController extends Controller
 
             return $this->render('update', [
                 'model' => $model,
+                'roles' => Roles::lista(),
+
             ]);
         }else{
             Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');

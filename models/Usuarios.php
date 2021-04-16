@@ -70,7 +70,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'auth_key' => 'Auth Key',
             'token_confirm' => 'Token Confirm',
             'created_at' => 'Created At',
-            'rol' => 'Rol',
+            'rol_id' => 'Rol',
         ];
     }
 
@@ -117,6 +117,11 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasOne(Roles::class, ['id' => 'rol_id'])->inverseOf('usuarios');
     }
 
+    /**
+     * Comprueba que el usuario logueado es administrador
+     *
+     * @return bool
+     */
     public function getEsAdmin()
     {
         $usuario = Usuarios::findOne(Yii::$app->user->id);

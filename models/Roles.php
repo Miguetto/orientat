@@ -44,6 +44,16 @@ class Roles extends \yii\db\ActiveRecord
     }
 
     /**
+    * Lista con los roles de usuarios
+    * @return array con los roles
+    */
+    public static function lista()
+    {
+        return static::find()->select('rol')
+               ->indexBy('id')->column();
+    }
+
+    /**
      * Gets query for [[Usuarios]].
      *
      * @return \yii\db\ActiveQuery

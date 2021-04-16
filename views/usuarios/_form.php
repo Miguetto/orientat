@@ -25,7 +25,7 @@ use yii\bootstrap4\ActiveForm;
     <?php
         // Solo el admin puede cambiar el rol.
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true){ ?>
-            <?= $form->field($model, 'rol_id')->textInput() ?>
+            <?= $form->field($model, 'rol_id')->dropdownList($roles) ?>
         <?php }
     ?>
 
