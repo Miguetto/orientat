@@ -22,7 +22,10 @@ CREATE TABLE usuarios
     , email              VARCHAR(255) NOT NULL UNIQUE
     , password           VARCHAR(255) NOT NULL   
     , auth_key           VARCHAR(255)
+    , token_confirm      VARCHAR(255)
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , rol_id             BIGINT       NOT NULL DEFAULT 3 REFERENCES roles(id)
+
 );
 
 DROP TABLE IF EXISTS categorias CASCADE;

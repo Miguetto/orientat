@@ -14,6 +14,8 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $password
  * @property string|null $auth_key
+ * @property string|null $token_confirm
+ * @property string|null $created_at
  * @property int $rol_id
  *
  * @property Roles $rol
@@ -42,7 +44,8 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [['nombre', 'username', 'email'], 'required'],
             [['rol_id'], 'default', 'value' => 3],
             [['rol_id'], 'integer'],
-            [['nombre', 'username', 'email', 'password', 'auth_key'], 'string', 'max' => 255],
+            [['created_at'], 'safe'],
+            [['nombre', 'username', 'email', 'password', 'auth_key', 'token_confirm'], 'string', 'max' => 255],
             [['email'], 'unique'],
             [['username'], 'unique'],
             [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::class, 'targetAttribute' => ['rol_id' => 'id']],
@@ -65,6 +68,8 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'password' => 'Contraseña',
             'password_repeat' => 'Repetir contraseña',
             'auth_key' => 'Auth Key',
+            'token_confirm' => 'Token Confirm',
+            'created_at' => 'Created At',
             'rol' => 'Rol',
         ];
     }
@@ -94,6 +99,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
                     salto:
                     $this->password = Yii::$app->security
                     ->generatePasswordHash($this->password);
+                    $this->token_confirm = Yii::$app->security->generateRandomString();
                 }
             }
         }

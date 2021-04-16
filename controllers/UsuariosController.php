@@ -5,10 +5,12 @@ namespace app\controllers;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
+use yii\bootstrap4\Html;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 
 /**
  * UsuariosController implements the CRUD actions for Usuarios model.
@@ -93,8 +95,32 @@ class UsuariosController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(Yii::$app->user->isGuest){
-                Yii::$app->session->setFlash('success', 'Se creó correctamente, ahora logueate!!.');
-                return $this->redirect(['view', 'id' => $model->id]);
+
+                Yii::$app->session->setFlash(
+                    'info',
+                    'Confirma para activar el usuario, mira en tu correo: ' . $model->email
+                );
+
+                $body = 'Para activar el usuario, pulse aquí: '
+                        . Html::a('Activar usuario',
+                            Url::to([
+                                'usuarios/validar',
+                                'id' => $model->id,
+                                'token_confirm' => $model->token_confirm
+                            ], true)
+                        );
+
+                // envío del email:        
+                Yii::$app->mailer->compose()
+                ->setFrom(Yii::$app->params['smtpUsername'])
+                ->setTo($model->email)
+                ->setSubject('Activar usuario ')
+                ->setHtmlBody($body)
+                ->send();
+
+                Yii::$app->session->setFlash('success', 'Debe activar al usuario para validar la cuenta.');
+                
+                return $this->redirect(['site/login']);
             }else if(Yii::$app->user->identity->esAdmin){
                 Yii::$app->session->setFlash('success', 'Se creó correctamente.');
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -104,6 +130,28 @@ class UsuariosController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Acción que valida una cuenta de correo
+     * Comprueba si se validó
+     * @param  [type] $token_confirm es una cadena aleatoriaa que pertenece
+     *                               al usuario que se registra.
+     * @return redirect              Redirección al formulario de inicio
+     *                               de sesión.
+     */
+    public function actionValidar($id,$token_confirm)
+    {
+        $model = $this->findModel($id);
+        if ($model->token_confirm === $token_confirm) {
+            $model->token_confirm = null;
+            $model->save();    
+            Yii::$app->session->setFlash('success',  'Usuario activado correctamente, logueate!!.');
+            return $this->redirect(['site/login']);
+        } else {
+            Yii::$app->session->setFlash('danger',  'Usuario activado anteriormente.');
+            return $this->redirect(['site/index']);    
+        }
     }
 
     /**
