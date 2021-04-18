@@ -1,13 +1,14 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
 
-$this->title = 'Perfil de '. $model->username;
-$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
+$this->title = 'Perfil de '. $usuario->username;
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,26 +17,56 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Modificar', ['update', 'id' => $usuario->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $usuario->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Vas a eliminarlo?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
     <?= DetailView::widget([
-        'model' => $model,
+        'model' => $usuario,
         'attributes' => [
-            'id',
             'nombre',
             'username',
             'email:email',
-            'password',
-            'auth_key',
-            'rol_id',
+            'rol.rol',
+        ],
+    ]) ?>
+
+    <h3>Mis recursos:</h3>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderRecursosUsuario,
+        'columns' => [
+            'titulo',
+            'descripcion',
+            'contenido',
+            'created_at:date',
+            'categoria.nombre:text:Categoría',
+            
+            [
+                '__class' => ActionColumn::class,
+                'template' => '{ver}',
+                'buttons' => [
+                    'ver' => function ($url, $model) {
+                        return Html::a(
+                            'Ver',
+                            [
+                                'recursos/view',
+                                'id' => $model->id,
+                            ],
+                            [
+                                'class' => 'btn-sm btn-primary',
+                                'data-method' => 'POST',
+                            ],
+                        );
+                    }
+                ]
+            ],
         ],
     ]) ?>
 
