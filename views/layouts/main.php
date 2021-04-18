@@ -46,17 +46,17 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            //Yii::$app->user->isGuest ? 
-            //['label' => 'Registrarse', 'url' => ['/usuarios/create']]
-            //:
+            Yii::$app->user->isGuest ? 
+            ['label' => 'Registrarse', 'url' => ['/usuarios/create']]
+            :
             ['label' => 'Inicio', 'url' => ['/site/index']],
             //['label' => 'Contacto', 'url' => ['/site/contact']],
             !Yii::$app->user->isGuest ? 
             (Yii::$app->user->identity->esAdmin === true ? 
             (['label' => 'Usuarios', 'url' => ['/usuarios/index']]) : ('')) : (''),
-            $usuario_id !== null ? (
-                ['label' => 'Mi perfil', 'url' => $url]
-            ) : (''),
+            ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

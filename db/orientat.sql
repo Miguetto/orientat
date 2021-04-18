@@ -42,6 +42,9 @@ CREATE TABLE recursos
 (
       id                 BIGSERIAL    PRIMARY  KEY
     , titulo             VARCHAR(255) NOT NULL
+    , descripcion        VARCHAR(255) NOT NULL
+    , contenido          VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
 );
@@ -60,3 +63,18 @@ INSERT INTO usuarios (nombre, username, email, password, rol_id)
 INSERT INTO usuarios (nombre, username, email, password)
      VALUES ('Ana', 'anuska', 'anuska@orientat.es', crypt('321', gen_salt('bf', 10)))
            ,('Manuel', 'manolito', 'manolito@orientat.es', crypt('111', gen_salt('bf', 10)));
+
+INSERT INTO categorias (nombre)
+     VALUES ('Educación infantil')
+           ,('Educación primaria')
+           ,('Educación secundaria')
+           ,('Formación profesional');
+
+INSERT INTO recursos (titulo, descripcion, contenido, usuario_id, categoria_id)
+     VALUES ('Cogemos vocales', 'Este recurso permite trabajar con los alumnos de forma divertida'
+                              , 'Contenido del recurso'
+                              , 3, 2)
+           ,('Educación emocional', 'Este recurso permite trabajar con los alumnos de forma divertida'
+                              , 'Contenido del recurso'
+                              , 2, 1);
+

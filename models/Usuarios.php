@@ -18,6 +18,7 @@ use yii\web\IdentityInterface;
  * @property string|null $created_at
  * @property int $rol_id
  *
+ * @property Recursos[] $recursos
  * @property Roles $rol
  */
 class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
@@ -69,7 +70,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'password_repeat' => 'Repetir contraseña',
             'auth_key' => 'Auth Key',
             'token_confirm' => 'Token Confirm',
-            'created_at' => 'Created At',
+            'created_at' => 'Creado',
             'rol_id' => 'Rol',
         ];
     }
@@ -108,6 +109,16 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+    * Lista de usuarios
+    * @return array con los usuarios
+    */
+    public static function lista()
+    {
+        return static::find()->select('username')
+               ->indexBy('id')->column();
+    }
+
+    /**
      * Gets query for [[Rol]].
      *
      * @return \yii\db\ActiveQuery
@@ -115,6 +126,16 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     public function getRol()
     {
         return $this->hasOne(Roles::class, ['id' => 'rol_id'])->inverseOf('usuarios');
+    }
+
+    /**
+     * Gets query for [[Recursos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRecursos()
+    {
+        return $this->hasMany(Recursos::class, ['usuario_id' => 'id'])->inverseOf('usuario');
     }
 
     /**
