@@ -4,18 +4,18 @@ use yii\bootstrap4\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuariosSearch */
+/* @var $searchModel app\models\CategoriasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Usuarios';
+$this->title = 'Categorias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-index">
+<div class="categorias-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Registrarse', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Categorias', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,15 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-
-            'id',
             'nombre',
-            'username',
-            'email:email',
-            'password',
-            'rol.rol',
-            'created_at',
-            
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
