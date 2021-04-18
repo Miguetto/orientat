@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Recursos;
 use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
 use yii\bootstrap4\Html;
+use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -80,8 +83,14 @@ class UsuariosController extends Controller
      */
     public function actionView($id)
     {
+        $usuario = $this->findModel($id);
+        $dataProviderRecursosUsuario = new ActiveDataProvider([
+            'query' => $usuario->getRecursos(),
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'usuario' => $usuario,
+            'dataProviderRecursosUsuario' => $dataProviderRecursosUsuario
         ]);
     }
 
