@@ -96,6 +96,8 @@ class RecursosController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'usuarios' => Usuarios::lista(),
+            'categorias' => Categorias::lista(),
         ]);
     }
 
