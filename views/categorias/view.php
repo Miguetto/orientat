@@ -1,6 +1,8 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -33,5 +35,38 @@ $this->params['breadcrumbs'][] = $this->title;
             'nombre',
         ],
     ]) ?>
+
+<h3>Recursos:</h3>
+
+<?= GridView::widget([
+    'dataProvider' => $dataProviderRecursosCategoria,
+    'columns' => [
+        'titulo',
+        'descripcion',
+        'contenido',
+        'created_at:date',
+        'categoria.nombre:text:Categoría',
+        
+        [
+            '__class' => ActionColumn::class,
+            'template' => '{ver}',
+            'buttons' => [
+                'ver' => function ($url, $model) {
+                    return Html::a(
+                        'Ver',
+                        [
+                            'recursos/view',
+                            'id' => $model->id,
+                        ],
+                        [
+                            'class' => 'btn-sm btn-primary',
+                            'data-method' => 'POST',
+                        ],
+                    );
+                }
+            ]
+        ],
+    ],
+]) ?>
 
 </div>
