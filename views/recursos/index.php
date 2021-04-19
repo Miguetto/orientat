@@ -1,6 +1,7 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -32,7 +33,56 @@ $this->params['breadcrumbs'][] = $this->title;
             'usuario.username:text:Creado por',
             'categoria.nombre:text:Categoría',
             
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                '__class' => ActionColumn::class,
+                'template' => '{ver}{modificar}{eliminar}',
+                'buttons' => [
+                    'ver' => function ($url, $model) {
+                        return Html::a(
+                            'Ver',
+                            [
+                                'recursos/view',
+                                'id' => $model->id,
+                            ],
+                            [
+                                'class' => 'btn-sm btn-primary',
+                                'data-method' => 'POST',
+                            ],
+                        );
+                    },
+                    'modificar' => function ($url, $model) {
+                        if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){
+                            return Html::a(
+                                'Modificar',
+                                [
+                                    'recursos/update',
+                                    'id' => $model->id,
+                                ],
+                                [
+                                    'class' => 'btn-sm btn-secondary',
+                                    'data-method' => 'POST',
+                                ],
+                            );
+                        }
+                    },
+                    'eliminar' => function ($url, $model) {
+                        if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){
+                            return Html::a(
+                                'Eliminar',
+                                [
+                                    'recursos/delete',
+                                    'id' => $model->id,
+                                ],
+                                [
+                                    'class' => 'btn-sm btn-danger',
+                                    'data-method' => 'POST',
+                                ],
+                            );
+                        }
+                    }
+                ]
+            ],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
