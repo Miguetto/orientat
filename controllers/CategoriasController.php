@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Categorias;
 use app\models\CategoriasSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -52,8 +53,14 @@ class CategoriasController extends Controller
      */
     public function actionView($id)
     {
+        $categoria = $this->findModel($id);
+        $dataProviderRecursosCategoria = new ActiveDataProvider([
+            'query' => $categoria->getRecursos(),
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $categoria,
+            'dataProviderRecursosCategoria' => $dataProviderRecursosCategoria,
         ]);
     }
 
