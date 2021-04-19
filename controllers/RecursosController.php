@@ -7,6 +7,7 @@ use Yii;
 use app\models\Recursos;
 use app\models\RecursosSearch;
 use app\models\Usuarios;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,6 +27,20 @@ class RecursosController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor;
+                        },
+                    ],
                 ],
             ],
         ];

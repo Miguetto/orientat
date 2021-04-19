@@ -149,6 +149,12 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return $usuario->rol->rol === 'admin';
     }
 
+    public function getEsRevisor()
+    {
+        $usuario = Usuarios::findOne(Yii::$app->user->id);
+        return $usuario->rol->rol === 'revisor';
+    }
+
     public static function findByLogin($username)
     {
         return static::findOne(['username' => $username]);

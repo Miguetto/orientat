@@ -4,6 +4,8 @@
 
 --- Esquemas
 
+-- usuario (id clave primaria) borrar una fila, perfiles (id (primaria y ajena a usuarios),nombre, username, etc, usuario_id) borrar una fila no cascade.
+
 DROP TABLE IF EXISTS roles CASCADE;
 
 CREATE TABLE roles
