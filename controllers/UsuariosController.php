@@ -84,13 +84,12 @@ class UsuariosController extends Controller
     public function actionView($id)
     {
         $usuario = $this->findModel($id);
-        $dataProviderRecursosUsuario = new ActiveDataProvider([
-            'query' => $usuario->getRecursos(),
-        ]);
+        $recursos = Recursos::find()->where(['usuario_id' => Yii::$app->user->id])->all();
 
         return $this->render('view', [
             'usuario' => $usuario,
-            'dataProviderRecursosUsuario' => $dataProviderRecursosUsuario
+            'recursos' => $recursos,
+
         ]);
     }
 

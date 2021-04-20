@@ -37,7 +37,7 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-dark bg-dark navbar-expand-md fixed-top',
+            'class' => 'navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light fixed-top',
         ],
         'collapseOptions' => [
             'class' => 'justify-content-end',
@@ -60,11 +60,11 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
-                '<li class="nav-item">'
+                '<li class="nav-item deslog">'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-dark nav-link logout']
+                    ['class' => 'btn btn-outline-info nav-link']
                 )
                 . Html::endForm()
                 . '</li>'
@@ -83,12 +83,17 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
+<!-- Pie de página -->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-12 text-center">
+                <p>
+                    &copy; orientaT <?= date('Y') ?> Todos los derechos reservados | <?= Yii::powered() ?>
+                </p>
+          </div>
+        </div>
+      </div>
 </footer>
 
 <?php $this->endBody() ?>

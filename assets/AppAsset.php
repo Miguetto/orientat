@@ -21,6 +21,16 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/style copy.css',
+        'css/open-iconic-bootstrap.min.css',
+        'css/animate.css',
+        'css/owl.carousel.min.css',
+        'css/owl.theme.default.min.css',
+        'css/magnific-popup.css',
+        'css/aos.css',
+        'css/ionicons.min.css',
+        'css/flaticon.css',
+        'css/icomoon.css',
     ];
     public $js = [
     ];

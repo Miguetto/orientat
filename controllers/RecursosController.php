@@ -52,12 +52,14 @@ class RecursosController extends Controller
      */
     public function actionIndex()
     {
+        $recursos = Recursos::find()->all();
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'recursos' => $recursos,
         ]);
     }
 
@@ -69,6 +71,7 @@ class RecursosController extends Controller
      */
     public function actionView($id)
     {
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
