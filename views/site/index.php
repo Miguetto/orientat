@@ -4,54 +4,72 @@
 
 use yii\bootstrap4\Html;
 
-$this->title = 'My Yii Application';
+$this->title = 'orientaT';
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p>
-            <?= Html::a('Registrarse', ['usuarios/create'], ['class' => 'btn btn-lg btn-success']) ?>
-        </p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-xl-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-xl-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-xl-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-info" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+<section class="home-slider owl-carousel owl-loaded owl-drag">
+  <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+  <div class="overlay"></div>
+      <div class="container-wrap">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            <h1 class="mb-4">Recursos educativos accesibles,<span> facilitadores y gratuitos.</span></h1>
+            <p>
+              <?= Html::a('Registrarse', ['login'], ['class' => 'btn btn-secondary px-4 py-3 mt-3']) ?>
+            </p>
+          </div>
         </div>
-
-    </div>
+      </div>
+  </div>
+</section>
+    <section class="ftco-services ftco-no-pb">
+			<div class="container-wrap">
+				<div class="row no-gutters">
+                    <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 bg-primary">
+                        <div class="media block-6 d-block text-center">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-teacher"></span>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Por y para vosotrxs</h3>
+                            <p>Añade, utiliza, comparte, dale el uso que quieras.</p>
+                        </div>
+                        </div>      
+                    </div>
+                    <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 bg-tertiary">
+                        <div class="media block-6 d-block text-center">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-reading"></span>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Aprendizaje</h3>
+                            <p>Divididos según el grado de aprendizaje, desde infantil hasta formación profesional.</p>
+                        </div>
+                        </div>    
+                    </div>
+                    <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 bg-fifth">
+                        <div class="media block-6 d-block text-center">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-books"></span>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Recursos</h3>
+                            <p>Ofrecemos recursos en pdf, formato blog, imagenes, enlaces. También puedes proponer nuevos recursos.</p>
+                        </div>
+                        </div>      
+                    </div>
+                    <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 bg-quarternary">
+                        <div class="media block-6 d-block text-center">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-diploma"></span>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Revisión</h3>
+                            <p>Todos los recursos compartidos están revisados por el equipo de revisores antes de ser puestos a tú disposición</p>
+                        </div>
+                        </div>      
+                    </div>
+                </div>
+			</div>
+	</section>
 </div>
