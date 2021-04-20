@@ -34,7 +34,7 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'orientaT',//Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light fixed-top',
