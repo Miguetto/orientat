@@ -54,7 +54,7 @@ $this->title = 'orientaT';
                         </div>
                         <div class="media-body p-2 mt-3">
                             <h3 class="heading">Recursos</h3>
-                            <p>Ofrecemos recursos en pdf, formato blog, imagenes, enlaces. También puedes proponer nuevos recursos.</p>
+                            <p>Ofrecemos recursos en pdf, formato blog, imágenes, enlaces. También puedes proponer nuevos recursos.</p>
                         </div>
                         </div>      
                     </div>
