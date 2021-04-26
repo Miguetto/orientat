@@ -15,7 +15,7 @@ $this->title = 'orientaT';
           <div class="col-md-8 text-center ftco-animate">
             <h1 class="mb-4">Recursos educativos accesibles,<span> facilitadores y gratuitos.</span></h1>
             <p>
-              <?= Html::a('Registrarse', ['login'], ['class' => 'btn btn-secondary px-4 py-3 mt-3']) ?>
+              <?= Html::a('Registrarse', ['usuarios/create'], ['class' => 'btn btn-secondary px-4 py-3 mt-3']) ?>
             </p>
           </div>
         </div>
