@@ -51,6 +51,18 @@ CREATE TABLE recursos
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
 );
 
+DROP TABLE IF EXISTS propuestas CASCADE;
+
+CREATE TABLE propuestas
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , titulo             VARCHAR(255) NOT NULL
+    , descripcion        VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
+);
+
+
 --- Fixtures
 
 INSERT INTO roles(rol)
@@ -79,4 +91,7 @@ INSERT INTO recursos (titulo, descripcion, contenido, usuario_id, categoria_id)
            ,('Educación emocional', 'Este recurso permite trabajar con los alumnos de forma divertida'
                               , 'Contenido del recurso'
                               , 2, 1);
+
+INSERT INTO propuestas (titulo, descripcion, usuario_id)
+     VALUES ('Prueba de propuesta', 'descripcion de la propuesta', 2);
 

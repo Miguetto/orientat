@@ -5,19 +5,21 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuariosSearch */
+/* @var $searchModel app\models\PropuestasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Usuarios';
+$this->title = 'Propuestas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-index">
+<div class="propuestas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Registrarse', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){ ?>
+        <p>
+            <?= Html::a('Crear Propuesta', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php } ?>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -25,13 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-
-            'id',
-            'nombre',
-            'username',
-            'email:email',
-            'rol.rol',
+            'titulo',
+            'descripcion',
             'created_at',
+            'usuario.username',
             [
                 '__class' => ActionColumn::class,
                 'template' => '{ver}{modificar}{eliminar}',
@@ -40,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a(
                             'Ver',
                             [
-                                'usuarios/view',
+                                'propuestas/view',
                                 'id' => $model->id,
                             ],
                             [
@@ -54,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a(
                                 'Modificar',
                                 [
-                                    'usuarios/update',
+                                    'propuestas/update',
                                     'id' => $model->id,
                                 ],
                                 [
@@ -69,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a(
                                 'Eliminar',
                                 [
-                                    'usuarios/delete',
+                                    'propuestas/delete',
                                     'id' => $model->id,
                                 ],
                                 [
@@ -81,7 +80,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ]
             ],
-            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
