@@ -139,19 +139,29 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Gets query for [[Propuestas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPropuestas()
+    {
+        return $this->hasMany(Propuestas::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
      * Comprueba que el usuario logueado es administrador
      *
      * @return bool
      */
     public function getEsAdmin()
     {
-        $usuario = Usuarios::findOne(Yii::$app->user->id);
+        $usuario = static::findOne(Yii::$app->user->id);
         return $usuario->rol->rol === 'admin';
     }
 
     public function getEsRevisor()
     {
-        $usuario = Usuarios::findOne(Yii::$app->user->id);
+        $usuario = static::findOne(Yii::$app->user->id);
         return $usuario->rol->rol === 'revisor';
     }
 

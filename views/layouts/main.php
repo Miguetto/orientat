@@ -54,6 +54,7 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
             !Yii::$app->user->isGuest ? 
             (Yii::$app->user->identity->esAdmin === true ? 
             (['label' => 'Usuarios', 'url' => ['/usuarios/index']]) : ('')) : (''),
+            ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
