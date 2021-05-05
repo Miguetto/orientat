@@ -16,9 +16,16 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
+    <?php
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true){ ?>
+            <?= $form->field($model, 'usuario_id')->dropdownList($usuarios) ?>
+        <?php } else { ?>
+        <?= 
+            $form->field($model, 'usuario_id')->hiddenInput(['value' => Yii::$app->user->identity->id])->label(false)
+        ?>
+    <?php
+    }
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

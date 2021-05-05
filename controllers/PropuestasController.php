@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Propuestas;
 use app\models\PropuestasSearch;
+use app\models\Usuarios;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -92,6 +93,7 @@ class PropuestasController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'usuarios' => Usuarios::lista(),
         ]);
     }
 
@@ -112,6 +114,7 @@ class PropuestasController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'usuarios' => Usuarios::lista(),
         ]);
     }
 
