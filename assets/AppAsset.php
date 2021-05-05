@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/style copy.css',
+        'css/style-copy.css',
         'css/open-iconic-bootstrap.min.css',
         'css/animate.css',
         'css/owl.carousel.min.css',
@@ -33,6 +33,8 @@ class AppAsset extends AssetBundle
         'css/icomoon.css',
     ];
     public $js = [
+        'js/pluginNoclase.js',
+        '//cdn.jsdelivr.net/jquery.typeit/3.0.1/typeit.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

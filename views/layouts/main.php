@@ -9,15 +9,29 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
-use app\models\Usuarios;
 use yii\helpers\Url;
+use dmstr\cookieconsent\widgets\CookieConsent;
+
 
 AppAsset::register($this);
 $usuario_id = Yii::$app->user->id;
 $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 
+$urlCookie = Url::toRoute(['site/cookie', 'cadena' => 'politica'], $schema = true);
+
+$js = <<<EOT
+    $( document ).ready(function() {
+        $(#modalCook).show();
+    });
+    
+EOT;
+if (!isset($_COOKIE['politica'])) {
+
+    $this->registerJs($js);
+}
+
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage()?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
@@ -96,8 +110,30 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
         </div>
       </div>
 </footer>
+<?= CookieConsent::widget([
+    'name' => 'cookie_consent_status',
+    'path' => '/',
+    'domain' => '',
+    'expiryDays' => 365,
+    'message' => 
+        'Utilizamos cookies propias para mejorar la experiencia del usuario a través de su navegación.
+         Si continúas navegando aceptas su uso. <a href="https://www.modelosycontratos.com/politica-de-cookies/" target="blacnk">Política de cookies</a> ',
+    'acceptAll' => 'Aceptar',
+    'controlsOpen' => false,
+    'detailsOpen' => false,
+    'learnMore' =>  false,
+    'consent' => [
+        'necesario' => [
+            'label' => 'Necesario',
+            'checked' => true,
+            'disabled' => true
+        ],
+    ],
+]) ?>
 
-<?php $this->endBody() ?>
+<?php 
+    $this->endBody();
+?>
 </body>
 </html>
 <?php $this->endPage() ?>
