@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\bootstrap4\Html;
+use dmstr\cookieconsent\widgets\CookieConsent;
 
 $this->title = 'orientaT';
 ?>
@@ -13,7 +14,7 @@ $this->title = 'orientaT';
       <div class="container-wrap">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 text-center ftco-animate">
-            <h1 class="mb-4">Recursos educativos accesibles,<span> facilitadores y gratuitos.</span></h1>
+            <h1 id="titulo"></h1>
             <p>
               <?= Html::a('Registrarse', ['usuarios/create'], ['class' => 'btn btn-secondary px-4 py-3 mt-3']) ?>
             </p>
@@ -22,7 +23,7 @@ $this->title = 'orientaT';
       </div>
   </div>
 </section>
-    <section class="ftco-services ftco-no-pb">
+    <section id="dAzul" class="ftco-services ftco-no-pb">
 			<div class="container-wrap">
 				<div class="row no-gutters">
                     <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 bg-primary">
