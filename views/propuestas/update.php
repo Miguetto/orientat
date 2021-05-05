@@ -5,10 +5,10 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Propuestas */
 
-$this->title = 'Update Propuestas: ' . $model->id;
+$this->title = 'Modificar: ' . $model->titulo;
 $this->params['breadcrumbs'][] = ['label' => 'Propuestas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->titulo, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <div class="propuestas-update">
 
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'usuarios' => $usuarios,
     ]) ?>
 
 </div>
