@@ -56,12 +56,14 @@ class PropuestasController extends Controller
      */
     public function actionIndex()
     {
+        $propuestas = Propuestas::find()->all();
         $searchModel = new PropuestasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'propuestas' => $propuestas,
         ]);
     }
 

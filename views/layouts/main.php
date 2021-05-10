@@ -104,7 +104,7 @@ if (!isset($_COOKIE['politica'])) {
             <div class="row">
             <div class="col-md-12 text-center">
                 <p>
-                    &copy; orientaT <?= date('Y') ?> Todos los derechos reservados | <?= Yii::powered() ?>
+                    &copy; orientaT <?= date('Y') ?> Todos los derechos reservados |  Creado por <?= Html::a('Miguetto', Url::to('https://github.com/Miguetto')) ?> | <?= Yii::powered() ?>
                 </p>
           </div>
         </div>

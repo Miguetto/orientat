@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contenido')->textArea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'contenido')->textArea(['maxlength' => true, 'white-space' => 'pre-line']) ?>
     
     <?php
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true){ ?>
@@ -32,7 +32,7 @@ use yii\bootstrap4\ActiveForm;
     <?= $form->field($model, 'categoria_id')->dropdownList($categorias) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

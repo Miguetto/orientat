@@ -12,76 +12,32 @@ $this->title = 'Propuestas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="propuestas-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){ ?>
+    <?php if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) { ?>
         <p>
             <?= Html::a('Crear Propuesta', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
     <?php } ?>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'titulo',
-            'descripcion',
-            'created_at',
-            'usuario.username',
-            [
-                '__class' => ActionColumn::class,
-                'template' => '{ver}{modificar}{eliminar}',
-                'buttons' => [
-                    'ver' => function ($url, $model) {
-                        return Html::a(
-                            'Ver',
-                            [
-                                'propuestas/view',
-                                'id' => $model->id,
-                            ],
-                            [
-                                'class' => 'btn-sm btn-primary',
-                                'data-method' => 'POST',
-                            ],
-                        );
-                    },
-                    'modificar' => function ($url, $model) {
-                        if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){
-                            return Html::a(
-                                'Modificar',
-                                [
-                                    'propuestas/update',
-                                    'id' => $model->id,
-                                ],
-                                [
-                                    'class' => 'btn-sm btn-secondary',
-                                    'data-method' => 'POST',
-                                ],
-                            );
-                        }
-                    },
-                    'eliminar' => function ($url, $model) {
-                        if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){
-                            return Html::a(
-                                'Eliminar',
-                                [
-                                    'propuestas/delete',
-                                    'id' => $model->id,
-                                ],
-                                [
-                                    'class' => 'btn-sm btn-danger',
-                                    'data-method' => 'POST',
-                                ],
-                            );
-                        }
-                    }
-                ]
-            ],
-        ],
-    ]); ?>
-
-
 </div>
+<section class="ftco-section ftco-no-pt ftc-no-pb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 py-5 pr-md-4 ftco-animate fadeInUp ftco-animated">
+                <h2><?= Html::encode($this->title) ?></h2>
+                <p>Las propuestas pueden votarse, la que llegue a 20 votos, automáticamente un revisor la creará como recurso. ¡¡Anímate!!</p>
+                    <div class="row mt-5">
+                    <?php foreach ($propuestas as $propuesta) : ?>
+                        <div class="col-lg-6">
+                            <div class="services-2 d-flex">
+                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
+                                <div class="text">
+                                    <h3><?= Html::encode($propuesta->titulo) ?></h3>
+                                    <p><?= Html::encode($propuesta->descripcion) ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
