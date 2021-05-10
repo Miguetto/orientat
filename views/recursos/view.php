@@ -11,33 +11,26 @@ $this->params['breadcrumbs'][] = ['label' => 'Recursos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="recursos-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?php
-        if(Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor){?>
-        <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => '¿Vas a eliminarlo?',
-                'method' => 'post',
-            ],
-        ]) ?><?php }?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'titulo',
-            'descripcion',
-            'contenido',
-            'created_at',
-            'usuario.username',
-            'categoria.nombre:text:Categoría',
-        ],
-    ]) ?>
-
-</div>
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+            <?php
+                if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) { ?>
+                    <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => '¿Vas a eliminarlo?',
+                            'method' => 'post',
+                        ],
+                ]) ?><?php } ?>
+            </p>
+                <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
+                <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
+                <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
+            </div>
+        </div>
+    </div>
+</article>

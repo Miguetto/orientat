@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="container">
     <div class="row">
       <?php foreach ($recursos as $recurso) : ?>
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated">
           <div class="blog-entry">
             <a class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
               <div class="meta-date text-center p-2">

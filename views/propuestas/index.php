@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="ftco-section ftco-no-pt ftc-no-pb">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 py-5 pr-md-4 ftco-animate fadeInUp ftco-animated">
+            <div class="ftco-animate fadeInUp ftco-animated">
                 <h2><?= Html::encode($this->title) ?></h2>
                 <p>Las propuestas pueden votarse, la que llegue a 20 votos, automáticamente un revisor la creará como recurso. ¡¡Anímate!!</p>
                     <div class="row mt-5">
