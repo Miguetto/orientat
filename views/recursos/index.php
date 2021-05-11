@@ -11,7 +11,7 @@ use yii\grid\GridView;
 $this->title = 'Recursos:';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="recursos-index">
+<div class="recursos-index services-2 btnSuperior">
 
   <h1><?= Html::encode($this->title) ?></h1>
 

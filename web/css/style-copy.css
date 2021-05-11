@@ -455,10 +455,11 @@ pre {
 
 .container {
   width: 100%;
-  padding-right: 250px;
-  padding-left: 250px;
+  /*padding-right: 250px;
+  padding-left: 250px;*/
   margin-right: auto;
   margin-left: auto; }
+  
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -8569,8 +8570,13 @@ h1, h2, h3, h4, h5,
         font-size: 22px;
         color: #fff; }
 
+.btnSuperior {
+  margin-top: 30px;
+}
+
 .services-2 {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  margin-left: 30px; }
   .services-2 .icon {
     line-height: 1;
     position: relative;

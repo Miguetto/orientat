@@ -11,9 +11,9 @@ use yii\grid\GridView;
 $this->title = 'Propuestas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="propuestas-index">
+<div class="propuestas-index services-2 btnSuperior">
     <?php if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) { ?>
-        <p>
+        <p class="services-2">
             <?= Html::a('Crear Propuesta', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
     <?php } ?>
@@ -21,9 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="ftco-section ftco-no-pt ftc-no-pb">
     <div class="container">
         <div class="row">
-            <div class="ftco-animate fadeInUp ftco-animated">
-                <h2><?= Html::encode($this->title) ?></h2>
-                <p>Las propuestas pueden votarse, la que llegue a 20 votos, automáticamente un revisor la creará como recurso. ¡¡Anímate!!</p>
+            <div class="ftco-animate fadeInUp ftco-animated services-2">
+                <h2 class="services-2"><?= Html::encode($this->title) ?></h2>
+                <p class="services-2">Las propuestas pueden votarse, la que llegue a 20 votos, automáticamente un revisor la creará como recurso. ¡¡Anímate!!</p>
                     <div class="row mt-5">
                     <?php foreach ($propuestas as $propuesta) : ?>
                         <div class="col-lg-6">
