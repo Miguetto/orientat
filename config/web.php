@@ -59,7 +59,7 @@ $config = [
         */
         'cookieConsentHelper' => [
             'class' => dmstr\cookieconsent\components\CookieConsentHelper::class
-        ],        
+        ],
     ],
     'container' => [
         'definitions' => [

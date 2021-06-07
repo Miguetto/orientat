@@ -79,4 +79,51 @@ class Recursos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::class, ['id' => 'usuario_id'])->inverseOf('recursos');
     }
+
+    /**
+     * Devuelve el usuario que dió like
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuarioLike($id)
+    {
+        return Usuarios::find()->where(['id' => $id])->one();
+    }
+
+    /**
+     * Todos los recursos del usuario con like
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public static function recursoLike($id) {
+        return Recursos::find()->where(['usuario_id' => $id])->all(); 
+    }
+
+        /**
+     * Gets query for [[Likes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTotalLikes()
+    {
+        $total = $this->hasMany(Likes::class, ['recurso_id' => 'id']);
+
+        return $total->count();
+    }
+
+     /**
+     * Gets query for [[Likes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLikes()
+    {
+        if ($this->getTotalLikes() > 2) {
+            return Likes::find()->where(['recurso_id' => $this->id])->orderBy(['id' => SORT_DESC])->limit(3);
+        } else if ($this->getTotalLikes() > 0){
+            return Likes::find()->where(['recurso_id' => $this->id])->orderBy(['id' => SORT_DESC])->all();
+        } else {
+            return Likes::find()->where(['recurso_id' => $this->id])->all();
+        }
+    }
 }

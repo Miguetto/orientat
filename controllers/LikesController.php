@@ -2,20 +2,18 @@
 
 namespace app\controllers;
 
-use app\models\Categorias;
 use Yii;
-use app\models\Recursos;
-use app\models\RecursosSearch;
+use app\models\Likes;
+use app\models\LikesSearch;
 use app\models\Usuarios;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RecursosController implements the CRUD actions for Recursos model.
+ * LikesController implements the CRUD actions for Likes model.
  */
-class RecursosController extends Controller
+class LikesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -29,64 +27,45 @@ class RecursosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['update', 'delete'],
-                'rules' => [
-                    [
-                        'actions' => ['update', 'delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor;
-                        },
-                    ],
-                ],
-            ],
         ];
     }
 
     /**
-     * Lists all Recursos models.
+     * Lists all Likes models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $model = Recursos::find()->one();
-        $recursos = Recursos::find()->all();
-        $searchModel = new RecursosSearch();
+        $searchModel = new LikesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos,
-            'model' => $model,
         ]);
     }
 
     /**
-     * Displays a single Recursos model.
+     * Displays a single Likes model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Recursos model.
+     * Creates a new Likes model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Recursos();
+        $model = new Likes();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -94,13 +73,11 @@ class RecursosController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'usuarios' => Usuarios::lista(),
-            'categorias' => Categorias::lista(),
         ]);
     }
 
     /**
-     * Updates an existing Recursos model.
+     * Updates an existing Likes model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -116,13 +93,11 @@ class RecursosController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'usuarios' => Usuarios::lista(),
-            'categorias' => Categorias::lista(),
         ]);
     }
 
     /**
-     * Deletes an existing Recursos model.
+     * Deletes an existing Likes model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -136,18 +111,65 @@ class RecursosController extends Controller
     }
 
     /**
-     * Finds the Recursos model based on its primary key value.
+     * Finds the Likes model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Recursos the loaded model
+     * @return Likes the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Recursos::findOne($id)) !== null) {
+        if (($model = Likes::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Guardar un Like
+     *
+     * @param integer $usuario_id
+     * @param integer $publicacion_id
+     * @return mixed
+     */
+    public function actionLikes($recurso_id)
+    {
+        $model = new Likes();
+        $existe = $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->exists();
+
+        $model->usuario_id = Yii::$app->user->identity->id;
+        $model->recurso_id = $recurso_id;
+        if ($existe){
+            $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->one()->delete();
+            return $this->redirect(['recursos/index']);
+        }else if($model->save()) {
+                
+            return $this->redirect(['recursos/index']);
+
+        }
+        /*if (Yii::$app->request->isAjax && Yii::$app->request->isGet) {
+            if ($existe) {
+                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
+                return json_encode(['class' => 'fas', 'contador' => $j]);
+            } else {
+                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
+                return json_encode(['class' => 'far', 'contador' => $j]);
+            }
+        }
+
+        if ($existe && $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->one()->delete()) {
+            if (Yii::$app->request->isAjax && Yii::$app->request->isPost) {
+                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
+                return json_encode(['class' => 'far', 'contador' => $j]);
+            }
+        } else {
+            $model->usuario_id = Yii::$app->user->identity->id;
+            $model->recurso_id = $recurso_id;
+            if ($model->save()) {
+                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
+                return json_encode(['class' => 'fas', 'contador' => $j]);
+            }
+        }*/
     }
 }
