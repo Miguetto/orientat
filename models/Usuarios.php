@@ -149,6 +149,16 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Gets query for [[Likes]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLikes()
+    {
+        return $this->hasMany(Likes::class, ['usuario_id' => 'id']);
+    }
+
+    /**
      * Comprueba que el usuario logueado es administrador
      *
      * @return bool

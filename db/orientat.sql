@@ -62,6 +62,15 @@ CREATE TABLE propuestas
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
 );
 
+DROP TABLE IF EXISTS likes CASCADE;
+
+CREATE TABLE likes
+(
+    id             bigserial    PRIMARY KEY
+  , usuario_id     bigint       NOT NULL REFERENCES usuarios (id) on update CASCADE on delete CASCADE
+  , recurso_id     bigint       NOT NULL REFERENCES recursos (id) on update CASCADE on delete CASCADE
+);
+
 
 --- Fixtures
 

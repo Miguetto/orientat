@@ -1,8 +1,21 @@
 <?php
 
 use yii\bootstrap4\Html;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use yii\helpers\Url;
+
+$url = Url::to(['likes/likes', 'recurso_id' => $model->id]);
+
+$js = <<<EOT
+    $(document).ready(function () {
+        $('#like' + '$model->id').click(function (e) {
+          console.log($model->id);
+          $('#like' + '$model->id').removeClass('far');
+          $('#like' + '$model->id').addClass('fas');
+        });
+    });
+EOT;
+
+$this->registerJs($js);
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RecursosSearch */
@@ -16,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <h1><?= Html::encode($this->title) ?></h1>
 
   <p>
-    <?= Html::a('Crear Recurso', ['create'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Crear Recurso', ['create'], ['class' => 'btn btn-success', 'id' => 'e']) ?>
   </p>
 
 </div>
@@ -38,8 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
               <p><?= $recurso->descripcion; ?></p>
               <div class="d-flex align-items-center mt-4">
                 <p class="mb-0">
-                  <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary']) ?>
+                  <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary', 'id' => 'seguirLeyendo']) ?>
                 </p>
+                <?=Html::a(null, ['likes/likes', 'recurso_id' => $recurso->id], ['class' => 'fa-heart enlace ml-2 far', 'id' => 'like'.$recurso->id])?>
+                <?=$recurso->getTotalLikes()?>                
               </div>
             </div>
           </div>
