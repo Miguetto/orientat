@@ -40,7 +40,7 @@ class Utilidad
 
         $s3Cliente->putObject([
             'Bucket' => 'orecursos',
-            'Key' =>    $titulo,
+            'Key' =>    "img/$titulo",
             'SourceFile' => $rutaImg,
             'ACL' => 'public-read'
         ]);
@@ -57,7 +57,8 @@ class Utilidad
     public static function getImg($img)
     {
         $s3Cliente = static::inicializar();
-        return $s3Cliente->getObjectUrl('orecursos', $img);
+        $key = 'img/' . $img;
+        return $s3Cliente->getObjectUrl('orecursos', $key);
     }
 
     /**
