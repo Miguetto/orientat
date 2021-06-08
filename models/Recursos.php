@@ -141,7 +141,7 @@ class Recursos extends \yii\db\ActiveRecord
     {
         if ($this->img !== null) {
             $titulo = \str_replace(' ', '', $this->titulo) . '_' . Yii::$app->user->id;
-            $rutaImg = Yii::getAlias('@uploads/img/' . $titulo . '.' . $this->img->extension);
+            $rutaImg = Yii::getAlias('@uploads/img' . $titulo . '.' . $this->img->extension);
             $this->img->saveAs($rutaImg);
             $this->imagen =  Utilidad::subirImgS3($this->img, $titulo, $rutaImg);
             $this->img = null;
