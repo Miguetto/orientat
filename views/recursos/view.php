@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-            <p>
-            <?php
+                <p>
+                <?php
                 if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) { ?>
                     <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                     <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
@@ -26,10 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'method' => 'post',
                         ],
                 ]) ?><?php } ?>
-            </p>
+                </p>
                 <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
                 <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
                 <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
+                <div class="p-0 text-center">
+                    <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
+                </div>                
             </div>
         </div>
     </div>

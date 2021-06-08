@@ -11,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * RecursosController implements the CRUD actions for Recursos model.
@@ -88,7 +89,10 @@ class RecursosController extends Controller
     {
         $model = new Recursos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->img = UploadedFile::getInstance($model, 'img');
+            $model->upload();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -49,6 +49,7 @@ CREATE TABLE recursos
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
+    , imagen             TEXT
 );
 
 DROP TABLE IF EXISTS propuestas CASCADE;
