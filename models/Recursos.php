@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\Utilidad;
 use Yii;
 
 /**
@@ -14,12 +15,15 @@ use Yii;
  * @property string $created_at
  * @property int $usuario_id
  * @property int $categoria_id
+ * @property string $imagen
  *
  * @property Categorias $categoria
  * @property Usuarios $usuario
  */
 class Recursos extends \yii\db\ActiveRecord
 {
+
+    public $img;
     /**
      * {@inheritdoc}
      */
@@ -38,9 +42,11 @@ class Recursos extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['usuario_id', 'categoria_id'], 'default', 'value' => null],
             [['usuario_id', 'categoria_id'], 'integer'],
+            [['imagen'], 'string'],
             [['titulo', 'descripcion', 'contenido'], 'string', 'max' => 255],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['categoria_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
+            [['img'], 'image', 'extensions' => 'png, jpg, jpeg']
         ];
     }
 
@@ -57,6 +63,7 @@ class Recursos extends \yii\db\ActiveRecord
             'created_at' => 'Publicado',
             'usuario_id' => 'Usuario',
             'categoria_id' => 'Categoria',
+            'img' => 'Imagen',
         ];
     }
 
@@ -125,5 +132,31 @@ class Recursos extends \yii\db\ActiveRecord
         } else {
             return Likes::find()->where(['recurso_id' => $this->id])->all();
         }
+    }
+
+    /**
+    * Carga las imagenes del formulario y las prepara para subir a AWS
+    */
+    public function upload()
+    {
+        if ($this->img !== null) {
+            $titulo = \str_replace(' ', '', $this->titulo) . '_' . Yii::$app->user->id;
+            $rutaImg = Yii::getAlias('@uploads/img/' . $titulo . '.' . $this->img->extension);
+            $this->img->saveAs($rutaImg);
+            $this->imagen =  Utilidad::subirImgS3($this->img, $titulo, $rutaImg);
+            $this->img = null;
+        }
+    }
+
+
+    /**
+    * Devuelve la url donde está alojadla imagen
+    *
+    * @return string $imagen
+    */
+    public function getImagen()
+    {
+        $img = $this->imagen ?? 'images_1.jpg';
+        return Utilidad::getImg($img);
     }
 }

@@ -26,7 +26,10 @@
         "yiisoft/yii2-bootstrap4": "^2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "rmrevin/yii2-fontawesome": "^3.4",
-        "dmstr/yii2-cookie-consent": "^1.4"
+        "dmstr/yii2-cookie-consent": "^1.4",
+        "aws/aws-sdk-php": "^3.180",
+        "yiidoc/yii2-redactor": "*",
+        "yiisoft/yii2-imagine": "~2.2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
