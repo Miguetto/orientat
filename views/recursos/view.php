@@ -31,9 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
                 <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
                 <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
-                <p class="p-0 text-center">
-                    <?= Html::a('Ir al enlace', Url::to($model->enlace), ['class' => 'btn btn-info']) ?>
-                </p>
+                <?php if($model->enlace != null){ ?>
+                    <p class="p-0 text-center">
+                        <?= Html::a('Ir al enlace', Url::to($model->enlace), ['class' => 'btn btn-info', 'target' => '_blank']) ?>
+                    </p>
+                <?php }else {} ?>
                 <div class="p-0 text-center">
                     <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
                 </div>
