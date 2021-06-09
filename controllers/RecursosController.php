@@ -91,7 +91,9 @@ class RecursosController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->img = UploadedFile::getInstance($model, 'img');
+            $model->pdf = UploadedFile::getInstance($model, 'pdf');
             $model->upload();
+            $model->uploadPdf();
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -153,5 +155,11 @@ class RecursosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionPdf($id) {
+        $model = Recursos::findOne($id);
+        $ruta = 'https://orecursos.s3.eu-west-3.amazonaws.com/pdf/'. $model->pdf_pdf;
+        return Yii::$app->response->sendFile($ruta);
     }
 }

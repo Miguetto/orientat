@@ -50,6 +50,7 @@ CREATE TABLE recursos
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
     , imagen             TEXT
+    , pdf_pdf            TEXT
 );
 
 DROP TABLE IF EXISTS propuestas CASCADE;

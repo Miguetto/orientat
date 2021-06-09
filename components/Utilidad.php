@@ -26,7 +26,7 @@ class Utilidad
     }
 
     /**
-     * Sube el fichero a AWS S3
+     * Sube la imagen a AWS S3
      * @param file $archivo
      * @param string $titulo
      * @param mixed $rutaImg
@@ -50,7 +50,7 @@ class Utilidad
     }
     
     /**
-     * Devuelve la url del fichero almacenado en el bucket
+     * Devuelve la url de la imagen almacenada en el bucket
      * @param string $img
      * @return string $imagen
      */
@@ -62,7 +62,7 @@ class Utilidad
     }
 
     /**
-     * Borra el fichero alojado en el bucket de aws
+     * Borra la imagen alojada en el bucket de aws
      * @param string $img
      */
     public static function borrarImgS3($imagen)
@@ -70,7 +70,56 @@ class Utilidad
         $s3Cliente = static::inicializar();
         return $s3Cliente->deleteObject([
             'Bucket' => 'orecursos',
-            'Key' => $imagen
+            'Key' => "img/$imagen",
+        ]);
+    }
+
+    /**
+     * Sube el fichero pdf a AWS S3
+     * @param file $archivo
+     * @param string $titulo
+     * @param mixed $rutaPdf
+     *
+     * @return string $titulo
+     */
+    public static function subirPdfS3($archivo, $titulo, $rutaPdf)
+    {
+        $s3Cliente = static::inicializar();
+        $titulo .= '.' . $archivo->extension;
+
+        $s3Cliente->putObject([
+            'Bucket' => 'orecursos',
+            'Key' =>    "pdf/$titulo",
+            'SourceFile' => $rutaPdf,
+            'ACL' => 'public-read'
+        ]);
+        
+        \unlink($rutaPdf);
+        return $titulo;
+    }
+
+    /**
+     * Devuelve la url del pdf almacenado en el bucket
+     * @param string $pdf
+     * @return string $pdfPdf
+     */
+    public static function getPdf($pdf)
+    {
+        $s3Cliente = static::inicializar();
+        $key = 'pdf/' . $pdf;
+        return $s3Cliente->getObjectUrl('orecursos', $key);
+    }
+
+     /**
+     * Borra el fichero alojado en el bucket de aws
+     * @param string $pdf
+     */
+    public static function borrarPdfS3($pdf_pdf)
+    {
+        $s3Cliente = static::inicializar();
+        return $s3Cliente->deleteObject([
+            'Bucket' => 'orecursos',
+            'Key' => "pdf/$pdf_pdf",
         ]);
     }
 }

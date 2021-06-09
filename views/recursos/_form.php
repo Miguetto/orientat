@@ -14,6 +14,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'img')->fileInput() ?>
 
+    <?= $form->field($model, 'pdf')->fileInput() ?>
+
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>

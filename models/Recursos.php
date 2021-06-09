@@ -13,9 +13,10 @@ use Yii;
  * @property string $descripcion
  * @property string $contenido
  * @property string $created_at
+ * @property string $imagen
+ * @property string $pdfPdf
  * @property int $usuario_id
  * @property int $categoria_id
- * @property string $imagen
  *
  * @property Categorias $categoria
  * @property Usuarios $usuario
@@ -24,6 +25,7 @@ class Recursos extends \yii\db\ActiveRecord
 {
 
     public $img;
+    public $pdf;
     /**
      * {@inheritdoc}
      */
@@ -43,10 +45,12 @@ class Recursos extends \yii\db\ActiveRecord
             [['usuario_id', 'categoria_id'], 'default', 'value' => null],
             [['usuario_id', 'categoria_id'], 'integer'],
             [['imagen'], 'string'],
+            [['pdf_pdf'], 'string'],
             [['titulo', 'descripcion', 'contenido'], 'string', 'max' => 255],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['categoria_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
-            [['img'], 'image', 'extensions' => 'png, jpg, jpeg']
+            [['img'], 'image', 'extensions' => 'png, jpg, jpeg'],
+            [['pdf'], 'file', 'extensions' => 'pdf'],
         ];
     }
 
@@ -63,7 +67,8 @@ class Recursos extends \yii\db\ActiveRecord
             'created_at' => 'Publicado',
             'usuario_id' => 'Usuario',
             'categoria_id' => 'Categoria',
-            'img' => 'Imagen',
+            'img' => 'Selecciona una imagen:',
+            'pdf' => 'Selecciona un pdf:',
         ];
     }
 
@@ -141,7 +146,7 @@ class Recursos extends \yii\db\ActiveRecord
     {
         if ($this->img !== null) {
             $titulo = \str_replace(' ', '', $this->titulo) . '_' . Yii::$app->user->id;
-            $rutaImg = Yii::getAlias('@uploads/img' . $titulo . '.' . $this->img->extension);
+            $rutaImg = Yii::getAlias('@uploads/img' . $titulo . '_' . $this->img->extension);
             $this->img->saveAs($rutaImg);
             $this->imagen =  Utilidad::subirImgS3($this->img, $titulo, $rutaImg);
             $this->img = null;
@@ -158,5 +163,30 @@ class Recursos extends \yii\db\ActiveRecord
     {
         $img = $this->imagen ?? 'images_1.jpg';
         return Utilidad::getImg($img);
+    }
+
+    /**
+    * Carga el pdf del formulario y lo prepara para subir a AWS
+    */
+    public function uploadPdf()
+    {
+        if ($this->pdf !== null) {
+            $titulo = \str_replace(' ', '', $this->titulo) . '_' . Yii::$app->user->id;
+            $rutaPdf = Yii::getAlias('@uploads/pdf' . $titulo . '.pdf');
+            $this->pdf->saveAs($rutaPdf);
+            $this->pdf_pdf =  Utilidad::subirPdfS3($this->pdf, $titulo, $rutaPdf);
+            $this->pdf = null;
+        }
+    }
+
+    /**
+    * Devuelve la url donde está alojado el pdf
+    *
+    * @return string $pdfPdf
+    */
+    public function getPdf()
+    {
+        $pdf = $this->pdf_pdf;
+        return Utilidad::getPdf($pdf);
     }
 }
