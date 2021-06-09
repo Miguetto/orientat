@@ -5,7 +5,7 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Recursos */
 
-$this->title = 'Create Recursos';
+$this->title = 'Crear Recurso';
 $this->params['breadcrumbs'][] = ['label' => 'Recursos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
