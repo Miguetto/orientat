@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
                 <div class="p-0 text-center">
                     <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
-                </div>
+                </div><br>
                 <div class="p-0 text-center">
                     <?= Html::a('Descargar PDF', [
                                 'recursos/pdf',
