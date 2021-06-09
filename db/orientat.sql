@@ -45,7 +45,8 @@ CREATE TABLE recursos
       id                 BIGSERIAL    PRIMARY  KEY
     , titulo             VARCHAR(255) NOT NULL
     , descripcion        VARCHAR(255) NOT NULL
-    , contenido          VARCHAR(255) NOT NULL
+    , contenido          TEXT         NOT NULL
+    , enlace             VARCHAR(255) 
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)

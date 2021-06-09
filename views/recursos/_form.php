@@ -22,6 +22,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'contenido')->textArea(['maxlength' => true, 'white-space' => 'pre-line']) ?>
     
+    <?= $form->field($model, 'enlace')->textInput(['maxlength' => true]) ?>
+
     <?php
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true){ ?>
             <?= $form->field($model, 'usuario_id')->dropdownList($usuarios) ?>
