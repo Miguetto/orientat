@@ -239,17 +239,62 @@ class UsuariosController extends Controller
      */
     public function actionBaja($id)
     {
+        $model = new Usuarios(['scenario' => Usuarios::SCENARIO_BAJA]);
         $model = $this->findModel($id);
 
         if($model->de_baja == false){
-            // NO ESTÁ DE BAJA
-            $model->de_baja = true;
+            Yii::$app->session->setFlash(
+                'info',
+                'Confirma para dar de baja el usuario, mira en tu correo: ' . $model->email
+            );
+
+            $model->token_confirm = Yii::$app->security->generateRandomString();
+
+            $body = 'Para dar de baja el usuario, pulse aquí: '
+                    . Html::a('Darse de baja',
+                        Url::to([
+                            'usuarios/cbaja',
+                            'id' => $model->id,
+                            'token_confirm' => $model->token_confirm
+                        ], true)
+                    );
+
+            // envío del email:        
+            Yii::$app->mailer->compose()
+            ->setFrom(Yii::$app->params['smtpUsername'])
+            ->setTo($model->email)
+            ->setSubject('Dar de baja el usuario ')
+            ->setHtmlBody($body)
+            ->send();            
+            
             $model->save();
-            Yii::$app->session->setFlash('success', 'Se ha dado de baja correctamente.');
             return $this->redirect(['site/index']);
         }else{
             Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');
             return $this->redirect(['site/index']);
         }   
+    }
+
+    /**
+     * Acción para confirmar la baja de usuario
+     * Comprueba si se confirmó
+     * @param  [type] $token_confirm es una cadena aleatoriaa que pertenece
+     *                               al usuario que se registra.
+     * @return redirect              Redirección al formulario de inicio
+     *                               de sesión.
+     */
+    public function actionCbaja($id,$token_confirm)
+    {
+        $model = $this->findModel($id);
+        if ($model->token_confirm === $token_confirm) {
+            $model->token_confirm = null;
+            $model->de_baja = true;
+            $model->save();    
+            Yii::$app->session->setFlash('success',  'Usuario dado de baja de la web correctamente, hasta la próxima.');
+            return $this->redirect(['site/login']);
+        } else {
+            Yii::$app->session->setFlash('danger',  'El usuario sigue dado de alta en la web.');
+            return $this->redirect(['site/index']);    
+        }
     }
 }
