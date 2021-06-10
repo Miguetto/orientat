@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'email:email',
             'rol.rol',
+            'de_baja:boolean',
             'created_at',
             [
                 '__class' => ActionColumn::class,

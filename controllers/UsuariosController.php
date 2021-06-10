@@ -89,7 +89,6 @@ class UsuariosController extends Controller
         return $this->render('view', [
             'usuario' => $usuario,
             'recursos' => $recursos,
-
         ]);
     }
 
@@ -190,10 +189,7 @@ class UsuariosController extends Controller
         }else{
             Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');
             return $this->redirect(['site/index']);
-        }
-        
-        
-        
+        }    
         
     }
 
@@ -233,5 +229,27 @@ class UsuariosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Para darse de baja de la web.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionBaja($id)
+    {
+        $model = $this->findModel($id);
+
+        if($model->de_baja == false){
+            // NO ESTÁ DE BAJA
+            $model->de_baja = true;
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Se ha dado de baja correctamente.');
+            return $this->redirect(['site/index']);
+        }else{
+            Yii::$app->session->setFlash('error', 'No se pudo hacer eso.');
+            return $this->redirect(['site/index']);
+        }   
     }
 }
