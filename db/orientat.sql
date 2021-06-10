@@ -48,7 +48,7 @@ CREATE TABLE recursos
     , contenido          TEXT         NOT NULL
     , enlace             VARCHAR(255) 
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) on delete CASCADE
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
     , imagen             TEXT
     , pdf_pdf            TEXT
