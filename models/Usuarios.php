@@ -26,6 +26,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
 
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
+    
     public $password_repeat;
 
     /**
@@ -45,6 +46,8 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [['nombre', 'username', 'email'], 'required'],
             [['rol_id'], 'default', 'value' => 3],
             [['rol_id'], 'integer'],
+            [['de_baja'], 'default', 'value' => false],
+            [['de_baja'], 'boolean'],
             [['created_at'], 'safe'],
             [['nombre', 'username', 'email', 'password', 'auth_key', 'token_confirm'], 'string', 'max' => 255],
             [['email'], 'unique'],
@@ -71,6 +74,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'auth_key' => 'Auth Key',
             'token_confirm' => 'Token Confirm',
             'created_at' => 'Creado',
+            'de_baja' => 'De baja',
             'rol_id' => 'Rol',
         ];
     }
@@ -174,6 +178,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         $usuario = static::findOne(Yii::$app->user->id);
         return $usuario->rol->rol === 'revisor';
     }
+
 
     public static function findByLogin($username)
     {

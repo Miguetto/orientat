@@ -18,8 +18,8 @@ class UsuariosSearch extends Usuarios
     {
         return [
             [['id', 'rol_id'], 'integer'],
-            [['rol.rol'], 'string'],
-            [['nombre', 'username', 'email', 'password', 'rol.rol'], 'safe'],
+            [['rol.rol', 'nombre', 'username'], 'string'],
+            [['nombre', 'username', 'email', 'password', 'rol.rol', 'de_baja', 'created_at'], 'safe'],
         ];
     }
 
@@ -81,7 +81,10 @@ class UsuariosSearch extends Usuarios
             ->andFilterWhere(['ilike', 'username', $this->username])
             ->andFilterWhere(['ilike', 'email', $this->email])
             ->andFilterWhere(['ilike', 'password', $this->password])
-            ->andFilterWhere(['ilike', 'roles.rol', $this->getAttribute('rol.rol')]);
+            ->andFilterWhere(['ilike', 'roles.rol', $this->getAttribute('rol.rol')])
+            ->andFilterWhere(['ilike', 'de_baja', $this->de_baja])
+            ->andFilterWhere(['ilike', 'created_at', $this->created_at]);
+
 
         return $dataProvider;
     }

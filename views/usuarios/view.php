@@ -25,6 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Darse de baja', ['baja', 'id' => $usuario->id], [
+            'class' => 'btn btn-secondary',
+            'data' => [
+                'confirm' => '¿Vas a darte de baja?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -34,11 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'email:email',
             'rol.rol',
+            'de_baja:boolean',
         ],
     ]) ?>
 
     <h3>Mis recursos:</h3>
-
+    
     <?php /*GridView::widget([
         'dataProvider' => $dataProviderRecursosUsuario,
         'columns' => [

@@ -27,6 +27,7 @@ CREATE TABLE usuarios
     , token_confirm      VARCHAR(255)
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , rol_id             BIGINT       NOT NULL DEFAULT 3 REFERENCES roles(id)
+    , de_baja            BOOLEAN      NOT NULL DEFAULT false
 
 );
 
@@ -86,9 +87,9 @@ INSERT INTO usuarios (nombre, username, email, password, rol_id)
      VALUES ('admin', 'admin', 'admin@orientat.es', crypt('admin', gen_salt('bf', 10)), 1)
            ,('Miguel', 'mrevisor', 'mrevisor@orientat.es', crypt('123', gen_salt('bf', 10)), 2);
 
-INSERT INTO usuarios (nombre, username, email, password)
-     VALUES ('Ana', 'anuska', 'anuska@orientat.es', crypt('321', gen_salt('bf', 10)))
-           ,('Manuel', 'manolito', 'manolito@orientat.es', crypt('111', gen_salt('bf', 10)));
+INSERT INTO usuarios (nombre, username, email, de_baja, password)
+     VALUES ('Ana', 'anuska', 'anuska@orientat.es', 'false', crypt('321', gen_salt('bf', 10)))
+           ,('Manuel', 'manolito', 'manolito@orientat.es', 'true', crypt('111', gen_salt('bf', 10)));
 
 INSERT INTO categorias (nombre)
      VALUES ('Educación infantil')
