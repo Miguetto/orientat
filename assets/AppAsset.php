@@ -27,7 +27,7 @@ class AppAsset extends AssetBundle
         'css/owl.carousel.min.css',
         'css/owl.theme.default.min.css',
         'css/magnific-popup.css',
-        'css/aos.css',
+        //'css/aos.css',
         'css/ionicons.min.css',
         'css/flaticon.css',
         'css/icomoon.css',
@@ -35,6 +35,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/pluginNoclase.js',
         '//cdn.jsdelivr.net/jquery.typeit/3.0.1/typeit.min.js',
+        'js/code.js',
+        'js/sw.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

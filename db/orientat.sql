@@ -75,6 +75,16 @@ CREATE TABLE likes
   , recurso_id     bigint       NOT NULL REFERENCES recursos (id) on update CASCADE on delete CASCADE
 );
 
+DROP TABLE IF EXISTS votos CASCADE;
+
+CREATE TABLE votos
+(
+    id             bigserial    PRIMARY KEY
+  , puntuacion     integer
+  , usuario_id     bigint       NOT NULL REFERENCES usuarios   (id)
+  , propuesta_id   bigint       NOT NULL REFERENCES propuestas (id)
+);
+
 
 --- Fixtures
 
