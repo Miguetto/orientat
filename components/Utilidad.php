@@ -99,6 +99,22 @@ class Utilidad
     }
 
     /**
+     * Elimina un recurso de Amazon S3
+     *
+     * @param [type] $key
+     * @param [type] $bucketName
+     * @return void
+     */
+    public static function s3Eliminar($key, $bucketName)
+    {
+        $s3 = static::inicializar();
+        $s3->deleteObject([
+            'Bucket' => $bucketName,
+            'Key' => $key,
+        ]);
+    }
+
+    /**
      * Devuelve la url del pdf almacenado en el bucket
      * @param string $pdf
      * @return string $pdfPdf

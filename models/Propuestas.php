@@ -63,4 +63,16 @@ class Propuestas extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::class, ['id' => 'usuario_id'])->inverseOf('propuestas');
     }
+
+    /**
+     * Gets query for [[Votos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTotalVotos()
+    {
+        $total = $this->hasMany(Votos::class, ['propuesta_id' => 'id']);
+
+        return $total->count();
+    }
 }

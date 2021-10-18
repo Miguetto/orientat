@@ -19,15 +19,12 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 
 $urlCookie = Url::toRoute(['site/cookie', 'cadena' => 'politica'], $schema = true);
 
-$js = <<<EOT
-    $( document ).ready(function() {
-        $(#modalCook).show();
-    });
-    
+$jsCook = <<<EOT
+    $(#modalCook).show();    
 EOT;
 if (!isset($_COOKIE['politica'])) {
 
-    $this->registerJs($js);
+    $this->registerJs($jsCook);
 }
 
 ?>
@@ -35,9 +32,16 @@ if (!isset($_COOKIE['politica'])) {
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials">
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#F0DB4F">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>

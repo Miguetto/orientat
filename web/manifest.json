@@ -1,0 +1,15 @@
+{
+    "name": "orienta-T",
+    "short_name": "orientaT",
+    "description": "Recursos educativos accesibles, facilitadores y gratuitos.",
+    "background_color": "#2B2B2B",
+    "theme_color": "#F0DB4F",
+    "orientation": "portrait",
+    "display": "standalone",
+    "lang": "es-ES",
+    "start_url": "./?utm_source=web_app_manifest",
+    "scope": "./",
+    "icons": [
+        
+      ]
+   }

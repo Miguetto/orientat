@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Likes;
-use app\models\LikesSearch;
-use app\models\Usuarios;
+use app\models\Votos;
+use app\models\VotosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LikesController implements the CRUD actions for Likes model.
+ * VotosController implements the CRUD actions for Votos model.
  */
-class LikesController extends Controller
+class VotosController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +30,12 @@ class LikesController extends Controller
     }
 
     /**
-     * Lists all Likes models.
+     * Lists all Votos models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LikesSearch();
+        $searchModel = new VotosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class LikesController extends Controller
     }
 
     /**
-     * Displays a single Likes model.
+     * Displays a single Votos model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +58,13 @@ class LikesController extends Controller
     }
 
     /**
-     * Creates a new Likes model.
+     * Creates a new Votos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Likes();
+        $model = new Votos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +76,7 @@ class LikesController extends Controller
     }
 
     /**
-     * Updates an existing Likes model.
+     * Updates an existing Votos model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +96,7 @@ class LikesController extends Controller
     }
 
     /**
-     * Deletes an existing Likes model.
+     * Deletes an existing Votos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +110,15 @@ class LikesController extends Controller
     }
 
     /**
-     * Finds the Likes model based on its primary key value.
+     * Finds the Votos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Likes the loaded model
+     * @return Votos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Likes::findOne($id)) !== null) {
+        if (($model = Votos::findOne($id)) !== null) {
             return $model;
         }
 
@@ -127,49 +126,26 @@ class LikesController extends Controller
     }
 
     /**
-     * Guardar un Like
+     * Guardar un Voto
      *
      * @param integer $usuario_id
-     * @param integer $recurso_id
+     * @param integer $propuesta_id
      * @return mixed
      */
-    public function actionLikes($recurso_id)
+    public function actionVotos($propuesta_id)
     {
-        $model = new Likes();
-        $existe = $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->exists();
+        $model = new Votos();
+        $existe = $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'propuesta_id' => $propuesta_id])->exists();
 
         $model->usuario_id = Yii::$app->user->identity->id;
-        $model->recurso_id = $recurso_id;
+        $model->propuesta_id = $propuesta_id;
         if ($existe){
-            $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->one()->delete();
-            return $this->redirect(['recursos/index']);
+            $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'propuesta_id' => $propuesta_id])->one()->delete();
+            return $this->redirect(['propuestas/index']);
         }else if($model->save()) {
                 
-            return $this->redirect(['recursos/index']);
+            return $this->redirect(['propuestas/index']);
 
         }
-        /*if (Yii::$app->request->isAjax && Yii::$app->request->isGet) {
-            if ($existe) {
-                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
-                return json_encode(['class' => 'fas', 'contador' => $j]);
-            } else {
-                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
-                return json_encode(['class' => 'far', 'contador' => $j]);
-            }
-        }
-
-        if ($existe && $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->one()->delete()) {
-            if (Yii::$app->request->isAjax && Yii::$app->request->isPost) {
-                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
-                return json_encode(['class' => 'far', 'contador' => $j]);
-            }
-        } else {
-            $model->usuario_id = Yii::$app->user->identity->id;
-            $model->recurso_id = $recurso_id;
-            if ($model->save()) {
-                $j = $model->find()->where(['recurso_id' => $recurso_id])->count();
-                return json_encode(['class' => 'fas', 'contador' => $j]);
-            }
-        }*/
     }
 }

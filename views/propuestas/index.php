@@ -4,10 +4,15 @@
 use yii\bootstrap4\Html;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PropuestasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+$jsEvoto = <<<EOT
+     
+EOT;
+$this->registerJs($jsEvoto, View::POS_END);
 
 $this->title = 'Propuestas';
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,10 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php foreach ($propuestas as $propuesta) : ?>
                         <div class="col-lg-6">
                             <div class="services-2 d-flex">
-                                <div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
+                                <div class="ePropu icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
                                 <div class="text">
                                     <h3><?= Html::encode($propuesta->titulo) ?></h3>
                                     <p><?= Html::encode($propuesta->descripcion) ?></p>
+                                    <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id], ['class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
+                                    <?=$propuesta->getTotalVotos()?>
                                 </div>
                             </div>
                         </div>
