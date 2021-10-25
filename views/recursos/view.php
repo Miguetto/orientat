@@ -26,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             'confirm' => '¿Vas a eliminarlo?',
                             'method' => 'post',
                         ],
-                ]) ?><?php } ?>
+                ]) ?> <?php if($model->revisado == false){ ?>
+                    <?= Html::a('Aceptar', ['revisado', 'id' => $model->id], ['class' => 'btn btn-secondary']) ?>
+
+                    <?php } ?>
+                <?php } ?>
                 </p>
                 <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
                 <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
