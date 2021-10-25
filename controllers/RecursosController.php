@@ -54,7 +54,7 @@ class RecursosController extends Controller
     public function actionIndex()
     {
         $model = Recursos::find()->one();
-        $recursos = Recursos::find()->all();
+        $recursos = Recursos::find()->where('revisado=true')->all();
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -95,6 +95,10 @@ class RecursosController extends Controller
             $model->upload();
             $model->uploadPdf();
             $model->save();
+            Yii::$app->session->setFlash(
+                'info',
+                'Recurso creado y en espera de ser revisado para publicarlo.'
+            );
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -117,6 +121,10 @@ class RecursosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash(
+                'info',
+                'Recurso modificado correctamente.'
+            );
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -137,7 +145,10 @@ class RecursosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash(
+            'success',
+            'Recurso eliminado correctamente.'
+        );
         return $this->redirect(['index']);
     }
 
@@ -155,6 +166,22 @@ class RecursosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Acción que actualiza el dato de la fila revisado.
+     */
+    public function actionRevisado($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->revisado = 'true';
+        $model->save();
+        Yii::$app->session->setFlash(
+            'info',
+            'Recurso revisado y aceptado correctamente.'
+        );
+        return $this->redirect(['recursos/index']);
     }
 
     public function actionPdf($id) {

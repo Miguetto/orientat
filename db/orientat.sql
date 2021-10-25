@@ -53,6 +53,7 @@ CREATE TABLE recursos
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
     , imagen             TEXT
     , pdf_pdf            TEXT
+    , revisado           BOOLEAN      NOT NULL DEFAULT false
 );
 
 DROP TABLE IF EXISTS propuestas CASCADE;
@@ -107,13 +108,13 @@ INSERT INTO categorias (nombre)
            ,('Educación secundaria')
            ,('Formación profesional');
 
-INSERT INTO recursos (titulo, descripcion, contenido, usuario_id, categoria_id)
+INSERT INTO recursos (titulo, descripcion, contenido, usuario_id, categoria_id, revisado)
      VALUES ('Cogemos vocales', 'Este recurso permite trabajar con los alumnos de forma divertida'
                               , 'Contenido del recurso'
-                              , 3, 2)
+                              , 3, 2, true)
            ,('Educación emocional', 'Este recurso permite trabajar con los alumnos de forma divertida'
                               , 'Contenido del recurso'
-                              , 2, 1);
+                              , 2, 1, true);
 
 INSERT INTO propuestas (titulo, descripcion, usuario_id)
      VALUES ('Prueba de propuesta', 'descripcion de la propuesta', 2);
