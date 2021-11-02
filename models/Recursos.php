@@ -42,6 +42,7 @@ class Recursos extends \yii\db\ActiveRecord
         return [
             [['titulo', 'descripcion', 'contenido', 'usuario_id', 'categoria_id'], 'required'],
             [['created_at'], 'safe'],
+            [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
             [['usuario_id', 'categoria_id'], 'default', 'value' => null],
             [['usuario_id', 'categoria_id'], 'integer'],
             [['imagen'], 'string'],
@@ -138,6 +139,16 @@ class Recursos extends \yii\db\ActiveRecord
         } else {
             return Likes::find()->where(['recurso_id' => $this->id])->all();
         }
+    }
+
+    /**
+     * Gets query for [[Comentarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComentarios()
+    {
+        return $this->hasMany(Comentarios::class, ['recurso_id' => 'id'])->inverseOf('recursos');
     }
 
     /**

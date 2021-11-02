@@ -33,6 +33,7 @@ class Propuestas extends \yii\db\ActiveRecord
         return [
             [['titulo', 'descripcion', 'usuario_id'], 'required'],
             [['created_at'], 'safe'],
+            [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
             [['usuario_id'], 'default', 'value' => null],
             [['usuario_id'], 'integer'],
             [['titulo', 'descripcion'], 'string', 'max' => 255],

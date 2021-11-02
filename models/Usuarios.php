@@ -161,7 +161,28 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getLikes()
     {
-        return $this->hasMany(Likes::class, ['usuario_id' => 'id']);
+        return $this->hasMany(Likes::class, ['usuario_id' => 'id'])->inverseOf('usuarios');
+    }
+
+
+    /**
+     * Gets query for [[Comentarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComentarios()
+    {
+        return $this->hasMany(Comentarios::class, ['usuario_id' => 'id'])->inverseOf('usuarios');
+    }
+
+    /**
+     * Gets query for [[Votos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVotos()
+    {
+        return $this->hasMany(Votos::class, ['usuario_id' => 'id'])->inverseOf('usuarios');
     }
 
     /**
@@ -216,4 +237,6 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return Yii::$app->security->validatePassword($password, $this->password);
     }
+
+
 }

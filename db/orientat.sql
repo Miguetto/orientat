@@ -67,6 +67,17 @@ CREATE TABLE propuestas
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
 );
 
+DROP TABLE IF EXISTS comentarios CASCADE;
+
+CREATE TABLE comentarios
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , cuerpo             VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id)
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
+);
+
 DROP TABLE IF EXISTS likes CASCADE;
 
 CREATE TABLE likes
