@@ -54,6 +54,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'target' => '_blank',
                             ]);
                     }else {} ?>
+                
+                <?php foreach ($comentarioYnomUsuario as $nombreUsuario => $cuerpo) : ?>
+                    <?php foreach($fechasComentarios as $nombre => $fecha): ?>
+                        <?php if($nombreUsuario == $nombre): ?>
+                            <p class="contenidoRecurso"><?= Html::encode($fecha) ?></p>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <p class="contenidoRecurso"><?= Html::encode($nombreUsuario) ?></p>
+                    <p class="contenidoRecurso"><?= Html::encode($cuerpo) ?></p>
+                <?php endforeach ?>
+                
                 </div>                
             </div>
         </div>

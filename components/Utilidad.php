@@ -3,6 +3,8 @@
 namespace app\components;
 
 use Aws\S3\S3Client;
+use DateTime;
+use DateTimeZone;
 
 class Utilidad
 {
@@ -137,5 +139,15 @@ class Utilidad
             'Bucket' => 'orecursos',
             'Key' => "pdf/$pdf_pdf",
         ]);
+    }
+
+    public static function formatoFecha($dt)
+    {
+        $date_created = date($dt);
+        $dt = new DateTime($date_created);
+        $dt->setTimezone(new DateTimeZone('Europe/Madrid'));
+        $dt = $dt->format('d-m-Y H:i:s');
+
+        return $dt;
     }
 }

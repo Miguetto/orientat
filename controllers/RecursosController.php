@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use app\components\Utilidad;
 use app\models\Categorias;
+use app\models\Comentarios;
 use Yii;
 use app\models\Recursos;
 use app\models\RecursosSearch;
 use app\models\Usuarios;
+use DateTime;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -75,8 +78,31 @@ class RecursosController extends Controller
     public function actionView($id)
     {
         
+        $comentarios = Comentarios::find()->where(['recurso_id' => $id])->all();
+
+        $comentarioYnomUsuario = [];
+        $fechasComentarios = [];
+
+        foreach($comentarios as $comentario){  
+            $nombreUsuario = Usuarios::find()->where(['id' => $comentario->usuario_id])->one()['username'];
+            $cuerpoComentario = $comentario->cuerpo;
+            $fecha = $comentario->created_at;
+            $fecha = new DateTime($fecha);
+            $fecha = $fecha->format('d-m-Y H:i:s');
+            $fecha = Utilidad::formatoFecha($fecha);
+            $comentarioYnomUsuario += [
+                $nombreUsuario => $cuerpoComentario,
+            ];
+            $fechasComentarios += [
+                $nombreUsuario => $fecha,
+            ];
+        }
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'comentarioYnomUsuario' => $comentarioYnomUsuario,
+            'fechasComentarios' => $fechasComentarios,
         ]);
     }
 
