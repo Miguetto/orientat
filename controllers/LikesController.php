@@ -6,6 +6,7 @@ use Yii;
 use app\models\Likes;
 use app\models\LikesSearch;
 use app\models\Usuarios;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,20 @@ class LikesController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['view', 'index'],
+                'rules' => [
+                    [
+                        'actions' => ['create','update', 'delete', 'view', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor;
+                        },
+                    ],
                 ],
             ],
         ];

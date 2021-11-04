@@ -5,10 +5,10 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Comentarios */
 
-$this->title = 'Update Comentarios: ' . $model->id;
+$this->title = 'Modificar Comentarios: ';
 $this->params['breadcrumbs'][] = ['label' => 'Comentarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Modificar comentario';
 ?>
 <div class="comentarios-update">
 
@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'usuario_id' => $usuario_id,
+        'recurso_id' => $recurso_id,
     ]) ?>
 
 </div>

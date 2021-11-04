@@ -2,6 +2,7 @@
 
 namespace app\components;
 
+use app\models\Comentarios;
 use Aws\S3\S3Client;
 use DateTime;
 use DateTimeZone;
@@ -149,5 +150,21 @@ class Utilidad
         $dt = $dt->format('d-m-Y H:i:s');
 
         return $dt;
+    }
+
+    /**
+     * Función para comprobar si el usuario ya ha comentado un recurso
+     */
+    public static function existeComentario($id, $usuarioId)
+    {
+        $existe = false;
+        $comentarios = Comentarios::find()->where(['recurso_id' => $id])->all();
+
+        foreach($comentarios as $comentario){
+            if($comentario->usuario_id == $usuarioId){
+                $existe = true;
+            }
+        }
+        return $existe;
     }
 }
