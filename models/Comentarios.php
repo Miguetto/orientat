@@ -50,7 +50,7 @@ class Comentarios extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'cuerpo' => 'Cuerpo',
+            'cuerpo' => 'Escribe el comentario:',
             'created_at' => 'Created At',
             'recurso_id' => 'Recurso ID',
             'usuario_id' => 'Usuario ID',

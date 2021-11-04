@@ -14,12 +14,12 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'cuerpo')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'recurso_id')->textInput() ?>
+    <?= $form->field($model, 'recurso_id')->hiddenInput(['value' => $recurso_id])->label(false) ?>
 
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
+    <?= $form->field($model, 'usuario_id')->hiddenInput(['value' => $usuario_id])->label(false) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

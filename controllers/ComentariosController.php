@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Comentarios;
 use app\models\ComentariosSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,20 @@ class ComentariosController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['view', 'index'],
+                'rules' => [
+                    [
+                        'actions' => ['create','update', 'delete', 'view', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor;
+                        },
+                    ],
                 ],
             ],
         ];
@@ -62,16 +77,20 @@ class ComentariosController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($recurso_id)
     {
+        $usuario_id = Yii::$app->user->id;
+
         $model = new Comentarios();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['recursos/view', 'id' => $recurso_id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'usuario_id' => $usuario_id,
+            'recurso_id' => $recurso_id,
         ]);
     }
 
@@ -82,16 +101,19 @@ class ComentariosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $recurso_id)
     {
         $model = $this->findModel($id);
+        $usuario_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['recursos/view', 'id' => $recurso_id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'recurso_id' => $recurso_id,
+            'usuario_id' => $usuario_id,
         ]);
     }
 
@@ -102,11 +124,11 @@ class ComentariosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $recurso_id)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['recursos/view', 'id' => $recurso_id]);
     }
 
     /**

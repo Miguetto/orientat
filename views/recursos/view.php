@@ -1,5 +1,6 @@
 <?php
 
+use app\components\Utilidad;
 use yii\bootstrap4\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -35,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
                 <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
                 <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
+                <h6 class="section-heading">recurso creado por <?= Html::encode($usuarioRecurso) ?></h6>
                 <?php if($model->enlace != null){ ?>
                     <p class="p-0 text-center">
                         <?= Html::a('Ir al enlace', Url::to($model->enlace), ['class' => 'btn btn-info', 'target' => '_blank']) ?>
@@ -54,18 +56,35 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'target' => '_blank',
                             ]);
                     }else {} ?>
-                
+                <?php if(Utilidad::existeComentario($model->id, Yii::$app->user->id) == false) : ?>
+                    <?= Html::a('Comentar', ['comentarios/create', 'id' => $idComentarioN, 'recurso_id' => $model->id], ['class' => 'btn btn-secondary']) ?>
+                <?php endif ?>
+                <br><br>
                 <?php foreach ($comentarioYnomUsuario as $nombreUsuario => $cuerpo) : ?>
                     <?php foreach($fechasComentarios as $nombre => $fecha): ?>
                         <?php if($nombreUsuario == $nombre): ?>
-                            <p class="contenidoRecurso"><?= Html::encode($fecha) ?></p>
+                            <h6 class="section-heading">Creado: <?= Html::encode($fecha) ?></h6>
                         <?php endif ?>
                     <?php endforeach ?>
                     <p class="contenidoRecurso"><?= Html::encode($nombreUsuario) ?></p>
                     <p class="contenidoRecurso"><?= Html::encode($cuerpo) ?></p>
-                <?php endforeach ?>
-                
-                </div>                
+                    <?php if($nombreUsuario == $usuarioLogueado): ?>
+                        <?php foreach($comentarioIdYnomb as $idComentario => $nombreId) : ?>
+                            <?php if($nombreId == $nombreUsuario): ?>
+                                <?= Html::a('Eliminar', ['comentarios/delete', 'id' => $idComentario, 'recurso_id' => $model->id], [
+                                    'class' => 'btn btn-danger',
+                                    'data' => [
+                                        'confirm' => '¿Vas a eliminarlo?',
+                                        'method' => 'post',
+                                    ],
+                                    ]);?>
+                                <?= Html::a('Modificar', ['comentarios/update', 'id' => $idComentario, 'recurso_id' => $model->id], ['class' => 'btn btn-primary']) ?>                              
+                            <?php endif ?>
+                         <?php endforeach ?>
+                    <?php endif ?>            
+                <?php endforeach ?>                
+                </div>
+                              
             </div>
         </div>
     </div>
