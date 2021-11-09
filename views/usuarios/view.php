@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach ($recursos as $recurso) : ?>
           <div class="col-md-6 col-lg-4">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
+              <a class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
 								<div class="meta-date text-center p-2">
                   <span class="day"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
                 </div>

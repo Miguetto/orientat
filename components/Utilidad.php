@@ -3,6 +3,7 @@
 namespace app\components;
 
 use app\models\Comentarios;
+use app\models\Respuestas;
 use Aws\S3\S3Client;
 use DateTime;
 use DateTimeZone;
@@ -166,5 +167,26 @@ class Utilidad
             }
         }
         return $existe;
+    }
+
+    /**
+     * Función para mostrar la respuesta a un comentario
+     */
+    public static function mostrarRespuesta($comentario_id)
+    {
+        $existe = false;
+        $respuestas = Respuestas::find()->where(['receptor' => $comentario_id])->one();
+
+        foreach($respuestas as $respuesta){
+            if($respuesta->receptor == $comentario_id){
+                $existe = true;
+            }
+        }
+        return $existe;
+    }
+
+    public static function botonResponder($receptor, $emisor, $recurso_id)
+    {
+        
     }
 }
