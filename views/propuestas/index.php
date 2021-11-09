@@ -38,8 +38,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="text">
                                     <h3><?= Html::encode($propuesta->titulo) ?></h3>
                                     <p><?= Html::encode($propuesta->descripcion) ?></p>
-                                    <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id], ['class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
-                                    <?=$propuesta->getTotalVotos()?>
+                                    <?php if($propuesta->getTotalVotos() != 20 && $propuesta->usuario_id != Yii::$app->user->id ): ?>
+                                        <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id, 'titulo' => $propuesta->titulo, 'revisor' => $propuesta->usuario_id], ['class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
+                                        <?=$propuesta->getTotalVotos()?>
+                                        <?php else:  ?>
+                                            <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id], ['style' => 'display: none;', 'class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
+                                            <p>Un revisor está creando el recurso, gracias por votar!!</p>
+                                            <?php if($propuesta->getTotalVotos() != 20 && $propuesta->usuario_id == Yii::$app->user->id): ?>
+                                                <p>Votos: <?=$propuesta->getTotalVotos()?></p>
+                                                <?= Html::a('Eliminar', ['propuestas/delete', 'id' => $propuesta->id], [
+                                                    'class' => 'btn btn-danger',
+                                                    'data' => [
+                                                    'confirm' => '¿Vas a eliminar el comentario?',
+                                                    'method' => 'post',
+                                                    ],
+                                                ]);?>
+                                            <?php endif ?>
+                                    <?php endif  ?>
                                 </div>
                             </div>
                         </div>
