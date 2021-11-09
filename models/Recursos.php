@@ -148,7 +148,7 @@ class Recursos extends \yii\db\ActiveRecord
      */
     public function getComentarios()
     {
-        return $this->hasMany(Comentarios::class, ['recurso_id' => 'id'])->inverseOf('recursos');
+        return $this->hasMany(Comentarios::class, ['recurso_id' => 'id'])->inverseOf('recurso');
     }
 
     /**

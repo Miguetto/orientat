@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Comentarios;
+use app\models\Respuestas;
 
 /**
- * ComentariosSearch represents the model behind the search form of `app\models\Comentarios`.
+ * RespuestasSearch represents the model behind the search form of `app\models\Respuestas`.
  */
-class ComentariosSearch extends Comentarios
+class RespuestasSearch extends Respuestas
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class ComentariosSearch extends Comentarios
     public function rules()
     {
         return [
-            [['id', 'recurso_id', 'usuario_id', 'respuesta_id'], 'integer'],
+            [['id', 'comentario_id', 'usuario_id'], 'integer'],
             [['cuerpo', 'created_at'], 'safe'],
         ];
     }
@@ -40,7 +40,7 @@ class ComentariosSearch extends Comentarios
      */
     public function search($params)
     {
-        $query = Comentarios::find();
+        $query = Respuestas::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +60,8 @@ class ComentariosSearch extends Comentarios
         $query->andFilterWhere([
             'id' => $this->id,
             'created_at' => $this->created_at,
-            'recurso_id' => $this->recurso_id,
+            'comentario_id' => $this->comentario_id,
             'usuario_id' => $this->usuario_id,
-            'respuesta_id' => $this->respuesta_id,
         ]);
 
         $query->andFilterWhere(['ilike', 'cuerpo', $this->cuerpo]);

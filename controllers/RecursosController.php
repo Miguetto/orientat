@@ -8,6 +8,7 @@ use app\models\Comentarios;
 use Yii;
 use app\models\Recursos;
 use app\models\RecursosSearch;
+use app\models\Respuestas;
 use app\models\Usuarios;
 use DateTime;
 use yii\filters\AccessControl;
@@ -57,7 +58,7 @@ class RecursosController extends Controller
     public function actionIndex()
     {
         $model = Recursos::find()->one();
-        $recursos = Recursos::find()->where('revisado=true')->all();
+        $recursos = Recursos::find()->where('revisado=true')->orderBy(['created_at' => SORT_DESC])->all();
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -77,13 +78,10 @@ class RecursosController extends Controller
      */
     public function actionView($id)
     {
-        $usuarioLogueado = Yii::$app->user->identity['username'];
-        $comentarios = Comentarios::find()->where(['recurso_id' => $id])->all();
+        
+        $comentarios = Comentarios::find()->where(['recurso_id' => $id])->orderBy(['created_at' => SORT_DESC])->all();
         $recurso = Recursos::find()->where(['id' => $id])->all();
-
-        $comentarioYnomUsuario = [];
-        $fechasComentarios = [];
-        $comentarioIdYnomb = [];
+        
         $idComentarioN = 0;
 
         if($comentarios == null){
@@ -94,38 +92,15 @@ class RecursosController extends Controller
             $usuarioRecurso = Usuarios::find()->where(['id' => $usuario->usuario_id])->one()['username']; 
         }
 
-        foreach($comentarios as $comentario){  
-            $nombreUsuario = Usuarios::find()->where(['id' => $comentario->usuario_id])->one()['username'];
-            $cuerpoComentario = $comentario->cuerpo;
-            $idComentario = $comentario->id;
-            $fecha = $comentario->created_at;
-            $fecha = new DateTime($fecha);
-            $fecha = $fecha->format('d-m-Y H:i:s');
-            $fecha = Utilidad::formatoFecha($fecha);
-
-            $comentarioYnomUsuario += [
-                $nombreUsuario => $cuerpoComentario,
-            ];
-            $fechasComentarios += [
-                $nombreUsuario => $fecha,
-            ];
-            $comentarioIdYnomb += [
-                $idComentario => $nombreUsuario,
-            ];
-        }
         if(isset($idComentario)){
             $idComentarioN = $idComentario+1;    
         }
-        //var_dump($usuarioRecurso);die();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'comentarioYnomUsuario' => $comentarioYnomUsuario,
-            'fechasComentarios' => $fechasComentarios,
-            'usuarioLogueado' => $usuarioLogueado,
-            'comentarioIdYnomb' => $comentarioIdYnomb,
             'idComentarioN' => $idComentarioN,
             'usuarioRecurso' => $usuarioRecurso,
+            'comentarios' => $comentarios,
         ]);
     }
 
@@ -192,7 +167,7 @@ class RecursosController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
-    {
+    {           
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash(
             'success',

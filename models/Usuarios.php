@@ -176,6 +176,16 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Gets query for [[Respuestas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRespuestas()
+    {
+        return $this->hasMany(Respuestas::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
      * Gets query for [[Votos]].
      *
      * @return \yii\db\ActiveQuery

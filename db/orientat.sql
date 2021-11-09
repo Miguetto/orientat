@@ -26,7 +26,7 @@ CREATE TABLE usuarios
     , auth_key           VARCHAR(255)
     , token_confirm      VARCHAR(255)
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , rol_id             BIGINT       NOT NULL DEFAULT 3 REFERENCES roles(id)
+    , rol_id             BIGINT       NOT NULL DEFAULT 3 REFERENCES roles(id) ON DELETE CASCADE
     , de_baja            BOOLEAN      NOT NULL DEFAULT false
 
 );
@@ -49,8 +49,9 @@ CREATE TABLE recursos
     , contenido          TEXT         NOT NULL
     , enlace             VARCHAR(255) 
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) on delete CASCADE
-    , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id)
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id) ON DELETE CASCADE
+    , comentario_id      BIGINT                REFERENCES comentarios(id) ON DELETE CASCADE
     , imagen             TEXT
     , pdf_pdf            TEXT
     , revisado           BOOLEAN      NOT NULL DEFAULT false
@@ -64,7 +65,7 @@ CREATE TABLE propuestas
     , titulo             VARCHAR(255) NOT NULL
     , descripcion        VARCHAR(255) NOT NULL
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS comentarios CASCADE;
@@ -74,8 +75,20 @@ CREATE TABLE comentarios
       id                 BIGSERIAL    PRIMARY  KEY
     , cuerpo             VARCHAR(255) NOT NULL
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id)
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id)
+    , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id) ON DELETE CASCADE
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    , respuesta_id       BIGINT       REFERENCES          respuestas(id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS respuestas CASCADE;
+
+CREATE TABLE respuestas
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , cuerpo             VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , comentario_id      BIGINT       NOT NULL REFERENCES comentarios(id) ON DELETE CASCADE
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS likes CASCADE;
@@ -93,8 +106,8 @@ CREATE TABLE votos
 (
     id             bigserial    PRIMARY KEY
   , puntuacion     integer
-  , usuario_id     bigint       NOT NULL REFERENCES usuarios   (id)
-  , propuesta_id   bigint       NOT NULL REFERENCES propuestas (id)
+  , usuario_id     bigint       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
+  , propuesta_id   bigint       NOT NULL REFERENCES propuestas (id) ON DELETE CASCADE
 );
 
 

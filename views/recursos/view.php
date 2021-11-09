@@ -60,29 +60,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::a('Comentar', ['comentarios/create', 'id' => $idComentarioN, 'recurso_id' => $model->id], ['class' => 'btn btn-secondary']) ?>
                 <?php endif ?>
                 <br><br>
-                <?php foreach ($comentarioYnomUsuario as $nombreUsuario => $cuerpo) : ?>
-                    <?php foreach($fechasComentarios as $nombre => $fecha): ?>
-                        <?php if($nombreUsuario == $nombre): ?>
-                            <h6 class="section-heading">Creado: <?= Html::encode($fecha) ?></h6>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                    <p class="contenidoRecurso"><?= Html::encode($nombreUsuario) ?></p>
-                    <p class="contenidoRecurso"><?= Html::encode($cuerpo) ?></p>
-                    <?php if($nombreUsuario == $usuarioLogueado): ?>
-                        <?php foreach($comentarioIdYnomb as $idComentario => $nombreId) : ?>
-                            <?php if($nombreId == $nombreUsuario): ?>
-                                <?= Html::a('Eliminar', ['comentarios/delete', 'id' => $idComentario, 'recurso_id' => $model->id], [
+                <div class="text-center">
+                
+                <?php foreach($comentarios as $comentario) : ?>      
+                    <p style="background-color: #e9ecefa8;">Creado: <?= Html::encode(Yii::$app->formatter->asDate($comentario->created_at, 'long')) ?> por <?= Html::encode($comentario->usuario->username) ?></p>
+                    <p class="contenidoRecurso"><?= Html::encode($comentario->cuerpo) ?></p>
+                    <?php if($comentario->respuestas != null): ?>
+                    <p class="text-center">Respuesta: <?= Html::encode($comentario->respuestas[0]->cuerpo) ?></p>
+                    <?php endif ?>
+                    <?php if($comentario->usuario_id == Yii::$app->user->id): ?>
+                                <?= Html::a('Eliminar', ['comentarios/delete', 'id' => $comentario->id, 'recurso_id' => $model->id], [
                                     'class' => 'btn btn-danger',
                                     'data' => [
                                         'confirm' => '¿Vas a eliminarlo?',
                                         'method' => 'post',
                                     ],
                                     ]);?>
-                                <?= Html::a('Modificar', ['comentarios/update', 'id' => $idComentario, 'recurso_id' => $model->id], ['class' => 'btn btn-primary']) ?>                              
-                            <?php endif ?>
-                         <?php endforeach ?>
-                    <?php endif ?>            
-                <?php endforeach ?>                
+                                <?= Html::a('Modificar', ['comentarios/update', 'id' => $comentario->id, 'recurso_id' => $model->id], ['class' => 'btn btn-primary']) ?>                              
+                    <?php endif ?>
+                    <?php if($model->usuario_id == Yii::$app->user->id && $comentario->respuestas == null ): ?>
+                                <?= Html::a('Responder', ['respuestas/create', 'comentario_id' => $comentario->id, 'usuario_id' => Yii::$app->user->id, 'recurso_id' => $model->id], ['class' => 'btn btn-primary']) ?>                              
+                    <?php endif ?>
+                <?php endforeach ?>
+                              
                 </div>
                               
             </div>
