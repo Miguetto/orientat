@@ -74,6 +74,7 @@ class Propuestas extends \yii\db\ActiveRecord
     {
         $total = $this->hasMany(Votos::class, ['propuesta_id' => 'id']);
 
-        return $total->count();
+        return $total->count();        
+        
     }
 }
