@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= Html::a('Eliminar', ['comentarios/delete', 'id' => $comentario->id, 'recurso_id' => $model->id], [
                                     'class' => 'btn btn-danger',
                                     'data' => [
-                                        'confirm' => '¿Vas a eliminarlo?',
+                                        'confirm' => '¿Vas a eliminar el comentario?',
                                         'method' => 'post',
                                     ],
                                     ]);?>
