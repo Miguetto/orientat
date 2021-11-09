@@ -39,17 +39,6 @@ CREATE TABLE categorias
     , nombre             VARCHAR(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS respuestas CASCADE;
-
-CREATE TABLE respuestas
-(
-      id                 BIGSERIAL    PRIMARY  KEY
-    , cuerpo             VARCHAR(255) NOT NULL
-    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , comentario_id      BIGINT       NOT NULL REFERENCES comentarios(id) ON DELETE CASCADE
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS comentarios CASCADE;
 
 CREATE TABLE comentarios
@@ -60,6 +49,17 @@ CREATE TABLE comentarios
     , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id) ON DELETE CASCADE
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
     , respuesta_id       BIGINT       REFERENCES          respuestas(id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS respuestas CASCADE;
+
+CREATE TABLE respuestas
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , cuerpo             VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , comentario_id      BIGINT       NOT NULL REFERENCES comentarios(id) ON DELETE CASCADE
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS recursos CASCADE;
