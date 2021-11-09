@@ -39,6 +39,24 @@ CREATE TABLE categorias
     , nombre             VARCHAR(255) NOT NULL
 );
 
+DROP TABLE IF EXISTS recursos CASCADE;
+
+CREATE TABLE recursos
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , titulo             VARCHAR(255) NOT NULL
+    , descripcion        VARCHAR(255) NOT NULL
+    , contenido          TEXT         NOT NULL
+    , enlace             VARCHAR(255) 
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id) ON DELETE CASCADE
+    /*, comentario_id      BIGINT                REFERENCES comentarios(id) ON DELETE CASCADE*/
+    , imagen             TEXT
+    , pdf_pdf            TEXT
+    , revisado           BOOLEAN      NOT NULL DEFAULT false
+);
+
 DROP TABLE IF EXISTS comentarios CASCADE;
 
 CREATE TABLE comentarios
@@ -60,24 +78,6 @@ CREATE TABLE respuestas
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , comentario_id      BIGINT       NOT NULL REFERENCES comentarios(id) ON DELETE CASCADE
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
-);
-
-DROP TABLE IF EXISTS recursos CASCADE;
-
-CREATE TABLE recursos
-(
-      id                 BIGSERIAL    PRIMARY  KEY
-    , titulo             VARCHAR(255) NOT NULL
-    , descripcion        VARCHAR(255) NOT NULL
-    , contenido          TEXT         NOT NULL
-    , enlace             VARCHAR(255) 
-    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
-    , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id) ON DELETE CASCADE
-    /*, comentario_id      BIGINT                REFERENCES comentarios(id) ON DELETE CASCADE*/
-    , imagen             TEXT
-    , pdf_pdf            TEXT
-    , revisado           BOOLEAN      NOT NULL DEFAULT false
 );
 
 DROP TABLE IF EXISTS propuestas CASCADE;
