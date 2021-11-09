@@ -74,7 +74,7 @@ CREATE TABLE recursos
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
     , categoria_id       BIGINT       NOT NULL REFERENCES categorias(id) ON DELETE CASCADE
-    , comentario_id      BIGINT                REFERENCES comentarios(id) ON DELETE CASCADE
+    /*, comentario_id      BIGINT                REFERENCES comentarios(id) ON DELETE CASCADE*/
     , imagen             TEXT
     , pdf_pdf            TEXT
     , revisado           BOOLEAN      NOT NULL DEFAULT false
