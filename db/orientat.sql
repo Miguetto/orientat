@@ -57,18 +57,6 @@ CREATE TABLE recursos
     , revisado           BOOLEAN      NOT NULL DEFAULT false
 );
 
-DROP TABLE IF EXISTS comentarios CASCADE;
-
-CREATE TABLE comentarios
-(
-      id                 BIGSERIAL    PRIMARY  KEY
-    , cuerpo             VARCHAR(255) NOT NULL
-    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id) ON DELETE CASCADE
-    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
-    , respuesta_id       BIGINT       REFERENCES          respuestas(id) ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS respuestas CASCADE;
 
 CREATE TABLE respuestas
@@ -79,6 +67,20 @@ CREATE TABLE respuestas
     , comentario_id      BIGINT       NOT NULL REFERENCES comentarios(id) ON DELETE CASCADE
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS comentarios CASCADE;
+
+CREATE TABLE comentarios
+(
+      id                 BIGSERIAL    PRIMARY  KEY
+    , cuerpo             VARCHAR(255) NOT NULL
+    , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , recurso_id         BIGINT       NOT NULL REFERENCES recursos(id) ON DELETE CASCADE
+    , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    /*, respuesta_id       BIGINT       REFERENCES          respuestas(id) ON DELETE CASCADE*/
+);
+
+
 
 DROP TABLE IF EXISTS propuestas CASCADE;
 
