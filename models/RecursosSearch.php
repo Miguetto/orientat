@@ -40,13 +40,21 @@ class RecursosSearch extends Recursos
      */
     public function search($params)
     {
-        $query = Recursos::find();
+        $query = Recursos::find()->joinWith('usuario');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 1,
+            ]
         ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
 
         $this->load($params);
 

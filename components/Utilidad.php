@@ -7,6 +7,7 @@ use app\models\Respuestas;
 use Aws\S3\S3Client;
 use DateTime;
 use DateTimeZone;
+use Yii;
 
 class Utilidad
 {
@@ -141,6 +142,15 @@ class Utilidad
             'Bucket' => 'orecursos',
             'Key' => "pdf/$pdf_pdf",
         ]);
+    }
+
+    public static function mostrarPdf($pdf_pdf)
+    {
+        $s3Cliente = static::inicializar();
+        $key = 'pdf/' . $pdf_pdf;
+        $pdf = $s3Cliente->getObjectUrl('orecursos', $key);
+
+        return Yii::$app->response->sendFile($pdf);
     }
 
     public static function formatoFecha($dt)

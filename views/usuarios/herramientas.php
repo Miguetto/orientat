@@ -1,31 +1,37 @@
 <?php
 
 use yii\bootstrap4\Html;
+use yii\bootstrap4\LinkPager;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CategoriasSearch */
+/* @var $searchModel app\models\UsuariosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Categorias';
+$this->title = 'Herramientas';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="categorias-index">
+<div class="usuarios-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Categorias', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php //$this->render('_search', ['model' => $searchModel]); ?>
+    <h3>Usuarios:</h3>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
         'filterModel' => $searchModel,
         'columns' => [
+
+            'id',
             'nombre',
+            'username',
+            'email:email',
+            'rol.rol',
+            'de_baja:boolean',
+            'created_at',
             [
                 '__class' => ActionColumn::class,
                 'template' => '{ver}{modificar}{eliminar}',
@@ -34,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a(
                             'Ver',
                             [
-                                'categorias/view',
+                                'usuarios/view',
                                 'id' => $model->id,
                             ],
                             [
@@ -48,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a(
                                 'Modificar',
                                 [
-                                    'categorias/update',
+                                    'usuarios/update',
                                     'id' => $model->id,
                                 ],
                                 [
@@ -63,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a(
                                 'Eliminar',
                                 [
-                                    'categorias/delete',
+                                    'usuarios/delete',
                                     'id' => $model->id,
                                 ],
                                 [
@@ -75,12 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ]
             ],
-
-
-            //['class' => 'yii\grid\ActionColumn'],
         ],
+        'options' => [
+            'class' => 'table table-responsive',
+            'id' => 'usuarios-tabla'
+        ]
     ]); ?>
-
-
 
 </div>

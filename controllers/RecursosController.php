@@ -144,7 +144,12 @@ class RecursosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->img = UploadedFile::getInstance($model, 'img');
+            $model->pdf = UploadedFile::getInstance($model, 'pdf');
+            $model->upload();
+            $model->uploadPdf();
+            $model->save();
             Yii::$app->session->setFlash(
                 'info',
                 'Recurso modificado correctamente.'

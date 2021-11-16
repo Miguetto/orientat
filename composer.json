@@ -53,7 +53,8 @@
         "symfony/dotenv": "^4.0",
         "knplabs/github-api": "^2.11",
         "php-http/guzzle6-adapter": "^1.1",
-        "dmstr/yii2-cookie-consent": "^1.4"
+        "dmstr/yii2-cookie-consent": "^1.4",
+        "kop/yii2-scroll-pager": "dev-master"
     },
     "config": {
         "process-timeout": 1800,
