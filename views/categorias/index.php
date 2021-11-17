@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Categorias', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php //$this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -80,7 +80,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 
 
 </div>

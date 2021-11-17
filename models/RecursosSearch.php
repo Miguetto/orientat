@@ -47,6 +47,7 @@ class RecursosSearch extends Recursos
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
+                'pageParam' => 'precurso',
                 'pageSize' => 1,
             ]
         ]);

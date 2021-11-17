@@ -71,7 +71,7 @@ if (!isset($_COOKIE['politica'])) {
             //['label' => 'Contacto', 'url' => ['/site/contact']],
             !Yii::$app->user->isGuest ? 
             (Yii::$app->user->identity->esAdmin === true ? 
-            (['label' => 'Herramientas', 'url' => ['/usuarios/herramientas']]) : ('')) : (''),
+            (['label' => 'Administración', 'url' => ['/usuarios/herramientas']]) : ('')) : (''),
             ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
