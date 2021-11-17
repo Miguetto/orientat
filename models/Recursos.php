@@ -17,15 +17,18 @@ use Yii;
  * @property string $pdfPdf
  * @property int $usuario_id
  * @property int $categoria_id
+ * @property int $likes
  *
  * @property Categorias $categoria
  * @property Usuarios $usuario
+ * @property Likes $likes
  */
 class Recursos extends \yii\db\ActiveRecord
 {
 
     public $img;
     public $pdf;
+
     /**
      * {@inheritdoc}
      */
@@ -43,8 +46,8 @@ class Recursos extends \yii\db\ActiveRecord
             [['titulo', 'descripcion', 'contenido', 'usuario_id', 'categoria_id'], 'required'],
             [['created_at'], 'safe'],
             [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
-            [['usuario_id', 'categoria_id'], 'default', 'value' => null],
-            [['usuario_id', 'categoria_id'], 'integer'],
+            [['usuario_id', 'categoria_id', 'likes'], 'default', 'value' => null],
+            [['usuario_id', 'categoria_id', 'likes'], 'integer'],
             [['imagen'], 'string'],
             [['pdf_pdf'], 'string'],
             [['titulo', 'descripcion', 'enlace'], 'string', 'max' => 255],
@@ -69,6 +72,7 @@ class Recursos extends \yii\db\ActiveRecord
             'created_at' => 'Publicado',
             'usuario_id' => 'Usuario',
             'categoria_id' => 'Categoria',
+            'likes' => 'Likes',
             'img' => 'Selecciona una imagen:',
             'pdf' => 'Selecciona un pdf:',
         ];
@@ -95,53 +99,6 @@ class Recursos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Devuelve el usuario que dió like
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUsuarioLike($id)
-    {
-        return Usuarios::find()->where(['id' => $id])->one();
-    }
-
-    /**
-     * Todos los recursos del usuario con like
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public static function recursoLike($id) {
-        return Recursos::find()->where(['usuario_id' => $id])->all(); 
-    }
-
-        /**
-     * Gets query for [[Likes]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTotalLikes()
-    {
-        $total = $this->hasMany(Likes::class, ['recurso_id' => 'id']);
-
-        return $total->count();
-    }
-
-     /**
-     * Gets query for [[Likes]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLikes()
-    {
-        if ($this->getTotalLikes() > 2) {
-            return Likes::find()->where(['recurso_id' => $this->id])->orderBy(['id' => SORT_DESC])->limit(3);
-        } else if ($this->getTotalLikes() > 0){
-            return Likes::find()->where(['recurso_id' => $this->id])->orderBy(['id' => SORT_DESC])->all();
-        } else {
-            return Likes::find()->where(['recurso_id' => $this->id])->all();
-        }
-    }
-
-    /**
      * Gets query for [[Comentarios]].
      *
      * @return \yii\db\ActiveQuery
@@ -149,6 +106,28 @@ class Recursos extends \yii\db\ActiveRecord
     public function getComentarios()
     {
         return $this->hasMany(Comentarios::class, ['recurso_id' => 'id'])->inverseOf('recurso');
+    }
+
+    /**
+     * Gets query for [[Likes0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLikes()
+    {
+        return $this->hasMany(Likes::class, ['recurso_id' => 'id']);
+    }
+
+    public function existeLike($recurso_id)
+    {
+        $usuario_id = Yii::$app->user->id;
+        $existeLike = Likes::find()->where(['recurso_id' => $recurso_id, 'usuario_id' => $usuario_id])->one();
+
+        if($existeLike == true){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -201,4 +180,6 @@ class Recursos extends \yii\db\ActiveRecord
         $pdf = $this->pdf_pdf;
         return Utilidad::getPdf($pdf);
     }
+
+
 }
