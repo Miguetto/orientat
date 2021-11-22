@@ -11,27 +11,14 @@ use yii\bootstrap4\ActiveForm;
 <div class="usuarios-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['herramientas'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'nombre') ?>
-
     <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'email') ?>
-
-    <?= $form->field($model, 'password') ?>
-
-    <?php // echo $form->field($model, 'auth_key') ?>
-
-    <?php // echo $form->field($model, 'rol_id') ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

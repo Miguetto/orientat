@@ -314,20 +314,6 @@ class UsuariosController extends Controller
         $recursos = Recursos::find();
 
         $usuarios = Usuarios::find();
-
-        /*$paginationUsuarios = new Pagination([
-            'pageSize' => 2,
-            'totalCount' =>  $usuarios->count(),
-        ]);
-        
-        $paginationRecursos = new Pagination([
-            'pageSize' => 1,
-            'totalCount' =>  $recursos->count(),
-        ]);*/
-
-        //$usuarios->limit($paginationUsuarios->limit)->offset($paginationUsuarios->offset);
-        //$recursos->limit($paginationRecursos->limit)->offset($paginationRecursos->offset);
-
         
         return $this->render('herramientas', [
             'searchModel' => $searchModel,
@@ -335,8 +321,6 @@ class UsuariosController extends Controller
             'recursos' => $recursos->all(),
             'searchModel2' => $searchModel2,
             'dataProvider2' => $dataProvider2,
-            /*'paginationUsuarios' => $paginationUsuarios,
-            'paginationRecursos' => $paginationRecursos,*/
         ]);        
     }
 }

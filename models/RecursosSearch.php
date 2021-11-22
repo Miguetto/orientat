@@ -48,7 +48,7 @@ class RecursosSearch extends Recursos
             'query' => $query,
             'pagination' => [
                 'pageParam' => 'precurso',
-                'pageSize' => 1,
+                'pageSize' => 3,
             ]
         ]);
 

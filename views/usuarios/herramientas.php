@@ -18,11 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="usuarios-index">
 
     <h3>Usuarios:</h3>
-
+    <?= $this->render('_search', ['model' => $searchModel]); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
-        'filterModel' => $searchModel,
         'columns' => [
 
             'id',
@@ -91,11 +90,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="recursos-index">
 
 <h3>Recursos:</h3>
-
+<?= $this->render('_recursos', ['model' => $searchModel2]); ?>
 <?= GridView::widget([
     'dataProvider' => $dataProvider2,
     'layout' => "{summary}\n{items}\n<div class='d-flex justify-content-center'>{pager}</div>",
-    'filterModel' => $searchModel2,
     'columns' => [
 
         'id',
@@ -106,6 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $model->usuario->username;
             },
         ],
+        'created_at',
         [
             '__class' => ActionColumn::class,
             'template' => '{ver}{modificar}{eliminar}',
