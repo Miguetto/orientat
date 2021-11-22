@@ -4,18 +4,18 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UsuariosSearch */
+/* @var $model app\models\RecursosSearch */
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
-<div class="usuarios-search">
+<div class="recursos-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['herramientas'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'titulo') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>

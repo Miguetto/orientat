@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use app\models\Recursos;
+use app\models\RecursosSearch;
 use app\models\Roles;
 use Yii;
 use app\models\Usuarios;
 use app\models\UsuariosSearch;
 use yii\bootstrap4\Html;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\db\ActiveQuery;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -35,10 +37,10 @@ class UsuariosController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['index', 'create', 'update', 'delete', 'view'],
+                'only' => ['index', 'create', 'update', 'delete', 'view', 'herramientas'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'create', 'update', 'delete', 'herramientas'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -296,5 +298,29 @@ class UsuariosController extends Controller
             Yii::$app->session->setFlash('danger',  'El usuario sigue dado de alta en la web.');
             return $this->redirect(['site/index']);    
         }
+    }
+
+    /**
+     * Lists all Usuarios models.
+     * @return mixed
+     */
+    public function actionHerramientas()
+    {
+        $searchModel = new UsuariosSearch();
+        $searchModel2 = new RecursosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
+
+        $recursos = Recursos::find();
+
+        $usuarios = Usuarios::find();
+        
+        return $this->render('herramientas', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'recursos' => $recursos->all(),
+            'searchModel2' => $searchModel2,
+            'dataProvider2' => $dataProvider2,
+        ]);        
     }
 }

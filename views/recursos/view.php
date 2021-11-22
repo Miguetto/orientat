@@ -37,6 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
                 <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
                 <h6 class="section-heading">recurso creado por <?= Html::encode($usuarioRecurso) ?></h6>
+                <div class="p-0 text-center">
+                    <?php if(Utilidad::existeComentario($model->id, Yii::$app->user->id) == false) : ?>
+                        <?= Html::a('Comentar', ['comentarios/create', 'id' => $idComentarioN, 'recurso_id' => $model->id], ['class' => 'btn btn-secondary']) ?>
+                    <?php endif ?>
+                </div>
                 <?php if($model->enlace != null){ ?>
                     <p class="p-0 text-center">
                         <?= Html::a('Ir al enlace', Url::to($model->enlace), ['class' => 'btn btn-info', 'target' => '_blank']) ?>
@@ -48,17 +53,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if($model->pdf_pdf != null){ ?>
                     <p class="p-0 text-center">Descarga el pdf del recurso:</p>
                     <div class="p-0 text-center">
-                        <?= Html::a('Descargar PDF', [
-                                'recursos/pdf',
-                                'id' => $model->id,
-                            ], [
+                        <?= Html::a('Descargar PDF', Url::to(Utilidad::getPdf($model->pdf_pdf)), [
                                 'class' => 'btn btn-secondary',
                                 'target' => '_blank',
-                            ]);
-                    }else {} ?>
-                <?php if(Utilidad::existeComentario($model->id, Yii::$app->user->id) == false) : ?>
-                    <?= Html::a('Comentar', ['comentarios/create', 'id' => $idComentarioN, 'recurso_id' => $model->id], ['class' => 'btn btn-secondary']) ?>
-                <?php endif ?>
+                            ]); ?>
+                    </div>
+                    <!--<iframe height="100%" width=100% src='<?=Url::to(Utilidad::getPdf($model->pdf_pdf))?>'></iframe-->
+                    
+
+                <?php   }else {} ?><br><br>
                 <br><br>
                 <div class="text-center">
                 

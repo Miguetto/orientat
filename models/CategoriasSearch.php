@@ -56,11 +56,6 @@ class CategoriasSearch extends Categorias
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-        ]);
-
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre]);
 
         return $dataProvider;
