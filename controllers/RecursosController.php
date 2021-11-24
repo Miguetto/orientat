@@ -231,7 +231,7 @@ class RecursosController extends Controller
             $modelo_recurso->likes += 1;
             $modelo_recurso->save();
 
-            $num_likes = '<p id="likes-'. $recurso_id .'">Likes: '. $modelo_recurso->likes .'</p>';
+            $num_likes = $modelo_recurso->likes;           
                     
             $boton_dislike = '<button type="button" id="dislike'. $recurso_id .'" class="btn btn-default btn-sm dislike"><em class="far fa-thumbs-down"></em> Dislike</button>';
 
@@ -245,8 +245,8 @@ class RecursosController extends Controller
     }
 
     public function actionDislike(){
-        Yii::debug('Hola');
         if(Yii::$app->request->isAjax){
+            
             $usuario_id = Yii::$app->user->id;
             $recurso_id = Yii::$app->request->post('id');
 
@@ -257,17 +257,20 @@ class RecursosController extends Controller
             }
 
             $modelo_recurso = $this->findModel($recurso_id);
-            
+
             if ($modelo_recurso->likes !== 0) {
                 $modelo_recurso->likes -= 1;
             }
             $modelo_recurso->save();
 
-            $num_likes = '<p id="likes-'. $recurso_id .'">Likes: '. $modelo_recurso->likes .'</p>';
+            $num_likes = $modelo_recurso->likes;
+
+            $boton_like = '<button type="button" id="like'. $recurso_id .'" class="btn btn-success btn-sm liked"><em class="far fa-thumbs-up"></em> Like</button>';
 
             return $this->asJson([
                 'response' => $num_likes,
                 'recurso_id' => $recurso_id,
+                'boton_like' => $boton_like,
             ]);
 
         }

@@ -4,20 +4,6 @@ use yii\bootstrap4\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$url = Url::to(['likes/likes', 'recurso_id' => $model->id]);
-
-$js = <<<EOT
-    $(document).ready(function () {
-        $('#like' + '$model->id').click(function (e) {
-          console.log($model->id);
-          $('#like' + '$model->id').removeClass('far');
-          $('#like' + '$model->id').addClass('fas');
-        });
-    });
-EOT;
-
-$this->registerJs($js);
-
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RecursosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -40,7 +26,7 @@ $jsLike = <<<EOT
           $('#'+elem).click(function (ev) {
             ev.preventDefault();
             var id = elem.substring(4);
-            console.log(id);
+            
             $.ajax({
                 type: 'POST',
                 url: '$url',
@@ -49,25 +35,23 @@ $jsLike = <<<EOT
                 }
             })
             .done(function (data) {
-              let p = $(data.response);
-              let id = $(data.recurso_id);
-              let botonDislike = $(data.boton_dislike);
+              let numLikes = data.response;
+              let id = data.recurso_id;
 
               let botonLike = $('#like'+data.recurso_id);
               botonLike.fadeOut('fast', function() {
-                botonLike.remove();
+                botonLike.hide();
               });
 
-              let likeViejo = $('#likes-'+data.recurso_id);
-              likeViejo.fadeOut('fast', function() {
-                  likeViejo.remove();
+              let likeViejo = $('#likes-'+data.recurso_id+' > span');
+
+              let botonDisLike = $('#dislike'+data.recurso_id);
+              
+              botonDisLike.fadeIn('fast', function() { 
+                botonDisLike.show();
               });
 
-              $('#sl').append(botonDislike);
-              botonDislike.fadeIn('fast');
-
-              $('#numlike-'+data.recurso_id).append(p);
-              p.fadeIn('fast');              
+              likeViejo.text(numLikes);        
           
             });
           });
@@ -95,18 +79,24 @@ $jsDisLike = <<<EOT
                 }
             })
             .done(function (data) {
-              let p = $(data.response);
-              let id = $(data.recurso_id);
-
-
-              let likeViejo = $('#likes-'+data.recurso_id);
-              likeViejo.fadeOut('fast', function() {
-                  likeViejo.remove();
+              let numLikes = data.response;
+              let id = data.recurso_id;
+              
+              let botonDisLike = $('#dislike'+data.recurso_id);
+              botonDisLike.fadeOut('fast', function() {
+                botonDisLike.hide();
               });
 
-              $('#numlike-'+data.recurso_id).appendChild(p);
-              p.fadeIn('fast');
+              let likeViejo = $('#likes-'+data.recurso_id+' > span');
+
+              let botonLike = $('#like'+data.recurso_id);
               
+              botonLike.fadeIn('fast', function() { 
+                botonLike.show();
+              });
+
+              likeViejo.text(numLikes);
+
             });
           });
         });
@@ -141,18 +131,22 @@ $this->registerJs($jsDisLike, View::POS_END);
             <div class="text bg-white p-4">
               <h3 class="heading"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
               <p><?= $recurso->descripcion; ?></p>
-              <div id="sl" class="d-flex align-items-center mt-4">
-                <p class="mb-0">
+              <div id="sl<?= $recurso->id ?>" class="d-flex align-items-center mt-4">
+                <p class="mb-0" style="margin-right: 05px;">
                   <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary', 'id' => 'seguirLeyendo']) ?>
                 </p>
                 <?php if($recurso->usuario_id !== Yii::$app->user->id):?>
                   <?php if($recurso->existeLike($recurso->id) !== true) : ?>
                     <button type="button" id="like<?= $recurso->id ?>" class="btn btn-success btn-sm liked"><em class="far fa-thumbs-up"></em> Like</button>
+                    <button type="button" id="dislike<?= $recurso->id ?>" class="btn btn-default btn-sm dislike" style="display: none"><em class="far fa-thumbs-down"></em> Dislike</button>
                   <?php else :?>
+                    <button type="button" id="like<?= $recurso->id ?>" class="btn btn-success btn-sm liked" style="display: none"><em class="far fa-thumbs-up"></em> Like</button>
                     <button type="button" id="dislike<?= $recurso->id ?>" class="btn btn-default btn-sm dislike"><em class="far fa-thumbs-down"></em> Dislike</button>
                   <?php endif ?>
                 <?php endif?>
-                <div id="numlike-<?= $recurso->id ?>" class="d-flex align-items-center mt-4"><p id="likes-<?= $recurso->id ?>">Likes: <?= $recurso->likes ?></p></div>             
+                <div id="numlike-<?= $recurso->id ?>" class="d-flex align-items-center mt-4" style="margin-left: 05px;">
+                  <p id="likes-<?= $recurso->id ?>">Likes: <span><?= $recurso->likes ?></span></p>
+                </div>             
               </div>
             </div>
           </div>

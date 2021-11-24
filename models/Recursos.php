@@ -122,7 +122,7 @@ class Recursos extends \yii\db\ActiveRecord
     {
         $usuario_id = Yii::$app->user->id;
         $existeLike = Likes::find()->where(['recurso_id' => $recurso_id, 'usuario_id' => $usuario_id])->one();
-
+        
         if($existeLike == true){
             return true;
         }else {
