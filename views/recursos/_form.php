@@ -35,6 +35,8 @@ use yii\bootstrap4\ActiveForm;
     }
     ?>
 
+    <?= $form->field($model, 'likes')->hiddenInput(['value' => 0])->label(false)?>
+
     <?= $form->field($model, 'categoria_id')->dropdownList($categorias) ?>
 
     <div class="form-group">

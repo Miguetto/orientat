@@ -2,20 +2,7 @@
 
 use yii\bootstrap4\Html;
 use yii\helpers\Url;
-
-$url = Url::to(['likes/likes', 'recurso_id' => $model->id]);
-
-$js = <<<EOT
-    $(document).ready(function () {
-        $('#like' + '$model->id').click(function (e) {
-          console.log($model->id);
-          $('#like' + '$model->id').removeClass('far');
-          $('#like' + '$model->id').addClass('fas');
-        });
-    });
-EOT;
-
-$this->registerJs($js);
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RecursosSearch */
@@ -23,6 +10,101 @@ $this->registerJs($js);
 
 $this->title = 'Recursos:';
 $this->params['breadcrumbs'][] = $this->title;
+
+$url = Url::to(['recursos/like']);
+$url_dislike = Url::to(['recursos/dislike']);
+
+$jsLike = <<<EOT
+
+        var recursos = [];
+        $(".liked").each(function(index) {
+              recursos.push($(this).attr("id"));
+        });
+
+        $.each(recursos, function (ind, elem) { 
+          console.log(ind, elem);
+          $('#'+elem).click(function (ev) {
+            ev.preventDefault();
+            var id = elem.substring(4);
+            
+            $.ajax({
+                type: 'POST',
+                url: '$url',
+                data: {
+                    id: id,
+                }
+            })
+            .done(function (data) {
+              let numLikes = data.response;
+              let id = data.recurso_id;
+
+              let botonLike = $('#like'+data.recurso_id);
+              botonLike.fadeOut('fast', function() {
+                botonLike.hide();
+              });
+
+              let likeViejo = $('#likes-'+data.recurso_id+' > span');
+
+              let botonDisLike = $('#dislike'+data.recurso_id);
+              
+              botonDisLike.fadeIn('fast', function() { 
+                botonDisLike.show();
+              });
+
+              likeViejo.text(numLikes);        
+          
+            });
+          });
+        });         
+
+EOT;
+
+$jsDisLike = <<<EOT
+        var recursos = [];
+        $(".dislike").each(function(index) {
+              recursos.push($(this).attr("id"));
+        });
+
+        $.each(recursos, function (ind, elem) { 
+          console.log(ind, elem);
+          $('#'+elem).click(function (ev) {
+            ev.preventDefault();
+            var id = elem.substring(7);
+            console.log(id);
+            $.ajax({
+                type: 'POST',
+                url: '$url_dislike',
+                data: {
+                    id: id,
+                }
+            })
+            .done(function (data) {
+              let numLikes = data.response;
+              let id = data.recurso_id;
+              
+              let botonDisLike = $('#dislike'+data.recurso_id);
+              botonDisLike.fadeOut('fast', function() {
+                botonDisLike.hide();
+              });
+
+              let likeViejo = $('#likes-'+data.recurso_id+' > span');
+
+              let botonLike = $('#like'+data.recurso_id);
+              
+              botonLike.fadeIn('fast', function() { 
+                botonLike.show();
+              });
+
+              likeViejo.text(numLikes);
+
+            });
+          });
+        });
+EOT;
+$this->registerJs($jsLike, View::POS_END);
+$this->registerJs($jsDisLike, View::POS_END);
+
+
 ?>
 <div class="recursos-index services-2 btnSuperior">
 
@@ -49,12 +131,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="text bg-white p-4">
               <h3 class="heading"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
               <p><?= $recurso->descripcion; ?></p>
-              <div class="d-flex align-items-center mt-4">
-                <p class="mb-0">
+              <div id="sl<?= $recurso->id ?>" class="d-flex align-items-center mt-4">
+                <p class="mb-0" style="margin-right: 05px;">
                   <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary', 'id' => 'seguirLeyendo']) ?>
                 </p>
-                <?=Html::a(null, ['likes/likes', 'recurso_id' => $recurso->id], ['class' => 'fa-heart enlace ml-2 far', 'id' => 'like'.$recurso->id])?>
-                <?=$recurso->getTotalLikes()?>                
+                <?php if($recurso->usuario_id !== Yii::$app->user->id):?>
+                  <?php if($recurso->existeLike($recurso->id) !== true) : ?>
+                    <button type="button" id="like<?= $recurso->id ?>" class="btn btn-success btn-sm liked"><em class="far fa-thumbs-up"></em> Like</button>
+                    <button type="button" id="dislike<?= $recurso->id ?>" class="btn btn-default btn-sm dislike" style="display: none"><em class="far fa-thumbs-down"></em> Dislike</button>
+                  <?php else :?>
+                    <button type="button" id="like<?= $recurso->id ?>" class="btn btn-success btn-sm liked" style="display: none"><em class="far fa-thumbs-up"></em> Like</button>
+                    <button type="button" id="dislike<?= $recurso->id ?>" class="btn btn-default btn-sm dislike"><em class="far fa-thumbs-down"></em> Dislike</button>
+                  <?php endif ?>
+                <?php endif?>
+                <div id="numlike-<?= $recurso->id ?>" class="d-flex align-items-center mt-4" style="margin-left: 05px;">
+                  <p id="likes-<?= $recurso->id ?>">Likes: <span><?= $recurso->likes ?></span></p>
+                </div>             
               </div>
             </div>
           </div>

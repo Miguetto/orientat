@@ -148,7 +148,7 @@ class LikesController extends Controller
      * @param integer $recurso_id
      * @return mixed
      */
-    public function actionLikes($recurso_id)
+    public function actionLikess($recurso_id)
     {
         $model = new Likes();
         $existe = $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'recurso_id' => $recurso_id])->exists();

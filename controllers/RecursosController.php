@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\Utilidad;
 use app\models\Categorias;
 use app\models\Comentarios;
+use app\models\Likes;
 use Yii;
 use app\models\Recursos;
 use app\models\RecursosSearch;
@@ -58,7 +59,7 @@ class RecursosController extends Controller
     public function actionIndex()
     {
         $model = Recursos::find()->one();
-        $recursos = Recursos::find()->where('revisado=true')->orderBy(['created_at' => SORT_DESC])->all();
+        $recursos = Recursos::find()->where('revisado=true')->all();
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -217,5 +218,66 @@ class RecursosController extends Controller
         $model = Recursos::findOne($id);
         $ruta = 'https://orecursos.s3.eu-west-3.amazonaws.com/pdf/'. $model->pdf_pdf;
         return Yii::$app->response->sendFile($ruta);
+    }
+
+    public function actionLike(){
+        if(Yii::$app->request->isAjax){
+            $usuario_id = Yii::$app->user->id;
+            $recurso_id = Yii::$app->request->post('id');
+
+            $modelo_like = new Likes([
+                'usuario_id' => $usuario_id,
+                'recurso_id' => $recurso_id
+            ]);
+            $modelo_like->save();
+
+            $modelo_recurso = $this->findModel($recurso_id);
+            
+            $modelo_recurso->likes += 1;
+            $modelo_recurso->save();
+
+            $num_likes = $modelo_recurso->likes;           
+                    
+            $boton_dislike = '<button type="button" id="dislike'. $recurso_id .'" class="btn btn-default btn-sm dislike"><em class="far fa-thumbs-down"></em> Dislike</button>';
+
+            return $this->asJson([
+                'response' => $num_likes,
+                'recurso_id' => $recurso_id,
+                'boton_dislike' => $boton_dislike,
+            ]);
+
+        }
+    }
+
+    public function actionDislike(){
+        if(Yii::$app->request->isAjax){
+            
+            $usuario_id = Yii::$app->user->id;
+            $recurso_id = Yii::$app->request->post('id');
+
+            $modelo_like = Likes::find()->where(['recurso_id' => $recurso_id])->one();
+
+            if ($modelo_like !== null) {
+                $modelo_like->delete();
+            }
+
+            $modelo_recurso = $this->findModel($recurso_id);
+
+            if ($modelo_recurso->likes !== 0) {
+                $modelo_recurso->likes -= 1;
+            }
+            $modelo_recurso->save();
+
+            $num_likes = $modelo_recurso->likes;
+
+            $boton_like = '<button type="button" id="like'. $recurso_id .'" class="btn btn-success btn-sm liked"><em class="far fa-thumbs-up"></em> Like</button>';
+
+            return $this->asJson([
+                'response' => $num_likes,
+                'recurso_id' => $recurso_id,
+                'boton_like' => $boton_like,
+            ]);
+
+        }
     }
 }
