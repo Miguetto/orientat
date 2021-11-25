@@ -90,6 +90,7 @@ CREATE TABLE propuestas
     , descripcion        VARCHAR(255) NOT NULL
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , usuario_id         BIGINT       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    , votos              INTEGER      NOT NULL DEFAULT 0
 );
 
 DROP TABLE IF EXISTS likes CASCADE;
@@ -106,7 +107,6 @@ DROP TABLE IF EXISTS votos CASCADE;
 CREATE TABLE votos
 (
     id             bigserial    PRIMARY KEY
-  , puntuacion     integer
   , usuario_id     bigint       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
   , propuesta_id   bigint       NOT NULL REFERENCES propuestas (id) ON DELETE CASCADE
 );

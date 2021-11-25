@@ -214,12 +214,23 @@ class RecursosController extends Controller
         return $this->redirect(['recursos/index']);
     }
 
+    /**
+     * Función que nos devuelve el pdf del servidor.
+     *
+     * @param integer $id
+     * @return fichero
+     */
     public function actionPdf($id) {
         $model = Recursos::findOne($id);
         $ruta = 'https://orecursos.s3.eu-west-3.amazonaws.com/pdf/'. $model->pdf_pdf;
         return Yii::$app->response->sendFile($ruta);
     }
 
+    /**
+     * Función que genera un like por ajax.
+     *
+     * @return mixed 
+     */
     public function actionLike(){
         if(Yii::$app->request->isAjax){
             $usuario_id = Yii::$app->user->id;
@@ -236,23 +247,24 @@ class RecursosController extends Controller
             $modelo_recurso->likes += 1;
             $modelo_recurso->save();
 
-            $num_likes = $modelo_recurso->likes;           
-                    
-            $boton_dislike = '<button type="button" id="dislike'. $recurso_id .'" class="btn btn-default btn-sm dislike"><em class="far fa-thumbs-down"></em> Dislike</button>';
+            $num_likes = $modelo_recurso->likes; 
 
             return $this->asJson([
                 'response' => $num_likes,
                 'recurso_id' => $recurso_id,
-                'boton_dislike' => $boton_dislike,
             ]);
 
         }
     }
 
+    /**
+     * Función que genera un disLike por ajax.
+     *
+     * @return mixed 
+     */
     public function actionDislike(){
         if(Yii::$app->request->isAjax){
             
-            $usuario_id = Yii::$app->user->id;
             $recurso_id = Yii::$app->request->post('id');
 
             $modelo_like = Likes::find()->where(['recurso_id' => $recurso_id])->one();
@@ -270,12 +282,9 @@ class RecursosController extends Controller
 
             $num_likes = $modelo_recurso->likes;
 
-            $boton_like = '<button type="button" id="like'. $recurso_id .'" class="btn btn-success btn-sm liked"><em class="far fa-thumbs-up"></em> Like</button>';
-
             return $this->asJson([
                 'response' => $num_likes,
                 'recurso_id' => $recurso_id,
-                'boton_like' => $boton_like,
             ]);
 
         }

@@ -1,21 +1,106 @@
 <?php
 
-
 use yii\bootstrap4\Html;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PropuestasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$jsEvoto = <<<EOT
-     
-EOT;
-$this->registerJs($jsEvoto, View::POS_END);
 
 $this->title = 'Propuestas';
 $this->params['breadcrumbs'][] = $this->title;
+
+$url = Url::to(['propuestas/votos']);
+$url_anular = Url::to(['propuestas/anular']);
+
+$jsVoto = <<<EOT
+
+        var propuestas = [];
+        $(".vote").each(function(index) {
+              propuestas.push($(this).attr("id"));
+        });
+
+        $.each(propuestas, function (ind, elem) { 
+          
+          $('#'+elem).click(function (ev) {
+            ev.preventDefault();
+            var id = elem.substring(5);
+            
+            $.ajax({
+                type: 'POST',
+                url: '$url',
+                data: {
+                    id: id,
+                }
+            })
+            .done(function (data) {
+                let numVotos = data.response;
+                let id = data.propuesta_id;
+
+                let botonVoto = $('#voto-'+data.propuesta_id);
+                botonVoto.fadeOut('fast', function() {
+                    botonVoto.hide();
+                });
+
+                let votoViejo = $('#votos-'+data.propuesta_id+' > span');
+
+                let botonAnular = $('#anular-'+data.propuesta_id);
+              
+                botonAnular.fadeIn('fast', function() { 
+                    botonAnular.show();
+                });
+
+                votoViejo.text(numVotos); 
+            });
+          });
+        });         
+
+EOT;
+
+$jsAnular = <<<EOT
+        var propuestas = [];
+        $(".anular").each(function(index) {
+            propuestas.push($(this).attr("id"));
+        });
+
+        $.each(propuestas, function (ind, elem) {
+          $('#'+elem).click(function (ev) {
+            ev.preventDefault();
+            var id = elem.substring(7);
+            $.ajax({
+                type: 'POST',
+                url: '$url_anular',
+                data: {
+                    id: id,
+                }
+            })
+            .done(function (data) {
+              let numVotos = data.response;
+              let id = data.propuesta_id;
+              
+              let botonAnular = $('#anular-'+data.propuesta_id);
+              botonAnular.fadeOut('fast', function() {
+                botonAnular.hide();
+              });
+
+              let votoViejo = $('#votos-'+data.propuesta_id+' > span');
+
+              let botonVoto = $('#voto-'+data.propuesta_id);
+              
+              botonVoto.fadeIn('fast', function() { 
+                botonVoto.show();
+              });
+
+              votoViejo.text(numVotos);
+
+            });
+          });
+        });
+EOT;
+$this->registerJs($jsVoto, View::POS_END);
+$this->registerJs($jsAnular, View::POS_END);
+
 ?>
 <div class="propuestas-index services-2 btnSuperior">
     <?php if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) { ?>
@@ -38,14 +123,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="text">
                                     <h3><?= Html::encode($propuesta->titulo) ?></h3>
                                     <p><?= Html::encode($propuesta->descripcion) ?></p>
-                                    <?php if($propuesta->getTotalVotos() != 20 && $propuesta->usuario_id != Yii::$app->user->id ): ?>
-                                        <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id, 'titulo' => $propuesta->titulo, 'revisor' => $propuesta->usuario_id], ['class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
-                                        <?=$propuesta->getTotalVotos()?>
+                                    <?php if($propuesta->votos != 20 && $propuesta->usuario_id != Yii::$app->user->id ): ?>
+                                        <div id="numVoto-<?= $propuesta->id ?>" class="d-flex align-items-center mt-4" style="margin-left: 05px;">
+                                            <p id="votos-<?= $propuesta->id ?>">Votos: <span><?= $propuesta->votos ?></span></p>
+                                        </div>
+                                        <?php if($propuesta->usuario_id !== Yii::$app->user->id):?>
+                                            <?php if($propuesta->existeVoto($propuesta->id) !== true) : ?>
+                                                    <button type="button" id="voto-<?= $propuesta->id ?>" class="btn btn-outline-success vote"> Votar</button>
+                                                    <button type="button" id="anular-<?= $propuesta->id ?>" class="btn btn-outline-danger anular" style="display: none"> Anular</button>                                        
+                                                <?php else :?>
+                                                    <button type="button" id="voto-<?= $propuesta->id ?>" class="btn btn-outline-success vote" style="display: none"> Votar</button>
+                                                    <button type="button" id="anular-<?= $propuesta->id ?>" class="btn btn-outline-danger anular"> Anular</button>
+                                            <?php endif ?>
+                                        <?php endif?>
                                         <?php else:  ?>
-                                            <?=Html::a('Votar', ['votos/votos', 'propuesta_id' => $propuesta->id], ['style' => 'display: none;', 'class' => 'btn btn-outline-secondary', 'id' => 'voto'.$propuesta->id])?>
                                             <p>Un revisor está creando el recurso, gracias por votar!!</p>
-                                            <?php if($propuesta->getTotalVotos() != 20 && $propuesta->usuario_id == Yii::$app->user->id): ?>
-                                                <p>Votos: <?=$propuesta->getTotalVotos()?></p>
+                                            <?php if($propuesta->votos != 20 && $propuesta->usuario_id == Yii::$app->user->id): ?>
+                                                <p>Votos: <?=$propuesta->votos?></p>
                                                 <?= Html::a('Eliminar', ['propuestas/delete', 'id' => $propuesta->id], [
                                                     'class' => 'btn btn-danger',
                                                     'data' => [

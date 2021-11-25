@@ -141,44 +141,4 @@ class VotosController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    /**
-     * Guardar un Voto
-     *
-     * @param integer $usuario_id
-     * @param integer $propuesta_id
-     * @return mixed
-     */
-    public function actionVotos($propuesta_id, $titulo, $revisor)
-    {
-        $model = new Votos();
-        $existe = $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'propuesta_id' => $propuesta_id])->exists();
-        $creadorPropuesta = Usuarios::find()->where(['id' => $revisor])->one();
-        $propuesta = Propuestas::find()->where(['id' => $propuesta_id])->one();  
-        $model->usuario_id = Yii::$app->user->identity->id;
-        $model->propuesta_id = $propuesta_id;
-
-        if ($existe){
-            $model->find()->where(['usuario_id' => Yii::$app->user->identity->id, 'propuesta_id' => $propuesta_id])->one()->delete();
-            return $this->redirect(['propuestas/index']);
-        }else if($propuesta->getTotalVotos() < 20) {
-            $model->save();
-            return $this->redirect(['propuestas/index']);
-        }else{            
-            $body = 'Enhorabuena ' . $creadorPropuesta->username . ', la propuesta '. $titulo . ' llegó a 20 votos.
-                     Ya puedes crearla.';
-
-            // envío del email:        
-            Yii::$app->mailer->compose()
-            ->setFrom(Yii::$app->params['smtpUsername'])
-            ->setTo($creadorPropuesta->email)
-            ->setSubject('Crear la propuesta como recurso ')
-            ->setHtmlBody($body)
-            ->send();
-
-            Yii::$app->session->setFlash('success', 'Bien, ha llegado a 20 votos!! Se acaba de avisar al revisor para que cree el recurso, gracias!!.');  
-            $model->save();
-            return $this->redirect(['propuestas/index']);
-        }
-    }
 }
