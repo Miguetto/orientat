@@ -34,8 +34,8 @@ class Propuestas extends \yii\db\ActiveRecord
             [['titulo', 'descripcion', 'usuario_id'], 'required'],
             [['created_at'], 'safe'],
             [['created_at'], 'date', 'format' =>'php:Y-m-d H:i:s'],
-            [['usuario_id'], 'default', 'value' => null],
-            [['usuario_id'], 'integer'],
+            [['usuario_id', 'votos'], 'default', 'value' => null],
+            [['usuario_id', 'votos'], 'integer'],
             [['titulo', 'descripcion'], 'string', 'max' => 255],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
         ];
@@ -52,6 +52,7 @@ class Propuestas extends \yii\db\ActiveRecord
             'descripcion' => 'Descripcion',
             'created_at' => 'Publicado',
             'usuario_id' => 'Usuario ID',
+            'votos' => 'Votos',
         ];
     }
 
@@ -72,9 +73,21 @@ class Propuestas extends \yii\db\ActiveRecord
      */
     public function getTotalVotos()
     {
-        $total = $this->hasMany(Votos::class, ['propuesta_id' => 'id']);
+        $total = $this->votos;
 
-        return $total->count();        
+        return $total;   
         
+    }
+
+    public function existeVoto($propuesta_id)
+    {
+        $usuario_id = Yii::$app->user->id;
+        $existeVoto = Votos::find()->where(['propuesta_id' => $propuesta_id, 'usuario_id' => $usuario_id])->one();
+        
+        if($existeVoto == true){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

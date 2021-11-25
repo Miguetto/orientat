@@ -6,6 +6,7 @@ use Yii;
 use app\models\Propuestas;
 use app\models\PropuestasSearch;
 use app\models\Usuarios;
+use app\models\Votos;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -148,5 +149,86 @@ class PropuestasController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Función que generar un voto por ajax.
+     *
+     * @return mixed
+     */
+    public function actionVotos()
+    {
+        if(Yii::$app->request->isAjax){
+            $propuesta_id = Yii::$app->request->post('id');
+            $usuario_id = Yii::$app->user->id;
+
+            $modelo_voto = new Votos([
+                'usuario_id' => $usuario_id,
+                'propuesta_id' => $propuesta_id
+            ]);
+            $modelo_voto->save();
+
+            $modelo_propuesta = $this->findModel($propuesta_id);
+            $modelo_propuesta->votos += 1;
+            $modelo_propuesta->save();
+
+            $num_votos = $modelo_propuesta->votos;
+            $usuarioPropuesta = $modelo_propuesta->usuario_id;
+            $titulo = $modelo_propuesta->titulo;
+            $creadorPropuesta = Usuarios::find()->where(['id' => $usuarioPropuesta])->one();
+            
+            if($modelo_propuesta->votos == 20){
+                $body = 'Enhorabuena ' . $creadorPropuesta->username . ', la propuesta '. $titulo . ' llegó a 20 votos.
+                         Ya puedes crearla.';
+
+                // envío del email:        
+                Yii::$app->mailer->compose()
+                ->setFrom(Yii::$app->params['smtpUsername'])
+                ->setTo($creadorPropuesta->email)
+                ->setSubject('Crear la propuesta como recurso ')
+                ->setHtmlBody($body)
+                ->send();
+
+                Yii::$app->session->setFlash('success', 'Bien, ha llegado a 20 votos!! Se acaba de avisar al revisor para que cree el recurso, gracias!!.');
+            }
+            
+            return $this->asJson([
+                'response' => $num_votos,
+                'propuesta_id' => $propuesta_id,
+            ]);
+        }   
+    }
+
+    /**
+     * Función para anular el voto por ajax.
+     *
+     * @return mixed 
+     */
+    public function actionAnular(){
+        if(Yii::$app->request->isAjax){
+            
+            $propuesta_id = Yii::$app->request->post('id');
+
+            $modelo_voto = Votos::find()->where(['propuesta_id' => $propuesta_id])->one();
+
+            if ($modelo_voto !== null) {
+                $modelo_voto->delete();
+            }
+
+            $modelo_propuesta = $this->findModel($propuesta_id);
+
+            if ($modelo_propuesta->votos !== 0) {
+                $modelo_propuesta->votos -= 1;
+            }
+            $modelo_propuesta->save();
+
+            $num_votos = $modelo_propuesta->votos;
+
+            return $this->asJson([
+                'response' => $num_votos,
+                'propuesta_id' => $propuesta_id,
+            ]);
+
+        }
     }
 }

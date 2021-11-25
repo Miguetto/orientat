@@ -27,6 +27,9 @@ use yii\bootstrap4\ActiveForm;
     }
     ?>
 
+    <?= $form->field($model, 'votos')->hiddenInput(['value' => 0])->label(false)?>
+
+
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>

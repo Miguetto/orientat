@@ -31,11 +31,11 @@ class Votos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['puntuacion', 'usuario_id', 'propuesta_id'], 'default', 'value' => null],
-            [['puntuacion', 'usuario_id', 'propuesta_id'], 'integer'],
+            [['usuario_id', 'propuesta_id'], 'default', 'value' => null],
+            [['usuario_id', 'propuesta_id'], 'integer'],
             [['usuario_id', 'propuesta_id'], 'required'],
-            [['propuesta_id'], 'exist', 'skipOnError' => true, 'targetClass' => Propuestas::className(), 'targetAttribute' => ['propuesta_id' => 'id']],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
+            [['propuesta_id'], 'exist', 'skipOnError' => true, 'targetClass' => Propuestas::class, 'targetAttribute' => ['propuesta_id' => 'id']],
+            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
 
@@ -46,7 +46,6 @@ class Votos extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'puntuacion' => 'Puntuacion',
             'usuario_id' => 'Usuario ID',
             'propuesta_id' => 'Propuesta ID',
         ];

@@ -22,7 +22,6 @@ $jsLike = <<<EOT
         });
 
         $.each(recursos, function (ind, elem) { 
-          console.log(ind, elem);
           $('#'+elem).click(function (ev) {
             ev.preventDefault();
             var id = elem.substring(4);
