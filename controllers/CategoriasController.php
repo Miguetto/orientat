@@ -5,6 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Categorias;
 use app\models\CategoriasSearch;
+use app\models\Recursos;
+use app\models\RecursosSearch;
+use app\models\UsuariosSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -57,9 +60,11 @@ class CategoriasController extends Controller
         $dataProviderRecursosCategoria = new ActiveDataProvider([
             'query' => $categoria->getRecursos(),
         ]);
+        $recursos = Recursos::find()->where(['categoria_id' => $id])->all();
 
         return $this->render('view', [
             'model' => $categoria,
+            'recursos' => $recursos,
             'dataProviderRecursosCategoria' => $dataProviderRecursosCategoria,
         ]);
     }
@@ -130,5 +135,59 @@ class CategoriasController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Recursos con imagenes.
+     * @return mixed
+     */
+    public function actionFiltroimg()
+    {
+        $searchModel = new RecursosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $recursos = Recursos::find();
+        
+        return $this->render('_img', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'recursos' => $recursos->all(),
+        ]);     
+    }
+
+    /**
+     * Recursos con pdf.
+     * @return mixed
+     */
+    public function actionFiltropdf()
+    {
+        $searchModel = new RecursosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $recursos = Recursos::find();
+        
+        return $this->render('_pdf', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'recursos' => $recursos->all(),
+        ]);     
+    }
+
+    /**
+     * Recursos con pdf.
+     * @return mixed
+     */
+    public function actionFiltrocomp()
+    {
+        $searchModel = new RecursosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $recursos = Recursos::find();
+        
+        return $this->render('_com', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'recursos' => $recursos->all(),
+        ]);     
     }
 }

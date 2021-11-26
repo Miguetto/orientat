@@ -1,8 +1,7 @@
 <?php
 
 use yii\bootstrap4\Html;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use yii\bootstrap4\ButtonDropdown;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -11,13 +10,15 @@ use yii\widgets\DetailView;
 $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Categorias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+
 ?>
-<div class="categorias-view">
+
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    
     <p>
+    <?php
+    if (Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor) : ?>
         <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+    
     </p>
 
     <?= DetailView::widget([
@@ -35,38 +37,53 @@ $this->params['breadcrumbs'][] = $this->title;
             'nombre',
         ],
     ]) ?>
-
-<h3>Recursos:</h3>
-
-<?= GridView::widget([
-    'dataProvider' => $dataProviderRecursosCategoria,
-    'columns' => [
-        'titulo',
-        'descripcion',
-        'contenido',
-        'created_at:date',
-        'categoria.nombre:text:Categoría',
+    <?php endif ?>
         
-        [
-            '__class' => ActionColumn::class,
-            'template' => '{ver}',
-            'buttons' => [
-                'ver' => function ($url, $model) {
-                    return Html::a(
-                        'Ver',
-                        [
-                            'recursos/view',
-                            'id' => $model->id,
-                        ],
-                        [
-                            'class' => 'btn-sm btn-primary',
-                            'data-method' => 'POST',
-                        ],
-                    );
-                }
-            ]
-        ],
-    ],
-]) ?>
+    <h3>
+        Recursos:
+        
+        <?= ButtonDropdown::widget([
+                'label' => 'Filtrar recursos por: ',
+                'dropdown' => [
+                    'items' => [
+                        ['label' => 'Imágenes', 'url' => ['categorias/filtroimg']],
+                        ['label' => 'PDF', 'url' => ['categorias/filtropdf']],
+                        ['label' => 'Completos', 'url' => ['categorias/filtrocomp']],
+                    ],
+                ],
+                'options' => [
+                    'class' => 'btn btn-warning btn-sm float-right',
+                ]
+        ]);?>
+        
+    </h3>
 
-</div>
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row">
+        <?php if($recursos != null) : ?>
+      <?php foreach ($recursos as $recurso) : ?>
+            <div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated">
+          <div class="blog-entry">
+            <a class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
+              <div class="meta-date text-center p-2">
+                <span class="day"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
+              </div>
+            </a>
+            <div class="text bg-white p-4">
+              <h3 class="heading"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
+              <p><?= $recurso->descripcion; ?></p>
+              <div id="sl<?= $recurso->id ?>" class="d-flex align-items-center mt-4">
+                <p class="mb-0" style="margin-right: 05px;">
+                  <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary', 'id' => 'seguirLeyendo']) ?>
+                </p>             
+              </div>
+            </div>
+          </div>
+        </div>       
+      <?php endforeach ?>
+    </div>
+    <?php else : ?>
+        <p>No se encontraron resultados.</p>
+    <?php endif ?>
+</section>
