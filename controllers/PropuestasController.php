@@ -57,7 +57,7 @@ class PropuestasController extends Controller
      */
     public function actionIndex()
     {
-        $propuestas = Propuestas::find()->all();
+        $propuestas = Propuestas::find()->orderBy(['created_at' => SORT_DESC])->all();
         $searchModel = new PropuestasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

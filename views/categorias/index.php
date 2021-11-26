@@ -23,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             'nombre',
             [
@@ -38,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'id' => $model->id,
                             ],
                             [
-                                'class' => 'btn-sm btn-primary',
+                                'class' => 'btn btn-sm btn-primary',
                                 'data-method' => 'POST',
                             ],
                         );
@@ -52,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'id' => $model->id,
                                 ],
                                 [
-                                    'class' => 'btn-sm btn-secondary',
+                                    'class' => 'btn btn-sm btn-secondary',
                                     'data-method' => 'POST',
                                 ],
                             );
@@ -67,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'id' => $model->id,
                                 ],
                                 [
-                                    'class' => 'btn-sm btn-danger',
+                                    'class' => 'btn btn-sm btn-danger',
                                     'data-method' => 'POST',
                                 ],
                             );
@@ -79,6 +78,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //['class' => 'yii\grid\ActionColumn'],
         ],
+        'options' => [
+            'class' => 'table table-responsive',
+        ]
     ]); ?>
 
 
