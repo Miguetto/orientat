@@ -122,7 +122,7 @@ $this->registerJs($jsDisLike, View::POS_END);
       <?php foreach ($recursos as $recurso) : ?>
         <div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated">
           <div class="blog-entry">
-            <a class="block-20 d-flex align-items-end" style="background-image: url('<?= $recurso->getImagen(); ?>');">
+            <a class="block-20 d-flex align-items-end img-fluid" style="background-image: url('<?= $recurso->getImagen(); ?>');">
               <div class="meta-date text-center p-2">
                 <span class="day"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
               </div>

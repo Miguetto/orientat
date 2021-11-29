@@ -167,7 +167,7 @@ class Recursos extends \yii\db\ActiveRecord
     */
     public function getImagen()
     {
-        $img = $this->imagen ?? 'images_1.jpg';
+        $img = $this->imagen ?? 'image_1.jpg';
         return Utilidad::getImg($img);
     }
 
