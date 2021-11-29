@@ -28,7 +28,6 @@ CREATE TABLE usuarios
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , rol_id             BIGINT       NOT NULL DEFAULT 3      REFERENCES roles(id) ON DELETE CASCADE
     , de_baja            BOOLEAN      NOT NULL DEFAULT false
-    , notificacion_id    BIGINT       REFERENCES notificaciones(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS categorias CASCADE;
@@ -56,6 +55,17 @@ CREATE TABLE recursos
     , imagen             TEXT
     , pdf_pdf            TEXT
     , revisado           BOOLEAN      NOT NULL DEFAULT false
+);
+
+DROP TABLE IF EXISTS notificaciones CASCADE;
+
+CREATE TABLE notificaciones
+(
+    id             BIGSERIAL    PRIMARY KEY
+  , usuario_id     BIGINT       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
+  , recurso_id     BIGINT       NOT NULL REFERENCES recursos   (id) ON DELETE CASCADE
+  , visto          BOOLEAN      NOT NULL DEFAULT false
+  , cuerpo         VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS respuestas CASCADE;
@@ -109,17 +119,6 @@ CREATE TABLE votos
     id             BIGSERIAL    PRIMARY KEY
   , usuario_id     BIGINT       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
   , propuesta_id   BIGINT       NOT NULL REFERENCES propuestas (id) ON DELETE CASCADE
-);
-
-DROP TABLE IF EXISTS notificaciones CASCADE;
-
-CREATE TABLE notificaciones
-(
-    id             BIGSERIAL    PRIMARY KEY
-  , usuario_id     BIGINT       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
-  , recurso_id     BIGINT       NOT NULL REFERENCES recursos   (id) ON DELETE CASCADE
-  , visto          BOOLEAN      NOT NULL DEFAULT false
-  , cuerpo         VARCHAR(255) NOT NULL
 );
 
 
