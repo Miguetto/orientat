@@ -28,6 +28,8 @@ CREATE TABLE usuarios
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
     , rol_id             BIGINT       NOT NULL DEFAULT 3      REFERENCES roles(id) ON DELETE CASCADE
     , de_baja            BOOLEAN      NOT NULL DEFAULT false
+    , notificacion_id    BIGINT       REFERENCES notificaciones (id) ON DELETE CASCADE
+
 );
 
 DROP TABLE IF EXISTS categorias CASCADE;
@@ -153,4 +155,3 @@ INSERT INTO recursos (titulo, descripcion, contenido, usuario_id, categoria_id, 
 
 INSERT INTO propuestas (titulo, descripcion, usuario_id)
      VALUES ('Prueba de propuesta', 'descripcion de la propuesta', 2);
-
