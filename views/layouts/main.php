@@ -75,7 +75,7 @@ if (!isset($_COOKIE['politica'])) {
             ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Notificaciones', 'url' => ['/notificaciones/index'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Notificaciones', 'url' => ['/notificaciones/index'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true],
             ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
