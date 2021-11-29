@@ -14,7 +14,7 @@ $this->title = 'orientaT';
       <div class="container-wrap">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 text-center ftco-animate">
-            <h1 id="titulo">Recursos educativos accesibles, facilitadores y gratuitos.</h1>
+            <h1 id="titulo"></h1>
             <p>
               <?= Html::a('Registrarse', ['usuarios/create'], ['class' => 'btn btn-secondary px-4 py-3 mt-3']) ?>
             </p>
