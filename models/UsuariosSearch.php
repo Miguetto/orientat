@@ -17,7 +17,7 @@ class UsuariosSearch extends Usuarios
     public function rules()
     {
         return [
-            [['id', 'rol_id'], 'integer'],
+            [['id', 'rol_id', 'notificacion_id'], 'integer'],
             [['rol.rol', 'nombre', 'username'], 'string'],
             [['nombre', 'username', 'email', 'password', 'rol.rol', 'de_baja', 'created_at'], 'safe'],
         ];
@@ -75,6 +75,7 @@ class UsuariosSearch extends Usuarios
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'notificacion_id' => $this->notificacion_id,
         ]);
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])

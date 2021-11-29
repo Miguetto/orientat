@@ -12,16 +12,21 @@ use Yii;
  * @property string $titulo
  * @property string $descripcion
  * @property string $contenido
+ * @property string|null $enlace
  * @property string $created_at
- * @property string $imagen
- * @property string $pdfPdf
  * @property int $usuario_id
  * @property int $categoria_id
+ * @property int|null $comentario_id
  * @property int $likes
+ * @property string|null $imagen
+ * @property string|null $pdf_pdf
+ * @property bool $revisado
  *
+ * @property Comentarios[] $comentarios
+ * @property Likes[] $likes
+ * @property Notificaciones[] $notificaciones
  * @property Categorias $categoria
  * @property Usuarios $usuario
- * @property Likes $likes
  */
 class Recursos extends \yii\db\ActiveRecord
 {
@@ -116,6 +121,16 @@ class Recursos extends \yii\db\ActiveRecord
     public function getLikes()
     {
         return $this->hasMany(Likes::class, ['recurso_id' => 'id']);
+    }
+
+     /**
+     * Gets query for [[Notificaciones]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNotificaciones()
+    {
+        return $this->hasMany(Notificaciones::class, ['recurso_id' => 'id'])->inverseOf('recurso');
     }
 
     public function existeLike($recurso_id)
