@@ -6,6 +6,7 @@ use app\components\Utilidad;
 use app\models\Categorias;
 use app\models\Comentarios;
 use app\models\Likes;
+use app\models\Notificaciones;
 use Yii;
 use app\models\Recursos;
 use app\models\RecursosSearch;
@@ -113,6 +114,7 @@ class RecursosController extends Controller
     public function actionCreate()
     {
         $model = new Recursos();
+        $revisores = Usuarios::find()->where(['rol_id' => 2])->all();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->img = UploadedFile::getInstance($model, 'img');
@@ -120,6 +122,18 @@ class RecursosController extends Controller
             $model->upload();
             $model->uploadPdf();
             $model->save();
+
+            // Creamos notificación:
+                foreach($revisores as $revisor){
+                    $model_notificacion = new Notificaciones([
+                        'usuario_id' => $revisor->id,
+                        'recurso_id' => $model->id,
+                        'cuerpo' => 'Se ha creado un nuevo recurso: '. $model->titulo . ', y te ha sido asignado para revisar.'
+                    ]);
+                    $model_notificacion->save();
+                }
+            
+
             Yii::$app->session->setFlash(
                 'info',
                 'Recurso creado y en espera de ser revisado para publicarlo.'

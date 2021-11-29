@@ -17,9 +17,18 @@ use yii\web\IdentityInterface;
  * @property string|null $token_confirm
  * @property string|null $created_at
  * @property int $rol_id
+ * @property int $notificacion_id
  *
+ * @property Comentarios[] $comentarios
+ * @property Likes[] $likes
+ * @property Notificaciones[] $notificaciones
+ * @property Propuestas[] $propuestas
  * @property Recursos[] $recursos
+ * @property Respuestas[] $respuestas
  * @property Roles $rol
+ * @property Usuarios $notificacion
+ * @property Usuarios[] $usuarios
+ * @property Votos[] $votos
  */
 class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -46,8 +55,9 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['nombre', 'username', 'email'], 'required'],
             [['rol_id'], 'default', 'value' => 3],
-            [['rol_id'], 'integer'],
+            [['rol_id', 'notificacion_id'], 'integer'],
             [['de_baja'], 'default', 'value' => false],
+            [['notificacion_id'], 'default', 'value' => false],
             [['de_baja'], 'boolean'],
             [['created_at'], 'safe'],
             [['nombre', 'username', 'email', 'password', 'auth_key', 'token_confirm'], 'string', 'max' => 255],
@@ -78,6 +88,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             'created_at' => 'Creado',
             'de_baja' => 'De baja',
             'rol_id' => 'Rol',
+            'notificacion_id' => 'Notificacion ID',
         ];
     }
 
@@ -193,6 +204,26 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     public function getVotos()
     {
         return $this->hasMany(Votos::class, ['usuario_id' => 'id'])->inverseOf('usuarios');
+    }
+
+    /**
+     * Gets query for [[Notificaciones]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNotificaciones()
+    {
+        return $this->hasMany(Notificaciones::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
+     * Gets query for [[Usuarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuarios()
+    {
+        return $this->hasMany(Usuarios::class, ['notificacion_id' => 'id'])->inverseOf('notificacion');
     }
 
     /**

@@ -29,6 +29,8 @@ use yii\bootstrap4\ActiveForm;
         <?php }
     ?>
 
+    <?= $form->field($model, 'notificacion_id')->hiddenInput(['value' => null])->label(false)?>
+
     <div class="form-group">
         <?= Html::submitButton('Registrarse', ['class' => 'btn btn-success']) ?>
     </div>
