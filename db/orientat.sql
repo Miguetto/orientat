@@ -26,11 +26,9 @@ CREATE TABLE usuarios
     , auth_key           VARCHAR(255)
     , token_confirm      VARCHAR(255)
     , created_at         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , rol_id             BIGINT       NOT NULL DEFAULT 3      REFERENCES roles(id)    ON DELETE CASCADE
+    , rol_id             BIGINT       NOT NULL DEFAULT 3      REFERENCES roles(id) ON DELETE CASCADE
     , de_baja            BOOLEAN      NOT NULL DEFAULT false
-    , notificacion_id    BIGINT                               REFERENCES notificaciones(id) ON DELETE CASCADE
-
-
+    , notificacion_id    BIGINT       REFERENCES notificaciones(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS categorias CASCADE;
