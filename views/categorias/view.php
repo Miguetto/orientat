@@ -1,5 +1,6 @@
 <?php
 
+use app\components\Utilidad;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ButtonDropdown;
 use yii\widgets\DetailView;
@@ -46,9 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Filtrar recursos por: ',
                 'dropdown' => [
                     'items' => [
-                        ['label' => 'Imágenes', 'url' => ['categorias/filtroimg']],
-                        ['label' => 'PDF', 'url' => ['categorias/filtropdf']],
-                        ['label' => 'Completos', 'url' => ['categorias/filtrocomp']],
+                        ['label' => 'Imágenes', 'url' => ['categorias/filtroimg', 'id' =>$model->id]],
+                        ['label' => 'PDF', 'url' => ['categorias/filtropdf', 'id' =>$model->id]],
+                        ['label' => 'Completos', 'url' => ['categorias/filtrocomp', 'id' =>$model->id]],
+                        ['label' => 'Volver', 'url' => ['categorias/index']],
                     ],
                 ],
                 'options' => [
@@ -65,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <?php foreach ($recursos as $recurso) : ?>
             <div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated">
           <div class="blog-entry">
-            <a class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
+            <a class="block-20 d-flex align-items-end" style="background-image: url('<?= $recurso->getImagen(); ?>');">
               <div class="meta-date text-center p-2">
                 <span class="day"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
               </div>

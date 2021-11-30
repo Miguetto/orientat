@@ -141,35 +141,45 @@ class CategoriasController extends Controller
      * Recursos con imagenes.
      * @return mixed
      */
-    public function actionFiltroimg()
+    public function actionFiltroimg($id)
     {
+        $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $recursos = Recursos::find();
+        $recursos = Recursos::find()
+            ->where(['categoria_id' => $id])
+            ->andWhere(['not', ['imagen' => '']])->all();
+
+            Yii::debug($recursos);
         
         return $this->render('_img', [
+            'model' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos->all(),
-        ]);     
+            'recursos' => $recursos,
+        ]);   
     }
 
     /**
      * Recursos con pdf.
      * @return mixed
      */
-    public function actionFiltropdf()
+    public function actionFiltropdf($id)
     {
+        $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $recursos = Recursos::find();
+        $recursos = Recursos::find()
+        ->where(['categoria_id' => $id])
+        ->andWhere(['not', ['pdf_pdf' => '']])->all();
         
         return $this->render('_pdf', [
+            'model' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos->all(),
+            'recursos' => $recursos,
         ]);     
     }
 
@@ -177,17 +187,24 @@ class CategoriasController extends Controller
      * Recursos con pdf.
      * @return mixed
      */
-    public function actionFiltrocomp()
+    public function actionFiltrocomp($id)
     {
+        $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $recursos = Recursos::find();
+        $recursos = Recursos::find()
+            ->where(['categoria_id' => $id])
+            ->andWhere(['not', ['pdf_pdf' => '']])
+            ->andWhere(['not', ['imagen' => '']])
+            ->andWhere(['not', ['enlace' => '']])
+            ->all();
         
         return $this->render('_com', [
+            'model' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos->all(),
+            'recursos' => $recursos,
         ]);     
     }
 }
