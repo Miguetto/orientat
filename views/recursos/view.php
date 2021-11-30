@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </p>
                 <?php }else {} ?>
                 <div class="p-0 text-center">
-                    <?= Html::img($model->getImagen(), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
+                    <?= Html::img(Utilidad::getImg($model->imagen), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
                 </div>
                 <?php if($model->pdf_pdf != null){ ?>
                     <p class="p-0 text-center">Descarga el pdf del recurso:</p>

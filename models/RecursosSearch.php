@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Recursos;
+use Yii;
 
 /**
  * RecursosSearch represents the model behind the search form of `app\models\Recursos`.
@@ -41,7 +42,8 @@ class RecursosSearch extends Recursos
     public function search($params)
     {
         $query = Recursos::find()->joinWith('usuario');
-
+        $query2 = Recursos::find()->joinWith('categoria');
+        Yii::debug($query);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

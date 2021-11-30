@@ -114,7 +114,7 @@ $this->registerJs($jsDisLike, View::POS_END);
   </p>
 
 </div>
-<?= $this->render('_search', ['model' => $searchModel]); ?>
+<?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <section class="ftco-section bg-light">
   <div class="container">
