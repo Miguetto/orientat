@@ -11,14 +11,19 @@ use yii\bootstrap4\ActiveForm;
 <div class="recursos-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['filtropdf', 'id' => $id],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'titulo') ?>
+    <?= $form->field($model, 'titulo')
+             ->textInput([
+                 'placeholder' => 'Busqueda por titulo',
+                 'class' => 'form-style form-control'
+             ]) ?> 
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Limpiar', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

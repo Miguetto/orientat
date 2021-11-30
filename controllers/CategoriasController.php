@@ -57,15 +57,13 @@ class CategoriasController extends Controller
     public function actionView($id)
     {
         $categoria = $this->findModel($id);
-        $dataProviderRecursosCategoria = new ActiveDataProvider([
-            'query' => $categoria->getRecursos(),
-        ]);
-        $recursos = Recursos::find()->where(['categoria_id' => $id])->all();
+        $searchModel = new RecursosSearch();
+        $dataProvider = $searchModel->searchRecursosCategoria(Yii::$app->request->queryParams, $id);
 
         return $this->render('view', [
-            'model' => $categoria,
-            'recursos' => $recursos,
-            'dataProviderRecursosCategoria' => $dataProviderRecursosCategoria,
+            'categoria' => $categoria,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -145,19 +143,12 @@ class CategoriasController extends Controller
     {
         $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchRecursosImg(Yii::$app->request->queryParams, $id);
 
-        $recursos = Recursos::find()
-            ->where(['categoria_id' => $id])
-            ->andWhere(['not', ['imagen' => '']])->all();
-
-            Yii::debug($recursos);
-        
         return $this->render('_img', [
-            'model' => $categoria,
+            'categoria' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos,
         ]);   
     }
 
@@ -169,18 +160,13 @@ class CategoriasController extends Controller
     {
         $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchRecursosPdf(Yii::$app->request->queryParams, $id);
 
-        $recursos = Recursos::find()
-        ->where(['categoria_id' => $id])
-        ->andWhere(['not', ['pdf_pdf' => '']])->all();
-        
         return $this->render('_pdf', [
-            'model' => $categoria,
+            'categoria' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos,
-        ]);     
+        ]);    
     }
 
     /**
@@ -191,20 +177,12 @@ class CategoriasController extends Controller
     {
         $categoria = $this->findModel($id);
         $searchModel = new RecursosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchRecursosComp(Yii::$app->request->queryParams, $id);
 
-        $recursos = Recursos::find()
-            ->where(['categoria_id' => $id])
-            ->andWhere(['not', ['pdf_pdf' => '']])
-            ->andWhere(['not', ['imagen' => '']])
-            ->andWhere(['not', ['enlace' => '']])
-            ->all();
-        
         return $this->render('_com', [
-            'model' => $categoria,
+            'categoria' => $categoria,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos,
         ]);     
     }
 }

@@ -309,11 +309,9 @@ class UsuariosController extends Controller
         $searchModel = new UsuariosSearch();
         $searchModel2 = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
+        $dataProvider2 = $searchModel2->searchHerramientas(Yii::$app->request->queryParams);
 
         $recursos = Recursos::find();
-
-        $usuarios = Usuarios::find();
         
         return $this->render('herramientas', [
             'searchModel' => $searchModel,
