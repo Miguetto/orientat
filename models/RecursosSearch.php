@@ -41,11 +41,56 @@ class RecursosSearch extends Recursos
      */
     public function search($params)
     {
-        $query = Recursos::find()->joinWith('usuario');
-        $query2 = Recursos::find()->joinWith('categoria');
-        Yii::debug($query);
+        $query = Recursos::find()->where('revisado=true')->orderBy(['created_at' => SORT_DESC]);
         // add conditions that should always apply here
 
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchHerramientas($params)
+    {
+        $query = Recursos::find()->joinWith('usuario');
+    
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -81,4 +126,201 @@ class RecursosSearch extends Recursos
 
         return $dataProvider;
     }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchRecursosCategoria($params, $id)
+    {
+        $query = Recursos::find()->where(['categoria_id' => $id]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchRecursosImg($params, $id)
+    {
+        $query = Recursos::find()
+                         ->where(['categoria_id' => $id])
+                         ->andWhere(['not', ['imagen' => '']]);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchRecursosPdf($params, $id)
+    {
+        $query = Recursos::find()
+                           ->where(['categoria_id' => $id])
+                           ->andWhere(['not', ['pdf_pdf' => '']]);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchRecursosComp($params, $id)
+    {
+        $query = Recursos::find()
+                           ->where(['categoria_id' => $id])
+                           ->andWhere(['not', ['pdf_pdf' => '']])
+                           ->andWhere(['not', ['imagen' => '']])
+                           ->andWhere(['not', ['enlace' => '']]);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+    
 }

@@ -59,16 +59,12 @@ class RecursosController extends Controller
      */
     public function actionIndex()
     {
-        $model = Recursos::find()->one();
-        $recursos = Recursos::find()->where('revisado=true')->orderBy(['created_at' => SORT_DESC])->all();
         $searchModel = new RecursosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'recursos' => $recursos,
-            'model' => $model,
         ]);
     }
 
