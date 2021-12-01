@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                 ]) ?> <?php if($model->revisado == false){ ?>
                     <?= Html::a('Aceptar', ['revisado', 'id' => $model->id], ['class' => 'btn btn-secondary']) ?>
-
+                    <?= Html::a('Denegar', ['denegado', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
                     <?php } ?>
                 <?php } ?>
                 </p>

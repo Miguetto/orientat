@@ -208,7 +208,7 @@ class RecursosController extends Controller
     }
 
     /**
-     * Acción que actualiza el dato de la fila revisado y manda email al creador del recurso.
+     * Acción que actualiza el dato de la fila revisado, validando el recurso y manda email al creador del recurso.
      */
     public function actionRevisado($id)
     {
@@ -229,6 +229,32 @@ class RecursosController extends Controller
         Yii::$app->session->setFlash(
             'info',
             'Recurso revisado y aceptado correctamente.'
+        );
+        return $this->redirect(['recursos/index']);
+    }
+
+    /**
+     * Acción que manda email al creador del recurso informando de que se deniega el recurso.
+     */
+    public function actionDenegado($id)
+    {
+        $model = $this->findModel($id);
+
+        $body = 'Lo sentimos ' . $model->usuario->username . ', el recurso '. $model->titulo . ' ha sido denegado.';
+        
+        // envío del email:        
+        Yii::$app->mailer->compose()
+        ->setFrom(Yii::$app->params['smtpUsername'])
+        ->setTo($model->usuario->email)
+        ->setSubject('Recurso denegado ')
+        ->setHtmlBody($body)
+        ->send();
+
+        $model->delete();
+        
+        Yii::$app->session->setFlash(
+            'info',
+            'Recurso denegado correctamente.'
         );
         return $this->redirect(['recursos/index']);
     }
