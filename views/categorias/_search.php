@@ -15,11 +15,7 @@ use yii\bootstrap4\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'nombre')
-                ->textInput([
-                    'placeholder' => 'Busqueda por categoría',
-                    'class' => 'form-style form-control'
-                ]) ?>
+    <?= $form->field($model, 'nombre') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>

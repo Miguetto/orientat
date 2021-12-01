@@ -9,6 +9,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Notificaciones;
 use yii\helpers\Url;
 use dmstr\cookieconsent\widgets\CookieConsent;
 
@@ -18,6 +19,9 @@ $usuario_id = Yii::$app->user->id;
 $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 
 $urlCookie = Url::toRoute(['site/cookie', 'cadena' => 'politica'], $schema = true);
+
+$notificaciones = Notificaciones::find()->joinWith('usuario')->where(['visto' => false])->count();
+
 
 $jsCook = <<<EOT
     $(#modalCook).show();    
@@ -75,7 +79,9 @@ if (!isset($_COOKIE['politica'])) {
             ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Notificaciones', 'url' => ['/notificaciones/index'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true],
+            ['label' => 'Notificaciones: '. $notificaciones, 
+                'url' => ['/notificaciones/index'],
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true],
             ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

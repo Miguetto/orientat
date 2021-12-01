@@ -161,14 +161,34 @@ class Recursos extends \yii\db\ActiveRecord
 
 
     /**
-    * Devuelve la url donde está alojadla imagen
+    * Devuelve la url imágen donde está alojadla imagen
     *
-    * @return string $imagen
+    * @return string $img
     */
     public function getImagen()
     {
-        $img = $this->imagen ?? 'image_1.jpg';
-        return Utilidad::getImg($img);
+        switch($this->categoria->nombre){
+            case 'Educación infantil':
+                $img = $this->imagen ?? 'image_1.jpg';
+                return Utilidad::getImg($img);
+                break;
+            case 'Educación primaria':
+                $img = $this->imagen ?? 'image_2.jpg';
+                return Utilidad::getImg($img);
+                break;
+            case 'Educación secundaria':
+                $img = $this->imagen ?? 'image_3.jpg';
+                return Utilidad::getImg($img);
+                break;
+            case 'Formación profesional':
+                $img = $this->imagen ?? 'image_4.jpg';
+                return Utilidad::getImg($img);
+                break;
+            default:
+                $img = $this->imagen ?? 'image_1.jpg';
+                return Utilidad::getImg($img);
+            break;
+        }  
     }
 
     /**

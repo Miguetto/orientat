@@ -45,7 +45,10 @@ class NotificacionesSearch extends Notificaciones
         if(Yii::$app->user->identity->esAdmin === true){
             $query = Notificaciones::find();
         } else {
-            $query = Notificaciones::find()->where(['usuario_id' => Yii::$app->user->id]);    
+            $query = Notificaciones::find()
+                                    ->where(['usuario_id' => Yii::$app->user->id])
+                                    ->andWhere(['visto' => false])
+                                    ->orderBy(['visto' => SORT_ASC]);    
         }
 
         // add conditions that should always apply here

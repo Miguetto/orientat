@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Notificaciones;
 use app\models\NotificacionesSearch;
+use app\models\Usuarios;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -37,10 +38,12 @@ class NotificacionesController extends Controller
     {
         $searchModel = new NotificacionesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $notificaciones = Notificaciones::find()->joinWith('usuario')->where(['visto' => false])->count();
         
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'notificaciones' => $notificaciones,
         ]);
     }
 
