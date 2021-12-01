@@ -95,6 +95,7 @@ $jsDisLike = <<<EOT
           });
         });
 EOT;
+
 $this->registerJs($jsLike, View::POS_END);
 $this->registerJs($jsDisLike, View::POS_END);
 

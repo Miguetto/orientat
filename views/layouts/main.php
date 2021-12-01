@@ -12,7 +12,7 @@ use app\assets\AppAsset;
 use app\models\Notificaciones;
 use yii\helpers\Url;
 use dmstr\cookieconsent\widgets\CookieConsent;
-
+use yii\web\View;
 
 AppAsset::register($this);
 $usuario_id = Yii::$app->user->id;
@@ -79,8 +79,10 @@ if (!isset($_COOKIE['politica'])) {
             ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Notificaciones: '. $notificaciones, 
+            ['label' => 'Notificaciones' 
+                . ($notificaciones > 0 ? Html::tag('span', $notificaciones, ['class' => 'badge badge-pill badge-success', 'style' => 'margin: 5px']) : ''), 
                 'url' => ['/notificaciones/index'],
+                'encode' => false,
                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true],
             ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (

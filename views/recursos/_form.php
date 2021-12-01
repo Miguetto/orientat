@@ -25,12 +25,14 @@ $validacion = <<<EOT
         .done(function (data) {
             if (data.find) {
                 $('#titulo-v').show();
+                $('#titulo-v').addClass('validacion');
                 $('#titulo-v').html('Error: el título ya existe.');
                 $('#titulo-v').addClass('text-danger');
                 $('.btn').attr("disabled","disabled");
             } else {
                 $('#titulo-v').html(data.titulo);
                 $('#titulo-v').hide();
+                $('.btn').removeAttr("disabled");
             }
         });
     });
@@ -48,11 +50,8 @@ $this->registerJs($validacion, View::POS_END);
     <?= $form->field($model, 'pdf')->fileInput() ?>
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
-
-    <?= Html::label('', '', [
-                'id' => 'titulo-v',
-            ]) 
-    ?>
+    
+    <p id="titulo-v"></p>
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
