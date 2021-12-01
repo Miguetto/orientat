@@ -39,7 +39,7 @@ class NotificacionesController extends Controller
         $searchModel = new NotificacionesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $notificaciones = Notificaciones::find()->joinWith('usuario')->where(['visto' => false])->count();
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

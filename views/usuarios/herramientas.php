@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'class' => 'btn btn-sm btn-primary',
+                                'style' => 'margin-right: 5px',
                                 'data-method' => 'POST',
                             ],
                         );
@@ -58,6 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                                 [
                                     'class' => 'btn btn-sm btn-secondary',
+                                    'style' => 'margin-right: 5px',
                                     'data-method' => 'POST',
                                 ],
                             );
@@ -118,6 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'class' => 'btn btn-sm btn-primary',
+                            'style' => 'margin-right: 5px',
                             'data-method' => 'POST',
                         ],
                     );
@@ -132,6 +135,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'class' => 'btn btn-sm btn-secondary',
+                                'style' => 'margin-right: 5px',
                                 'data-method' => 'POST',
                             ],
                         );
