@@ -31,12 +31,14 @@ class AppAsset extends AssetBundle
         'css/ionicons.min.css',
         'css/flaticon.css',
         'css/icomoon.css',
+        'css/jquery.sBubble-0.1.1.css',
     ];
     public $js = [
         'js/pluginNoclase.js',
         '//cdn.jsdelivr.net/jquery.typeit/3.0.1/typeit.min.js',
         'js/code.js',
         'js/sw.js',
+        'js/jquery.sBubble-0.1.1.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
