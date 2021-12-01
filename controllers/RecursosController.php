@@ -299,4 +299,24 @@ class RecursosController extends Controller
 
         }
     }
+
+    /**
+     * Buscar en la base de datos el título, para validar si el que está introduciendo ya existe.
+     *
+     * @param string $titulo
+     * @return Object Json
+     */
+    public function actionExisteTitulo($titulo)
+    {
+        if (Yii::$app->request->isAjax) {
+            $recurso = Recursos::findOne(['titulo' => $titulo]);
+            if ($recurso === null) {
+                return $this->asJson(['find' => false]);
+            }
+            return $this->asJson([
+                'find' => true,
+                'titulo' => $recurso->titulo,
+            ]);
+        }
+    }
 }

@@ -110,6 +110,7 @@ $this->registerJs($jsDisLike, View::POS_END);
     </a>
     <div class="text bg-white p-4">
       <h3 class="heading"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
+      <p><?= $recurso->categoria->nombre; ?></p>
       <p><?= $recurso->descripcion; ?></p>
       <div id="sl<?= $recurso->id ?>" class="d-flex align-items-center mt-4">
         <p class="mb-0" style="margin-right: 05px;">
