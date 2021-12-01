@@ -128,7 +128,6 @@ class RecursosController extends Controller
                     ]);
                     $model_notificacion->save();
                 }
-            
 
             Yii::$app->session->setFlash(
                 'info',
@@ -209,14 +208,24 @@ class RecursosController extends Controller
     }
 
     /**
-     * Acción que actualiza el dato de la fila revisado.
+     * Acción que actualiza el dato de la fila revisado y manda email al creador del recurso.
      */
     public function actionRevisado($id)
     {
         $model = $this->findModel($id);
-
         $model->revisado = 'true';
         $model->save();
+
+        $body = 'Enhorabuena ' . $model->usuario->username . ', el recurso '. $model->titulo . ' ha sido validado con éxito.';
+        
+        // envío del email:        
+        Yii::$app->mailer->compose()
+        ->setFrom(Yii::$app->params['smtpUsername'])
+        ->setTo($model->usuario->email)
+        ->setSubject('Recurso validado ')
+        ->setHtmlBody($body)
+        ->send();
+
         Yii::$app->session->setFlash(
             'info',
             'Recurso revisado y aceptado correctamente.'

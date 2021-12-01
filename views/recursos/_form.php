@@ -25,8 +25,7 @@ $validacion = <<<EOT
         .done(function (data) {
             if (data.find) {
                 $('#titulo-v').show();
-                $('#titulo-v').addClass('validacion');
-                $('#titulo-v').html('Error: el título ya existe.');
+                $('#titulo-v').html('Ups!, el título ya existe.');
                 $('#titulo-v').addClass('text-danger');
                 $('.btn').attr("disabled","disabled");
             } else {
