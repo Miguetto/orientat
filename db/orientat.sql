@@ -70,6 +70,17 @@ CREATE TABLE notificaciones
   , cuerpo         VARCHAR(255) NOT NULL
 );
 
+DROP TABLE IF EXISTS incidencias CASCADE;
+
+CREATE TABLE incidencias
+(
+    id             BIGSERIAL    PRIMARY KEY
+  , usuario_id     BIGINT       NOT NULL REFERENCES usuarios   (id) ON DELETE CASCADE
+  , receptor_id    BIGINT       NOT NULL 
+  , visto          BOOLEAN      NOT NULL DEFAULT false
+  , cuerpo         VARCHAR(255) NOT NULL
+);
+
 DROP TABLE IF EXISTS respuestas CASCADE;
 
 CREATE TABLE respuestas
