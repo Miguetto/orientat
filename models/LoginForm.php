@@ -60,6 +60,11 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            if($this->getUser()->de_baja){
+                $correo = Usuarios::find()->where(['rol_id' => 1])->one()['email'];
+                Yii::$app->session->setFlash('warning',  'Estás de baja, consulta con el admin ('.$correo.').');
+                return false;
+            }
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;

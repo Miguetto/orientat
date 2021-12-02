@@ -9,6 +9,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Incidencias;
 use app\models\Notificaciones;
 use yii\helpers\Url;
 use dmstr\cookieconsent\widgets\CookieConsent;
@@ -21,6 +22,7 @@ $url = Url::to(['usuarios/view', 'id' => $usuario_id]);
 $urlCookie = Url::toRoute(['site/cookie', 'cadena' => 'politica'], $schema = true);
 
 $notificaciones = Notificaciones::find()->joinWith('usuario')->where(['visto' => false])->count();
+$incidencias = Incidencias::find()->joinWith('usuario')->where(['visto' => false])->count();
 
 
 $jsCook = <<<EOT
@@ -79,6 +81,11 @@ if (!isset($_COOKIE['politica'])) {
             ['label' => 'Propuestas', 'url' => ['/propuestas/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Recursos', 'url' => ['/recursos/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Categorías', 'url' => ['/categorias/index'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Incidencias' 
+                . ($incidencias > 0 && !Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true ? Html::tag('span', $incidencias, ['class' => 'badge badge-pill badge-success', 'style' => 'margin: 5px']) : ''), 
+                'url' => ['/incidencias/index'],
+                'encode' => false,
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true  ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true,],
             ['label' => 'Notificaciones' 
                 . ($notificaciones > 0 ? Html::tag('span', $notificaciones, ['class' => 'badge badge-pill badge-success', 'style' => 'margin: 5px']) : ''), 
                 'url' => ['/notificaciones/index'],

@@ -29,6 +29,7 @@ use yii\web\IdentityInterface;
  * @property Usuarios $notificacion
  * @property Usuarios[] $usuarios
  * @property Votos[] $votos
+ * @property Incidencias[] $incidencias
  */
 class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -217,6 +218,16 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Gets query for [[Incidencias]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIncidencias()
+    {
+        return $this->hasMany(Incidencias::class, ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
      * Gets query for [[Usuarios]].
      *
      * @return \yii\db\ActiveQuery
@@ -247,7 +258,6 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         $usuario = static::findOne(Yii::$app->user->id);
         return $usuario->rol->rol === 'revisor';
     }
-
     
     public static function findByLogin($username)
     {
