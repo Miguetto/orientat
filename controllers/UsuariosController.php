@@ -321,4 +321,24 @@ class UsuariosController extends Controller
             'dataProvider2' => $dataProvider2,
         ]);        
     }
+
+    /**
+     * Buscar en la base de datos el username, para validar si el que está introduciendo ya existe.
+     *
+     * @param string $username
+     * @return Object Json
+     */
+    public function actionExisteUsername($username)
+    {
+        if (Yii::$app->request->isAjax) {
+            $usuario = Usuarios::findOne(['username' => $username]);
+            if ($usuario === null) {
+                return $this->asJson(['find' => false]);
+            }
+            return $this->asJson([
+                'find' => true,
+                'username' => $usuario->username,
+            ]);
+        }
+    }
 }

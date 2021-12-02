@@ -10,34 +10,6 @@ use yii\web\View;
 /* @var $model app\models\Recursos */
 /* @var $form yii\bootstrap4\ActiveForm */
 
-$urlTitulo = Url::to(['recursos/existe-titulo']);
-
-$validacion = <<<EOT
-    $('#recursos-titulo').blur(function (ev) {
-        var titulo = $(this).val();
-        $.ajax({
-            type: 'GET',
-            url: '$urlTitulo',
-            data: {
-                titulo: titulo
-            }
-        })
-        .done(function (data) {
-            if (data.find) {
-                $('#titulo-v').show();
-                $('#titulo-v').html('Ups!, el título ya existe.');
-                $('#titulo-v').addClass('text-danger');
-                $('.btn').attr("disabled","disabled");
-            } else {
-                $('#titulo-v').html(data.titulo);
-                $('#titulo-v').hide();
-                $('.btn').removeAttr("disabled");
-            }
-        });
-    });
-EOT;
-$this->registerJs($validacion, View::POS_END);
-
 ?>
 
 <div class="recursos-form">
@@ -49,8 +21,6 @@ $this->registerJs($validacion, View::POS_END);
     <?= $form->field($model, 'pdf')->fileInput() ?>
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
-    
-    <p id="titulo-v"></p>
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 

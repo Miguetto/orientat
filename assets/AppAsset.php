@@ -39,6 +39,7 @@ class AppAsset extends AssetBundle
         'js/code.js',
         'js/sw.js',
         'js/jquery.sBubble-0.1.1.js',
+        '//cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

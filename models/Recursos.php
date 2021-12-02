@@ -58,7 +58,7 @@ class Recursos extends \yii\db\ActiveRecord
             [['titulo', 'descripcion', 'enlace'], 'string', 'max' => 255],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['categoria_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::class, 'targetAttribute' => ['usuario_id' => 'id']],
-            [['img'], 'image', 'extensions' => 'png, jpg, jpeg'],
+            [['img'], 'image', 'extensions' => ['png, jpg, jpeg']],
             [['pdf'], 'file', 'extensions' => 'pdf'],
         ];
     }
