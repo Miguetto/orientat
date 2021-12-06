@@ -31,7 +31,7 @@
 
 ![Pruebas Codeclimate](images/anexos/codeclimate.png)
 
-(**([R34](https://github.com/Miguetto/orientat/issues/34)) Code Climate**).
+(**([R34](https://github.com/Miguetto/orientat/issues/34)) Validación HTML5, CSS3 y Accesibilidad**).
 
 **HTML**
 
@@ -44,6 +44,20 @@
 **Accesibilidad**
 
 ![Validación accesibilidad](images/anexos/validacionacc.png)
+
+(**([R36](https://github.com/Miguetto/orientat/issues/36)) Varios navegadores**).
+
+**Brave**
+
+![Validación HTML](images/anexos/brave.png)
+
+**Chrome**
+
+![Validación CSS](images/anexos/chrome.png)
+
+**Mozilla Firefox**
+
+![Validación accesibilidad](images/anexos/firefox.png)
 
 
 
