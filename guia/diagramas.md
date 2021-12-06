@@ -2,8 +2,8 @@
 
 ## Diagramas de clases
 
-Incluir.
+![Diagrama Clase](images/anexos/diagramaclase.png)
 
 ## Diagramas de estructura lógica de datos
 
-Incluir.
+![Diagrama ER](images/anexos/diagramaer.png)
