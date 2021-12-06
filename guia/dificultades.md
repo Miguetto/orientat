@@ -1,5 +1,7 @@
 # Dificultades encontradas
 
-Explicar, indicando también las soluciones adoptadas en cada caso.
+En principio no econtré muchas dificultades en general, salvo en la parte de subida de ficheros y en la plantilla utilizada.
 
-Incluir aquí el elemento de innovación que se indicó en la propuesta.
+#### Elementos de innovación:
+
+*Amazon S3:* Algunas dificultades a la hora de entender el mecanismo de los buckets y demás. Pero le fui encontrando solución.
