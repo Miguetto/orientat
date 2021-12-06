@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/6b76b2c8/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/3aa8acdc/solarized-light.css" rel="stylesheet">
+<link href="./assets/3554c2de/style.css" rel="stylesheet">
+<script src="./assets/ce9a450/jquery.js"></script>
+<script src="./assets/6b76b2c8/js/bootstrap.js"></script>
+<script src="./assets/8a4e3615/jssearch.js"></script>    <title>Utilidad, app\components\Utilidad - API del proyecto</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w138" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w138-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">API del proyecto</a></div><div id="w138-collapse" class="collapse navbar-collapse"><ul id="w139" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li>
+<li><a href="../README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-130" data-toggle="collapse" data-parent="#navigation">Not namespaced classes <b class="caret"></b></a><div id="navigation-130" class="submenu panel-collapse collapse"><a class="list-group-item" href="./yii.html">Yii</a>
+<a class="list-group-item" href="./yiirequirementchecker.html">YiiRequirementChecker</a></div>
+<a class="list-group-item" href="#navigation-131" data-toggle="collapse" data-parent="#navigation">app\assets <b class="caret"></b></a><div id="navigation-131" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-assets-appasset.html">AppAsset</a></div>
+<a class="list-group-item" href="#navigation-132" data-toggle="collapse" data-parent="#navigation">app\commands <b class="caret"></b></a><div id="navigation-132" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-commands-hellocontroller.html">HelloController</a></div>
+<a class="list-group-item active" href="#navigation-133" data-toggle="collapse" data-parent="#navigation">app\components <b class="caret"></b></a><div id="navigation-133" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./app-components-herokutarget.html">HerokuTarget</a>
+<a class="list-group-item active" href="./app-components-utilidad.html">Utilidad</a></div>
+<a class="list-group-item" href="#navigation-134" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-134" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-controllers-categoriascontroller.html">CategoriasController</a>
+<a class="list-group-item" href="./app-controllers-comentarioscontroller.html">ComentariosController</a>
+<a class="list-group-item" href="./app-controllers-incidenciascontroller.html">IncidenciasController</a>
+<a class="list-group-item" href="./app-controllers-likescontroller.html">LikesController</a>
+<a class="list-group-item" href="./app-controllers-notificacionescontroller.html">NotificacionesController</a>
+<a class="list-group-item" href="./app-controllers-propuestascontroller.html">PropuestasController</a>
+<a class="list-group-item" href="./app-controllers-recursoscontroller.html">RecursosController</a>
+<a class="list-group-item" href="./app-controllers-respuestascontroller.html">RespuestasController</a>
+<a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./app-controllers-usuarioscontroller.html">UsuariosController</a>
+<a class="list-group-item" href="./app-controllers-votoscontroller.html">VotosController</a></div>
+<a class="list-group-item" href="#navigation-135" data-toggle="collapse" data-parent="#navigation">app\models <b class="caret"></b></a><div id="navigation-135" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-models-categorias.html">Categorias</a>
+<a class="list-group-item" href="./app-models-categoriassearch.html">CategoriasSearch</a>
+<a class="list-group-item" href="./app-models-comentarios.html">Comentarios</a>
+<a class="list-group-item" href="./app-models-comentariossearch.html">ComentariosSearch</a>
+<a class="list-group-item" href="./app-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./app-models-incidencias.html">Incidencias</a>
+<a class="list-group-item" href="./app-models-incidenciassearch.html">IncidenciasSearch</a>
+<a class="list-group-item" href="./app-models-likes.html">Likes</a>
+<a class="list-group-item" href="./app-models-likessearch.html">LikesSearch</a>
+<a class="list-group-item" href="./app-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-models-notificaciones.html">Notificaciones</a>
+<a class="list-group-item" href="./app-models-notificacionessearch.html">NotificacionesSearch</a>
+<a class="list-group-item" href="./app-models-propuestas.html">Propuestas</a>
+<a class="list-group-item" href="./app-models-propuestassearch.html">PropuestasSearch</a>
+<a class="list-group-item" href="./app-models-recursos.html">Recursos</a>
+<a class="list-group-item" href="./app-models-recursossearch.html">RecursosSearch</a>
+<a class="list-group-item" href="./app-models-respuestas.html">Respuestas</a>
+<a class="list-group-item" href="./app-models-respuestassearch.html">RespuestasSearch</a>
+<a class="list-group-item" href="./app-models-roles.html">Roles</a>
+<a class="list-group-item" href="./app-models-user.html">User</a>
+<a class="list-group-item" href="./app-models-usuarios.html">Usuarios</a>
+<a class="list-group-item" href="./app-models-usuariossearch.html">UsuariosSearch</a>
+<a class="list-group-item" href="./app-models-votos.html">Votos</a>
+<a class="list-group-item" href="./app-models-votossearch.html">VotosSearch</a></div>
+<a class="list-group-item" href="#navigation-136" data-toggle="collapse" data-parent="#navigation">app\widgets <b class="caret"></b></a><div id="navigation-136" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-widgets-alert.html">Alert</a>
+<a class="list-group-item" href="./app-widgets-datacolumn.html">DataColumn</a></div>
+<a class="list-group-item" href="#navigation-137" data-toggle="collapse" data-parent="#navigation">dmstr\cookieconsent\assets <b class="caret"></b></a><div id="navigation-137" class="submenu panel-collapse collapse"><a class="list-group-item" href="./dmstr-cookieconsent-assets-cookieconsentasset.html">CookieConsentAsset</a>
+<a class="list-group-item" href="./dmstr-cookieconsent-assets-cookieconsentjsasset.html">CookieConsentJSAsset</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class app\components\Utilidad</h1>
+<div class="top-nav">
+    <a href="index.html">All Classes</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="app-components-utilidad.html">app\components\Utilidad</a></td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong></strong></p>
+    
+    </div>
+
+<a id="properties"></a>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="borrarImgS3()">
+        <td><a href="app-components-utilidad.html#borrarImgS3()-detail">borrarImgS3()</a></td>
+        <td>Borra la imagen alojada en el bucket de aws</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="borrarPdfS3()">
+        <td><a href="app-components-utilidad.html#borrarPdfS3()-detail">borrarPdfS3()</a></td>
+        <td>Borra el fichero alojado en el bucket de aws</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="botonResponder()">
+        <td><a href="app-components-utilidad.html#botonResponder()-detail">botonResponder()</a></td>
+        <td></td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="existeComentario()">
+        <td><a href="app-components-utilidad.html#existeComentario()-detail">existeComentario()</a></td>
+        <td>Función para comprobar si el usuario ya ha comentado un recurso</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="formatoFecha()">
+        <td><a href="app-components-utilidad.html#formatoFecha()-detail">formatoFecha()</a></td>
+        <td></td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="getImg()">
+        <td><a href="app-components-utilidad.html#getImg()-detail">getImg()</a></td>
+        <td>Devuelve la url de la imagen almacenada en el bucket</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="getPdf()">
+        <td><a href="app-components-utilidad.html#getPdf()-detail">getPdf()</a></td>
+        <td>Devuelve la url del pdf almacenado en el bucket</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="mostrarPdf()">
+        <td><a href="app-components-utilidad.html#mostrarPdf()-detail">mostrarPdf()</a></td>
+        <td></td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="mostrarRespuesta()">
+        <td><a href="app-components-utilidad.html#mostrarRespuesta()-detail">mostrarRespuesta()</a></td>
+        <td>Función para mostrar la respuesta a un comentario</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="s3Eliminar()">
+        <td><a href="app-components-utilidad.html#s3Eliminar()-detail">s3Eliminar()</a></td>
+        <td>Elimina un recurso de Amazon S3</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="subirImgS3()">
+        <td><a href="app-components-utilidad.html#subirImgS3()-detail">subirImgS3()</a></td>
+        <td>Sube la imagen a AWS S3</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+            <tr id="subirPdfS3()">
+        <td><a href="app-components-utilidad.html#subirPdfS3()-detail">subirPdfS3()</a></td>
+        <td>Sube el fichero pdf a AWS S3</td>
+        <td><a href="app-components-utilidad.html">app\components\Utilidad</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="borrarImgS3()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#borrarImgS3()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        borrarImgS3()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Borra la imagen alojada en el bucket de aws</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#borrarImgS3()-detail">borrarImgS3</a></strong> ( <span style="color: #0000BB">$imagen</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$imagen</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="borrarPdfS3()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#borrarPdfS3()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        borrarPdfS3()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Borra el fichero alojado en el bucket de aws</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#borrarPdfS3()-detail">borrarPdfS3</a></strong> ( <span style="color: #0000BB">$pdf_pdf</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$pdf_pdf</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="botonResponder()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#botonResponder()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        botonResponder()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#botonResponder()-detail">botonResponder</a></strong> ( <span style="color: #0000BB">$receptor</span>, <span style="color: #0000BB">$emisor</span>, <span style="color: #0000BB">$recurso_id</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$receptor</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$emisor</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$recurso_id</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="existeComentario()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#existeComentario()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        existeComentario()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Función para comprobar si el usuario ya ha comentado un recurso</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#existeComentario()-detail">existeComentario</a></strong> ( <span style="color: #0000BB">$id</span>, <span style="color: #0000BB">$usuarioId</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$usuarioId</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="formatoFecha()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#formatoFecha()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        formatoFecha()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#formatoFecha()-detail">formatoFecha</a></strong> ( <span style="color: #0000BB">$dt</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$dt</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getImg()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#getImg()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getImg()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Devuelve la url de la imagen almacenada en el bucket</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="app-components-utilidad.html#getImg()-detail">getImg</a></strong> ( <span style="color: #0000BB">$img</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$img</span></td>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>$imagen</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getPdf()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#getPdf()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getPdf()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Devuelve la url del pdf almacenado en el bucket</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="app-components-utilidad.html#getPdf()-detail">getPdf</a></strong> ( <span style="color: #0000BB">$pdf</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$pdf</span></td>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>$pdfPdf</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="mostrarPdf()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#mostrarPdf()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        mostrarPdf()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#mostrarPdf()-detail">mostrarPdf</a></strong> ( <span style="color: #0000BB">$pdf_pdf</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$pdf_pdf</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="mostrarRespuesta()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#mostrarRespuesta()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        mostrarRespuesta()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Función para mostrar la respuesta a un comentario</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#mostrarRespuesta()-detail">mostrarRespuesta</a></strong> ( <span style="color: #0000BB">$comentario_id</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$comentario_id</span></td>
+                  <td class="param-type-col"></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="s3Eliminar()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#s3Eliminar()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        s3Eliminar()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Elimina un recurso de Amazon S3</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="app-components-utilidad.html#s3Eliminar()-detail">s3Eliminar</a></strong> ( <span style="color: #0000BB">$key</span>, <span style="color: #0000BB">$bucketName</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$key</span></td>
+                  <td class="param-type-col">\app\components\[type]</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$bucketName</span></td>
+                  <td class="param-type-col">\app\components\[type]</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="subirImgS3()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#subirImgS3()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        subirImgS3()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Sube la imagen a AWS S3</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="app-components-utilidad.html#subirImgS3()-detail">subirImgS3</a></strong> ( <span style="color: #0000BB">$archivo</span>, <span style="color: #0000BB">$titulo</span>, <span style="color: #0000BB">$rutaImg</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$archivo</span></td>
+                  <td class="param-type-col">\app\components\file</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$titulo</span></td>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$rutaImg</span></td>
+                  <td class="param-type-col">mixed</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>$titulo</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="subirPdfS3()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-components-utilidad.html#subirPdfS3()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        subirPdfS3()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Sube el fichero pdf a AWS S3</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="app-components-utilidad.html#subirPdfS3()-detail">subirPdfS3</a></strong> ( <span style="color: #0000BB">$archivo</span>, <span style="color: #0000BB">$titulo</span>, <span style="color: #0000BB">$rutaPdf</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$archivo</span></td>
+                  <td class="param-type-col">\app\components\file</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$titulo</span></td>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$rutaPdf</span></td>
+                  <td class="param-type-col">mixed</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>$titulo</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 06 Dec 2021 19:32:11 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

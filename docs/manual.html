@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="language" content="en" />
         
-<link href="./assets/3d4afe9f/css/bootstrap.css" rel="stylesheet">
-<link href="./assets/f41cdb25/solarized_light.css" rel="stylesheet">
-<link href="./assets/e60af3ab/style.css" rel="stylesheet">
-<script src="./assets/e5c7cbaf/jquery.js"></script>
-<script src="./assets/3d4afe9f/js/bootstrap.js"></script>
-<script src="./assets/e309e3cc/jssearch.js"></script>    <title>Manual de usuario - Manual de usuario - Guía del proyecto</title>
+<link href="./assets/6b76b2c8/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/3aa8acdc/solarized-light.css" rel="stylesheet">
+<link href="./assets/3554c2de/style.css" rel="stylesheet">
+<script src="./assets/ce9a450/jquery.js"></script>
+<script src="./assets/6b76b2c8/js/bootstrap.js"></script>
+<script src="./assets/8a4e3615/jssearch.js"></script>    <title>Manual de usuario - Manual de usuario - Guía del proyecto</title>
 </head>
 <body>
 
@@ -49,7 +49,47 @@
 <a class="list-group-item" href="#navigation-44" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-44" class="submenu panel-collapse collapse"><a class="list-group-item" href="./conclusiones.html">Conclusiones</a></div>
 <a class="list-group-item" href="#navigation-45" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-45" class="submenu panel-collapse collapse"><a class="list-group-item" href="./anexos.html">Anexos</a></div></div>    </div>
     <div class="col-md-9 guide-content" role="main">
-        <h1>Manual de usuario <span id="manual-de-usuario"></span><a href="#manual-de-usuario" class="hashlink">&para;</a></h1><p>Explicar, incluyendo capturas de pantalla.</p>
+        <h1>Manual de usuario <span id="manual-de-usuario"></span><a href="#manual-de-usuario" class="hashlink">&para;</a></h1><h3>Pantalla de inicio (sin estar logueado) <span id="pantalla-de-inicio-sin-estar-logueado"></span><a href="#pantalla-de-inicio-sin-estar-logueado" class="hashlink">&para;</a></h3><p>La página principal dispone de un botón en el centro de la pantalla para quienes no estén registrados, además de contener dos enlaces en la parte superior derecha, uno para el registro y otro para loguearse en el caso de que ya se esté registrado.</p>
+<p><img src="images/manual/index.png" alt="Index" /></p>
+<h3>Pantalla de registro <span id="pantalla-de-registro"></span><a href="#pantalla-de-registro" class="hashlink">&para;</a></h3><p>En la página de registro aparece un formulario dónde introduciremos lo que nos pide: Nombre, Nombre de usuario, Email, Contraseña, Repetir contraseña. Una vez añadido todo le damos a guardar. En este momento nos muestra un mensaje diciendo que necesitamos validarnos por correo, miramos el correo con el que hemos hecho el registro y aceptamos la validación.</p>
+<p>Una vez todo lo anterior, estamos preparados para loguearnos.</p>
+<p><img src="images/manual/registro.png" alt="Registro" /></p>
+<h3>Pantalla de Logueo <span id="pantalla-de-logueo"></span><a href="#pantalla-de-logueo" class="hashlink">&para;</a></h3><p>Esta página muestra un formulario de acceso a usuarios registrados, introduciremos el nombre de usuario y la contraseña. Aparece la opción para recordar los datos, para cuando vuelvas a entrar en la aplicación sigas logueado.</p>
+<p><img src="images/manual/login.png" alt="Login" /></p>
+<h3>Pantalla de inicio (estando logueado como Administrador) <span id="pantalla-de-inicio-estando-logueado-como-administrador"></span><a href="#pantalla-de-inicio-estando-logueado-como-administrador" class="hashlink">&para;</a></h3><p>Si el usuario es admin aparece en la parte superior un menú con más opciones que si el usuario es revisor o usuario.
+La página que nos aparece es la de Mi perfil, donde aparecen acciones a realizar con nuestro perfil, algunos detalles de nuestro perfil y el listado de nuestros recursos.</p>
+<p><img src="images/manual/perfilAdmin.png" alt="Mi perfil" /></p>
+<h3>Pantalla de inicio (estando logueado como Revisor) <span id="pantalla-de-inicio-estando-logueado-como-revisor"></span><a href="#pantalla-de-inicio-estando-logueado-como-revisor" class="hashlink">&para;</a></h3><p>Muy similar a la anterior, pero con menos opciones en el menú.</p>
+<p><img src="images/manual/perfilRevisor.png" alt="Mi perfil" /></p>
+<h3>Pantalla de inicio (estando logueado como Usuario) <span id="pantalla-de-inicio-estando-logueado-como-usuario"></span><a href="#pantalla-de-inicio-estando-logueado-como-usuario" class="hashlink">&para;</a></h3><p>Muy similar a la anterior pero en el menú aparecen las opciones que podemos ver con el tipo de usuario.</p>
+<p><img src="images/manual/perfilUsuario.png" alt="Mi perfil" /></p>
+<h3>Pantalla de administración <span id="pantalla-de-administracion"></span><a href="#pantalla-de-administracion" class="hashlink">&para;</a></h3><p>El administrador es el único que puede visitar este apartado, y en él se encuentran dos tablas:</p>
+<p>Usuarios: para poder gestionar los diferentes usuarios que están registrados en la aplicación.
+Recursos: para poder gestionar los diferentes recursos que están almacenados en la aplicación.</p>
+<p><img src="images/manual/administracion.png" alt="Administracion" /></p>
+<h3>Pantalla de propuestas <span id="pantalla-de-propuestas"></span><a href="#pantalla-de-propuestas" class="hashlink">&para;</a></h3><p>En esta página encontramos las diferentes propuestas creadas por los revisores a las cuales podemos votar para que la creen como recurso.</p>
+<p>Si eres admin o revisor aparece un botón para crear la propuesta y si eres usuario no.</p>
+<p>Aparece también el título de la propuesta, la descripcion, el número de votos y un botón para dicha acción.</p>
+<p><img src="images/manual/propuestas.png" alt="Propuestas" /></p>
+<h3>Pantalla de recursos <span id="pantalla-de-recursos"></span><a href="#pantalla-de-recursos" class="hashlink">&para;</a></h3><p>Aquí aparecen todos los recursos publicados, un botón para crear un nuevo recurso y una barra de búsqueda por título.</p>
+<p>Cada recurso tiene un boton para seguir leyendo y uno para dar like.</p>
+<p>Al pulsar el botón de crear recurso nos envía a un formulario dónde añadiremos el título del recurso, descripción, contenido del recurso, categoría del recurso, enlace, imagen o pdf.</p>
+<p><img src="images/manual/recursos.png" alt="Recursos" /></p>
+<h3>Pantalla de ver recurso <span id="pantalla-de-ver-recurso"></span><a href="#pantalla-de-ver-recurso" class="hashlink">&para;</a></h3><p>Tenemos el recurso que hemos seleccionado para seguir leyendo y en el nos encontramos el contenido del recurso, quién ha sido el creador y un botón para comentar el recurso.</p>
+<p>Si eres el creador, una vez tengas un comentario podrás responder dicho comentario.</p>
+<p><img src="images/manual/recursoView.png" alt="Recurso view" /></p>
+<h3>Pantalla de categorías <span id="pantalla-de-categorias"></span><a href="#pantalla-de-categorias" class="hashlink">&para;</a></h3><p>Encontramos las categorías disponibles, por cada categoría tendremos un boton (ver), que nos llevará a otra página con los recursos disponibles de esa categoría.
+Y un buscador para las categorias.</p>
+<p>Si eres admin o revisor tienes más acciones disponibles.</p>
+<p><img src="images/manual/categorias.png" alt="Categorias" /></p>
+<h3>Pantalla de categorías con filtros de búsqueda <span id="pantalla-de-categorias-con-filtros-de-busqueda"></span><a href="#pantalla-de-categorias-con-filtros-de-busqueda" class="hashlink">&para;</a></h3><p>Cuándo accedemos desde la página de Categorías a una categoría en concreto, nos muestra esta página, dónde encontramos una barra de búsqueda para filtrar por título y un filtro desplegable para filtrar los recursos de esa categoría por imágen, pdf o completos.</p>
+<p><img src="images/manual/categoriasfiltro.png" alt="Categorias filtradas" /></p>
+<h3>Pantalla de incidencias <span id="pantalla-de-incidencias"></span><a href="#pantalla-de-incidencias" class="hashlink">&para;</a></h3><p>Los revisores pueden desde aquí mandar incidencias al administrador, desde el botón crear incidencia en el cual nos abre un formulario donde introducir el mensaje para el administrador.</p>
+<p>De este modo, el administrador recibe las incidencias y puede ver las incidencias.</p>
+<p><img src="images/manual/incidencias.png" alt="Incidencias" /></p>
+<h3>Pantalla de notificaciones <span id="pantalla-de-notificaciones"></span><a href="#pantalla-de-notificaciones" class="hashlink">&para;</a></h3><p>Cuándo se crea un recurso se envía una notificación a los revisores para que validen o rechacen dicho recurso.</p>
+<p>En esta página aparecen las notificaciones y un botón para ver el recurso a validar o rechazar.</p>
+<p><img src="images/manual/notificaciones.png" alt="Notificaciones" /></p>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
     </div>
 </div>
@@ -58,7 +98,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Wed, 24 Mar 2021 16:40:41 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Mon, 06 Dec 2021 19:32:29 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
