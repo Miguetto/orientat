@@ -1,10 +1,8 @@
 <?php
 
-
 use yii\bootstrap4\Html;
-use yii\bootstrap4\ActiveForm;
-use yii\helpers\Url;
-use yii\web\View;
+use yii\redactor\widgets\Redactor;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Recursos */
@@ -24,10 +22,10 @@ use yii\web\View;
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contenido')->textArea(['maxlength' => true, 'white-space' => 'pre-line']) ?>
-    
     <?= $form->field($model, 'enlace')->textInput(['maxlength' => true]) ?>
-
+    
+    <?= $form->field($model, 'contenido')->textArea(['white-space' => 'pre-line']); ?>
+    
     <?php
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true){ ?>
             <?= $form->field($model, 'usuario_id')->dropdownList($usuarios) ?>
@@ -42,6 +40,7 @@ use yii\web\View;
     <?= $form->field($model, 'likes')->hiddenInput(['value' => 0])->label(false)?>
 
     <?= $form->field($model, 'categoria_id')->dropdownList($categorias) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
