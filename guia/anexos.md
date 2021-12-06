@@ -45,19 +45,32 @@
 
 ![Validación accesibilidad](images/anexos/validacionacc.png)
 
+(**([R35](https://github.com/Miguetto/orientat/issues/35)) Diseño para varias resoluciones**).
+
+**Grandes resoluciones**
+
+![Grandes resoluciones](images/anexos/gr.png)
+
+**Pequeñas resoluciones**
+
+![Pequeñas resoluciones](images/anexos/pr.png)
+
+
 (**([R36](https://github.com/Miguetto/orientat/issues/36)) Varios navegadores**).
 
 **Brave**
 
-![Validación HTML](images/anexos/brave.png)
+![Brave](images/anexos/brave.png)
 
 **Chrome**
 
-![Validación CSS](images/anexos/chrome.png)
+![Chrome](images/anexos/chrome.png)
 
 **Mozilla Firefox**
 
-![Validación accesibilidad](images/anexos/firefox.png)
+![Mozilla](images/anexos/firefox.png)
+
+
 
 
 
