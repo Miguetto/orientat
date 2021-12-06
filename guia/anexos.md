@@ -35,11 +35,11 @@
 
 **HTML**
 
-![Validación HTML](images/anexos/validacionHTML.png)
+![Validación HTML](images/anexos/validacionhtml.png)
 
 **CSS**
 
-![Validación CSS](images/anexos/validacionCSS.png)
+![Validación CSS](images/anexos/validacioncss.png)
 
 **Accesibilidad**
 
