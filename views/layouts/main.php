@@ -93,12 +93,12 @@ if (!isset($_COOKIE['politica'])) {
                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->esRevisor === true ||!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin === true],
             ['label' => 'Mi perfil', 'url' => $url, 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Entrar', 'url' => ['/site/login']]
             ) : (
                 '<li class="nav-item deslog">'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Salir (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-outline-info nav-link']
                 )
                 . Html::endForm()
