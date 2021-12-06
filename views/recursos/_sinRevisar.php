@@ -8,7 +8,7 @@ use yii\widgets\ListView;
 /* @var $searchModel app\models\RecursosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Recursos:';
+$this->title = 'Recursos sin revisar:';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true || Yii::$app->user->identity->esRevisor == true){ ?>
-            <?= Html::a('Sin revisar', ['sin-revisar'], ['class' => 'btn btn-warning']) ?>
+            <?= Html::a('Volver', ['index'], ['class' => 'btn btn-warning']) ?>
     <?php }
     ?>
   </p>

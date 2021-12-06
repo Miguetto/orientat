@@ -334,4 +334,19 @@ class RecursosController extends Controller
 
         }
     }
+
+    /**
+     * Lists all Recursos models.
+     * @return mixed
+     */
+    public function actionSinRevisar()
+    {
+        $searchModel = new RecursosSearch();
+        $dataProvider = $searchModel->searchSinRevisar(Yii::$app->request->queryParams);
+        
+        return $this->render('_sinRevisar', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }

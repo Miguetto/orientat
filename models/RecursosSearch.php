@@ -41,7 +41,7 @@ class RecursosSearch extends Recursos
      */
     public function search($params)
     {
-        $query = Recursos::find()->where('revisado=true')->orderBy(['created_at' => SORT_DESC]);
+        $query = Recursos::find()->where(['revisado' => true])->orderBy(['created_at' => SORT_DESC]);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -286,6 +286,54 @@ class RecursosSearch extends Recursos
                            ->andWhere(['not', ['pdf_pdf' => '']])
                            ->andWhere(['not', ['imagen' => '']])
                            ->andWhere(['not', ['enlace' => '']]);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageParam' => 'precurso',
+                'pageSize' => 9,
+            ]
+        ]);
+
+        $dataProvider->sort->attributes['usuario.usuario'] = [
+            'asc' => ['usuarios.usuario' => SORT_ASC],
+            'desc' => ['usuarios.usuario' => SORT_DESC],
+        ];
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'created_at' => $this->created_at,
+            'usuario_id' => $this->usuario_id,
+            'categoria_id' => $this->categoria_id,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'titulo', $this->titulo])
+            ->andFilterWhere(['ilike', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['ilike', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchSinRevisar($params)
+    {
+        $query = Recursos::find()->where(['revisado' => false])->orderBy(['created_at' => SORT_DESC]);
         
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
