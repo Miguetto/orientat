@@ -25,7 +25,11 @@
 
 (**(R25) Codeception**).
 
+![Pruebas Codeception](images/anexos/codeception.png)
 
+(**(R26) Code Climate**).
+
+![Pruebas Codeclimate](images/anexos/codeclimate.png)
 
 
 
