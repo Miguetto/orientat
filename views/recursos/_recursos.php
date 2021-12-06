@@ -102,17 +102,17 @@ $this->registerJs($jsDisLike, View::POS_END);
 ?>
 
 
-<div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated">
+<div class="col-md-6 col-lg-4 ftco-animate fadeInUp ftco-animated" itemscope itemtype="https://schema.org/CreativeWork">
   <div class="blog-entry">
     <a class="block-20 d-flex align-items-end img-fluid" style="background-image: url('<?= $recurso->getImagen(); ?>');">
       <div class="meta-date text-center p-2">
-        <span class="day"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
+        <span class="day" itemprop="dateCreated"><?= Yii::$app->formatter->asDate($recurso->created_at, 'long') ?></span>
       </div>
     </a>
     <div class="text bg-white p-4">
-      <h3 class="heading"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
+      <h3 class="heading" itemprop="about"><?= Html::a($recurso->titulo, ['recursos/view', 'id' => $recurso->id]) ?></h3>
       <p><?= $recurso->categoria->nombre; ?></p>
-      <p><?= $recurso->descripcion; ?></p>
+      <p itemprop="abstract"><?= $recurso->descripcion; ?></p>
       <div id="sl<?= $recurso->id ?>" class="d-flex align-items-center mt-4">
         <p class="mb-0" style="margin-right: 05px;">
           <?= Html::a('Seguir leyendo', ['recursos/view', 'id' => $recurso->id], ['class' => 'btn btn-secondary', 'id' => 'seguirLeyendo']) ?>

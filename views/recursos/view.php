@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <article>
     <div class="container">
-        <div class="row">
+        <div class="row" itemscope itemtype="https://schema.org/CreativeWork">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <p>
                 <?php
@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php } ?>
                 <?php } ?>
                 </p>
-                <h2 class="section-heading"><?= Html::encode($model->titulo) ?></h2>
-                <blockquote class="blockquote"><?= Html::encode($model->descripcion) ?></blockquote>
-                <p class="contenidoRecurso"><?= Html::encode($model->contenido) ?></p>
-                <h6 class="section-heading">recurso creado por <?= Html::encode($usuarioRecurso) ?></h6>
+                <h2 class="section-heading" itemprop="about"><?= Html::encode($model->titulo) ?></h2>
+                <blockquote class="blockquote" itemprop="abstract"><?= Html::encode($model->descripcion) ?></blockquote>
+                <p class="contenidoRecurso" itemprop="text"><?= Html::encode($model->contenido) ?></p>
+                <h6 class="section-heading">recurso creado por <span itemprop="author"><?= Html::encode($usuarioRecurso) ?></span></h6>
                 <div class="p-0 text-center">
                     <?php if(Utilidad::existeComentario($model->id, Yii::$app->user->id) == false) : ?>
                         <?= Html::a('Comentar', ['comentarios/create', 'id' => $idComentarioN, 'recurso_id' => $model->id], ['class' => 'btn btn-secondary']) ?>
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= Html::a('Ir al enlace', Url::to($model->enlace), ['class' => 'btn btn-info', 'target' => '_blank']) ?>
                     </p>
                 <?php }else {} ?>
-                <div class="p-0 text-center">
+                <div class="p-0 text-center" itemprop="image">
                     <?= Html::img(Utilidad::getImg($model->imagen), ['class' => 'img-fluid', 'id' => 'img', 'itemprop' => 'image']) ?>
                 </div>
                 <?php if($model->pdf_pdf != null){ ?>
