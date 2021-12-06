@@ -16,7 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Crear categoría', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->esAdmin == true || Yii::$app->user->identity->esRevisor == true){ ?>
+            <?= Html::a('Crear categoría', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php }
+    ?>
     </p>
 
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -5,10 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Categorias;
 use app\models\CategoriasSearch;
-use app\models\Recursos;
 use app\models\RecursosSearch;
-use app\models\UsuariosSearch;
-use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,6 +26,20 @@ class CategoriasController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->esAdmin || Yii::$app->user->identity->esRevisor;
+                        },
+                    ],
                 ],
             ],
         ];

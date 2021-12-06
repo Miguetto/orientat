@@ -38,10 +38,10 @@ class RecursosController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['update', 'delete'],
+                'only' => ['update', 'delete', 'sin-revisar'],
                 'rules' => [
                     [
-                        'actions' => ['update', 'delete'],
+                        'actions' => ['update', 'delete', 'sin-revisar'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
