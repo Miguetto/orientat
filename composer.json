@@ -54,7 +54,9 @@
         "knplabs/github-api": "^2.11",
         "php-http/guzzle6-adapter": "^1.1",
         "dmstr/yii2-cookie-consent": "^1.4",
-        "kop/yii2-scroll-pager": "dev-master"
+        "kop/yii2-scroll-pager": "dev-master",
+        "kartik-v/yii2-editors": "dev-master",
+        "yiidoc/yii2-redactor": "*"
     },
     "config": {
         "process-timeout": 1800,

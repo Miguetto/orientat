@@ -71,6 +71,10 @@ body {
 
 .contenidoRecurso {
   color: #000000;
+  white-space: pre-line;
+  overflow:hidden;
+  margin:50px auto;
+  display:block;
 }
 
 [tabindex="-1"]:focus {

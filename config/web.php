@@ -62,6 +62,10 @@ $config = [
             'class' => dmstr\cookieconsent\components\CookieConsentHelper::class
         ],
     ],
+    'modules' => [
+        'redactor' => 'yii\redactor\RedactorModule',
+        'class' => 'yii\redactor\RedactorModule',
+    ],
     'container' => [
         'definitions' => [
             'yii\grid\ActionColumn' => ['header' => 'Acciones'],
