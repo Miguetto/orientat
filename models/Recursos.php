@@ -33,6 +33,7 @@ class Recursos extends \yii\db\ActiveRecord
 
     public $img;
     public $pdf;
+    
 
     /**
      * {@inheritdoc}

@@ -1,7 +1,7 @@
 <?php
 
 use yii\bootstrap4\Html;
-use yii\redactor\widgets\Redactor;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
