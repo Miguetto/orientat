@@ -99,6 +99,68 @@
 <p><img src="images/anexos/chrome.png" alt="Chrome" /></p>
 <p><strong>Mozilla Firefox</strong></p>
 <p><img src="images/anexos/firefox.png" alt="Mozilla" /></p>
+<p>(<strong>(<a href="https://github.com/Miguetto/orientat/issues/38">R38</a>) Despliegue en servidor local</strong>).</p>
+<p><em>DHCP</em></p>
+<ul>
+<li>Configuramos la red en el servidor:</li>
+</ul>
+<p><img src="images/despliegue/servidor-netplan.png" alt="netplan servidor" /></p>
+<ul>
+<li>Configuramos la red en el cliente:</li>
+</ul>
+<p><img src="images/despliegue/cliente-netplan.png" alt="netplan cliente" /></p>
+<p><em>DNS</em></p>
+<ul>
+<li>Editamos /etc/bind/named.conf.local:</li>
+</ul>
+<p><img src="images/despliegue/dns-conf.png" alt="dns named" /></p>
+<ul>
+<li>Editamos /etc/bind/db.orienta-t.com:</li>
+</ul>
+<p><img src="images/despliegue/dns-directa.png" alt="dns directa" /></p>
+<ul>
+<li>Editamos /etc/bind/db.1.168.192:</li>
+</ul>
+<p><img src="images/despliegue/dns-inversa.png" alt="dns inversa" /></p>
+<p><em>APACHE</em></p>
+<ul>
+<li>Editamos /etc/apache2/sites-available/000-default.conf para el directorio del proyecto y la redirección:</li>
+</ul>
+<p><img src="images/despliegue/apache.png" alt="apache" /></p>
+<p><em>SSL</em></p>
+<p><strong>1- Generar clave privada y la solicitud</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-string">``</span><span class="hljs-string">`
+$ openssl genrsa -out orienta-t.key 2048
+`</span><span class="hljs-string">``</span>
+
+<span class="hljs-string">``</span><span class="hljs-string">`
+$ openssl x509 -req -days 365 -in orienta-t.csr -signkey orienta-t.key -out orienta-t.crt
+`</span><span class="hljs-string">``</span>
+</code></pre>
+<p><strong>2- Mover las claves y el certificadoa los directorios de apache</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-string">``</span><span class="hljs-string">`
+$ sudo mv orienta-t.key /etc/ssl/private/
+$ sudo mv orienta-t.crt /etc/ssl/certs/
+`</span><span class="hljs-string">``</span>
+</code></pre>
+<p><strong>3- Configurar los permisos</strong>
+<strong>4- Crear el fichero de configuración</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-string">``</span><span class="hljs-string">`
+$ $ sudo nano /etc/apache2/sites-available/orienta-tssl.conf
+`</span><span class="hljs-string">``</span>
+</code></pre>
+<p><strong>5- Habilitamos el módulo ssl</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-string">``</span><span class="hljs-string">`
+$ sudo a2enmod ssl
+`</span><span class="hljs-string">``</span>
+</code></pre>
+<p><strong>6- Activamos el servicio</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-string">``</span><span class="hljs-string">`
+$ sudo a2enmod orienta-tssl
+`</span><span class="hljs-string">``</span>
+</code></pre>
+<p><em>FINAL</em></p>
+<p><img src="images/despliegue/orientat-cliente.png" alt="web desplegada en local" /></p>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
     </div>
 </div>
@@ -107,7 +169,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Mon, 06 Dec 2021 19:32:29 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Tue, 07 Dec 2021 16:23:34 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
