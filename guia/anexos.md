@@ -70,6 +70,77 @@
 
 ![Mozilla](images/anexos/firefox.png)
 
+(**([R38](https://github.com/Miguetto/orientat/issues/38)) Despliegue en servidor local**).
+
+*DHCP*
+- Configuramos la red en el servidor:
+
+![netplan servidor](images/despliegue/servidor-netplan.png)
+
+- Configuramos la red en el cliente:
+
+![netplan cliente](images/despliegue/cliente-netplan.png)
+
+*DNS*
+- Editamos /etc/bind/named.conf.local:
+
+![dns named](images/despliegue/dns-conf.png)
+
+- Editamos /etc/bind/db.orienta-t.com:
+
+![dns directa](images/despliegue/dns-directa.png)
+
+- Editamos /etc/bind/db.1.168.192:
+
+![dns inversa](images/despliegue/dns-inversa.png)
+
+*APACHE*
+- Editamos /etc/apache2/sites-available/000-default.conf para el directorio del proyecto y la redirección:
+
+![apache](images/despliegue/apache.png)
+
+*SSL*
+
+**1- Generar clave privada y la solicitud**
+    ```
+    $ openssl genrsa -out orienta-t.key 2048
+    ```
+
+    ```
+    $ openssl x509 -req -days 365 -in orienta-t.csr -signkey orienta-t.key -out orienta-t.crt
+    ```
+**2- Mover las claves y el certificadoa los directorios de apache**
+    ```
+    $ sudo mv orienta-t.key /etc/ssl/private/
+    $ sudo mv orienta-t.crt /etc/ssl/certs/
+    ```
+**3- Configurar los permisos**
+**4- Crear el fichero de configuración**
+    ```
+    $ $ sudo nano /etc/apache2/sites-available/orienta-tssl.conf
+    ```
+
+**5- Habilitamos el módulo ssl**
+    ```
+    $ sudo a2enmod ssl
+    ```
+
+**6- Activamos el servicio**
+    ```
+    $ sudo a2enmod orienta-tssl
+    ```
+
+*FINAL*
+
+![web desplegada en local](images/despliegue/orientat-cliente.png)
+
+
+
+
+
+
+
+
 
 
 
